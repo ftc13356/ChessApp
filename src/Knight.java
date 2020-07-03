@@ -6,8 +6,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.util.*;
 
-private location = 0;
-private startingPoint = 0;
+private location;
+private startingPoint;
 
 
 public class Knight {
