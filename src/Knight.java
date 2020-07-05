@@ -6,14 +6,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.util.*;
 
-private String location;
-private String startingPoint;
-
 
 public class Knight {
 
 }
-
+    private String location;
+    private String startingPoint;
+    
     public void getLocation{
 
     }
