@@ -12,15 +12,15 @@ public class Knight {
 }
     private String location;
     private String startingPoint;
-    
-    public void getLocation{
+
+    public void getLocation(){
 
     }
 
-    public void setLocation{
+    public void setLocation(){
 
     }
 
-    public void availableMoves{
+    public void availableMoves(){
 
     }
