@@ -1,4 +1,4 @@
-public class King { //extends ChessPiece
+public class King extends ChessPiece{ 
     private boolean isCastled = false;
     private String currentLoation;
     private String targetLocation;
@@ -24,5 +24,10 @@ public class King { //extends ChessPiece
     }
     public void moveKing(){
         //Body
+    }
+
+    @Override
+    void Move() {
+
     }
 }
