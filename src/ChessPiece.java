@@ -1,29 +1,29 @@
 abstract class ChessPiece{
 
-    abstract void Move();
+    abstract void move();
 // determines what move to make
-    void MoveLeft(){
+    void moveLeft(){
 //move left
     }
-    void MoveRight(){
+    void moveRight(){
 //move right
     }
-    void MoveDown(){
+    void moveDown(){
 //move down
     }
-    void MoveForward(){
+    void moveForward(){
 //move forward
     }
-    void MoveDiagonalUpRight(){
+    void moveDiagonalUpRight(){
 //Move Diagonal Up and Right
     }
-    void MoveDiagonalUpLeft(){
+    void moveDiagonalUpLeft(){
 //Move Diagonal Up and Left
     }
-    void MoveDiagonalDownRight(){
+    void moveDiagonalDownRight(){
 //Move Diagonal Down and Right
     }
-    void MoveDiagonalDownLeft(){
+    void moveDiagonalDownLeft(){
 //Move Diagonal Down and Left
     }
 }
