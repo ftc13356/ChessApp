@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Queen{
@@ -7,25 +8,27 @@ public class Queen{
             return queen_pos;
         }
 
-        public Vector[] queen_availableMoves() {
+        public ArrayList<ArrayList<Integer>> queen_availableMoves() {
             int[] x_directions = {0, 1, 1, 1, 0, -1, -1, -1};
             int[] y_directions = {1, 1, 0, -1, -1, -1, 0, 1};
-            Vector[] available_points= new Vector[2];
+            ArrayList<ArrayList<Integer>> available_points=new ArrayList<ArrayList<Integer>>(2);
             for (int i = 0; i < 8; i++) {
                 int x = 1;
                 while (/*board_isOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == false*/true) {
-                    available_points[0].add(queen_pos[0] + x_directions[i] * x);
-                    available_points[1].add(queen_pos[1] + y_directions[i] * x);
+                    ArrayList<Integer> points= new ArrayList<Integer>();
+                    points.add(queen_pos[0] + x_directions[i] * x);
+                    points.add(queen_pos[1] + y_directions[i] * x);
+                    x++;
                 }
             }
             return available_points;
         }
 
         public boolean queen_move(int x, int y) {
-            Vector[] available_points;
+            ArrayList<ArrayList<Integer>> available_points;
             available_points = queen_availableMoves();
-            for (int i = 0; i < available_points[0].size(); i++) {
-                if ((int) available_points[0].get(i) == x && (int) available_points[1].get(i) == y) {
+            for (int i = 0; i < available_points.size(); i++) {
+                if ((int) available_points.get(i).get(0) == x && (int) available_points.get(i).get(1) == y) {
                     queen_pos[0] = (int) x;
                     queen_pos[1] = (int) y;
                     return true;
@@ -35,9 +38,9 @@ public class Queen{
         }
 
         public boolean queen_check() {
-            Vector[] available_points;
+            ArrayList<ArrayList<Integer>> available_points;
             available_points = queen_availableMoves();
-            for (int i = 0; i < available_points[0].size(); i++) {
+            for (int i = 0; i < available_points.size(); i++) {
                 if (/*board_isOccupiedEnemy(available_points[0][i], available_points[1][i])*/true) {
                     return true;
                 }
