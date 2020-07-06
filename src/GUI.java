@@ -13,12 +13,16 @@ import java.util.*;
  * @version 1.0
  */
 public class GUI {
+
+    // FIELDS
     private Board board;
 
+    // CONSTRUCTORS
     public GUI(Board chessBoard) {
         board = chessBoard;
     }
 
+    // METHODS
     private void drawBoard() {
         //draw a board that is 8 squares by 8 squares
         //alternating between black and white squares
