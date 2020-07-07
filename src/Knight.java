@@ -1,16 +1,8 @@
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import java.util.*;
-
-
-public class Knight {
+abstract class Knight extends ChessPiece{
 
     private String location;
     private String startingPoint;
+
 
     public void getLocation() {
 
@@ -21,6 +13,7 @@ public class Knight {
     }
 
     public void availableMoves() {
+        availableMoves getLegalMoves = new availableMoves();
 
     }
 }
