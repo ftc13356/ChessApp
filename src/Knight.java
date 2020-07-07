@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public abstract class Knight extends ChessPiece{
 
+
     private Location currentLocation;
 
     public ArrayList<Location> getLegalMoves() {
