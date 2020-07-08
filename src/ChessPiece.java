@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 abstract class ChessPiece{
-    public int getLocation;
+    Location currentLocation;
     abstract ArrayList<Location> getLegalMoves();
     abstract void move(int x, int y);
-    public int isLocationOccupied;
+    Board isLocationOccupied;
 }
