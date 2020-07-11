@@ -19,10 +19,10 @@ public abstract class Knight extends ChessPiece{
             for (int i = 0; i < 8; i++) {
                 int new_x = x_y[0] + x_directions[i]; // new starting location + the x
                 int new_y = x_y[1] + y_directions[i]; // new starting location + the y
-                    if ( (locationOccupied(new_x, new_y)) &&
-                         (isOutOfBoard(new_x, new_y)) ); {
+                    if ( (!isOutOfBoard(new_x, new_y)) && // ! means not
+                         (locationOccupied(new_x, new_y)) ); {
                         Location location = new Location();
-                        location.setLocation(new_x, new_y); // 0 and 0 for both the arrays the first time through the loop
+                        location.setLocation(new_x, new_y); // sets location
                         moves.add(location);
                     }
                 }
