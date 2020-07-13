@@ -13,7 +13,7 @@ public class Rook extends ChessPiece{
         int[] y_directions = {0, 0, 1, -1};
         ArrayList<Location> available_points=new ArrayList<Location>();
         int[] rook_pos=getLocation();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 4; i++) {
             int x = 1;
             while (/*board_isOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)  == false&&rook_pos[0] + x_directions[i] * x<=8&&rook_pos[1] + y_directions[i]<=8&&rook_pos[0] + x_directions[i] * x>0&&rook_pos[1] + y_directions[i]>0 x*/true) {
                 ArrayList<Integer> points= new ArrayList<Integer>();
