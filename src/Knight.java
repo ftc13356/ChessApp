@@ -16,7 +16,7 @@ public class Knight extends ChessPiece{
     public ArrayList<Location> getLegalMoves() {
 
         ArrayList<Location> moves = new ArrayList<Location>();
-        int[] x_y = this.currentLocation.getLocation(); //takes in starting point
+        int[] x_y = this.getLocation(); //takes in starting point
         int[] x_directions = {-2, -1, 1, 2, 2, 1, -1, -2}; //the x of the chessboard ex: x axis = -2, y axis = 1
         int[] y_directions = {1, 2, 2, 1, -1, -2, -2, -1}; // same as above except y axis
 
@@ -34,8 +34,7 @@ public class Knight extends ChessPiece{
     }
 
     @Override
-    void move(int x, int y) {
+    public void move(int x, int y) {
 
     }
-
 }
