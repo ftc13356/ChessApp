@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
-public abstract class Knight extends ChessPiece{
+public class Knight extends ChessPiece{
+
+    public Knight(int x, int y, Board board) {
+        super(x, y, board);
+    }
 
     public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
         return false;
@@ -27,6 +31,11 @@ public abstract class Knight extends ChessPiece{
                     }
                 }
         return moves;
+    }
+
+    @Override
+    void move(int x, int y) {
+
     }
 
 }
