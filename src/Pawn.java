@@ -15,7 +15,7 @@ public class Pawn extends ChessPiece{
     @Override
     public ArrayList<Location> getLegalMoves() {
         ArrayList<Location> moves = new ArrayList<Location>();
-        int[] x_y = this.currentLocation.getLocation();
+        int[] x_y = this.getLocation();
         int[] x_directions = {1}; //the x of the board
         int[] y_directions = {0}; // same as above except y axis
         for (int i = 0; i < 8; i++) {
