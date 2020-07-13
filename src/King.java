@@ -1,33 +1,49 @@
-public class King extends ChessPiece{ 
+import java.util.ArrayList;
+
+public class King extends ChessPiece{
+
     private boolean isCastled = false;
-    private String currentLoation;
-    private String targetLocation;
+    public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
+        return false;
+    }
+    public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
+        return false;
+    }
 
     private boolean hasKingMoved(){
         boolean hasKingMoved = false;
         //Body
         return hasKingMoved;
     }
+
     private boolean isCastleLegal(){
         boolean castleLegal = true;
         //Body
         return castleLegal;
     }
-    public boolean isLegalMove(){
-        boolean legalMove = true;
-        //Body
-        return legalMove;
-    }
-    public String setTargetLocation(){
-        //Body
-        return targetLocation;
-    }
-    public void moveKing(){
-        //Body
+
+    @Override
+    ArrayList<Location> getLegalMoves() {
+
+        ArrayList<Location> moves = new ArrayList<Location>();
+        int[] x_y = this.currentLocation.getLocation(); //takes in current location and gets location
+        int[] x_directions = {-1, -1, 0, 1, 1, 1, 0, -1}; //the x of the chessboard ex: x axis = -1, y axis = 0
+        int[] y_directions = {0, 1, 1, 1, 0, -1, -1, -1}; // same as above except y axis
+        for (int i = 0; i < 8; i++) {
+            int new_x = x_y[0] + x_directions[i]; // new starting location + the x
+            int new_y = x_y[1] + y_directions[i]; // new starting location + the y
+            if ( (locationOccupied(new_x, new_y)) && (isOutOfBoard(new_x, new_y)) ); {
+                Location location = new Location();
+                location.setLocation(new_x, new_y); // sets new location
+                moves.add(location);
+            }
+        }
+
+        return moves;
     }
 
     @Override
-    void Move() {
+    void move(int x, int y) {
 
     }
 }
