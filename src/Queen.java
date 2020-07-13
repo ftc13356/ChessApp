@@ -1,47 +1,44 @@
 import java.util.ArrayList;
-import java.util.Vector;
 
-public class Queen{
+public class Queen extends ChessPiece{
         int[] queen_pos = {4, 1};
 
-        public int[] queen_location() {
+        public int[] Location() {
             return queen_pos;
         }
+        public Queen(int x, int y, Board board){
+            super(x,y,board);
+        }
 
-        public ArrayList<ArrayList<Integer>> queen_availableMoves() {
+        public ArrayList<Location> getLegalMoves() {
             int[] x_directions = {0, 1, 1, 1, 0, -1, -1, -1};
             int[] y_directions = {1, 1, 0, -1, -1, -1, 0, 1};
-            ArrayList<ArrayList<Integer>> available_points=new ArrayList<ArrayList<Integer>>(2);
+            ArrayList<Location> available_points=new ArrayList<Location>();
             for (int i = 0; i < 8; i++) {
                 int x = 1;
-                while (/*board_isOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == false*/true) {
+                while (/*board_isOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == false&&queen_pos[0] + x_directions[i] * x<=8&&queen_pos[1] + y_directions[i]<=8&&queen_pos[0] + x_directions[i] * x>0&&queen_pos[1] + y_directions[i]>0 x*/true) {
                     ArrayList<Integer> points= new ArrayList<Integer>();
-                    points.add(queen_pos[0] + x_directions[i] * x);
-                    points.add(queen_pos[1] + y_directions[i] * x);
+                    Location location= new Location();
+                    location.setLocation(queen_pos[0] + x_directions[i] * x,queen_pos[1] + y_directions[i] * x);
+                    available_points.add(location);
                     x++;
                 }
             }
             return available_points;
         }
 
-        public boolean queen_move(int x, int y) {
-            ArrayList<ArrayList<Integer>> available_points;
-            available_points = queen_availableMoves();
-            for (int i = 0; i < available_points.size(); i++) {
-                if ((int) available_points.get(i).get(0) == x && (int) available_points.get(i).get(1) == y) {
-                    queen_pos[0] = (int) x;
-                    queen_pos[1] = (int) y;
-                    return true;
-                }
-            }
-            return false;
+        public void move(int x, int y) {
+            queen_pos[0]=x;
+            queen_pos[1]=y;
         }
 
-        public boolean queen_check() {
-            ArrayList<ArrayList<Integer>> available_points;
-            available_points = queen_availableMoves();
+        public boolean check(int x, int y) {
+            ArrayList<Location> available_points=new ArrayList<Location>();
+            available_points = getLegalMoves();
+            Location location= new Location();
+            location.setLocation(x,y);
             for (int i = 0; i < available_points.size(); i++) {
-                if (/*board_isOccupiedEnemy(available_points[0][i], available_points[1][i])*/true) {
+                if (available_points.get(i)==location){
                     return true;
                 }
             }
