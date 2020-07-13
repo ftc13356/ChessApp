@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 public class King extends ChessPiece{
 
+    public King(int x, int y, Board board){
+        super(x,y,board);
+    }
+
     private boolean isCastled = false;
     public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
         return false;
@@ -10,23 +14,23 @@ public class King extends ChessPiece{
         return false;
     }
 
-    private boolean hasKingMoved(){
+    public boolean hasKingMoved(){
         boolean hasKingMoved = false;
         //Body
         return hasKingMoved;
     }
 
-    private boolean isCastleLegal(){
+    public boolean isCastleLegal(){
         boolean castleLegal = true;
         //Body
         return castleLegal;
     }
 
     @Override
-    ArrayList<Location> getLegalMoves() {
+    public ArrayList<Location> getLegalMoves() {
 
         ArrayList<Location> moves = new ArrayList<Location>();
-        int[] x_y = this.currentLocation.getLocation(); //takes in current location and gets location
+        int[] x_y = this.getLocation(); //takes in current location and gets location
         int[] x_directions = {-1, -1, 0, 1, 1, 1, 0, -1}; //the x of the chessboard ex: x axis = -1, y axis = 0
         int[] y_directions = {0, 1, 1, 1, 0, -1, -1, -1}; // same as above except y axis
         for (int i = 0; i < 8; i++) {
@@ -43,7 +47,7 @@ public class King extends ChessPiece{
     }
 
     @Override
-    void move(int x, int y) {
+    public void move(int x, int y) {
 
     }
 }
