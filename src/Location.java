@@ -8,6 +8,14 @@ public class Location {
         vertical = 1;
     }
 
+    @Override
+    public String toString() {
+        return "Location{" +
+                "horizontal=" + horizontal +
+                ", vertical=" + vertical +
+                '}';
+    }
+
     //constructor with any location
     public Location(int x, int y) {
         if (x < 1 || x > 8) {
