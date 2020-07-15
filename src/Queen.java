@@ -5,6 +5,12 @@ public class Queen extends ChessPiece{
         public int[] Location() {
             return getLocation();
         }
+        public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
+            return true;
+        }
+        public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
+            return false;
+        }
         public Queen(int x, int y, Board board){
             super(x,y,board);
         }
@@ -16,7 +22,7 @@ public class Queen extends ChessPiece{
             int []queen_pos=getLocation();
             for (int i = 0; i < 8; i++) {
                 int x = 1;
-                while (/*board_isOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == false&&queen_pos[0] + x_directions[i] * x<=8&&queen_pos[1] + y_directions[i]<=8&&queen_pos[0] + x_directions[i] * x>0&&queen_pos[1] + y_directions[i]>0 x*/true) {
+                while (locationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == false&&!isOutOfBoard(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)){
                     ArrayList<Integer> points= new ArrayList<Integer>();
                     Location location= new Location();
                     location.setLocation(queen_pos[0] + x_directions[i] * x,queen_pos[1] + y_directions[i] * x);
