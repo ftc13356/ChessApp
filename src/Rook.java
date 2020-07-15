@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+ * This class represents the Rook piece of chess board.
+ */
 public class Rook extends ChessPiece{
 
     public Rook(int x, int y, Board boardRef) {
@@ -14,6 +17,11 @@ public class Rook extends ChessPiece{
     public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
         return false;
     }
+
+    /**
+     * This method returns a list of legal for the current board position.
+     * @return
+     */
     public ArrayList<Location> getLegalMoves() {
         int[] x_directions = {1, -1, 0, 0};
         int[] y_directions = {0, 0, 1, -1};
