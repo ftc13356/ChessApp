@@ -9,9 +9,9 @@ class Board {
 //    int p2Checked = 0; // 0 not checked default), 1 checked
 
     //Player class will provide way to read role and color inputed
-    public Board(Human p1, Human p2) {
-        this.p1 = p1;
-        this.p2 = p2;
+    public Board(Player p1, Player p2) {
+        this.p1 = (Human)p1;
+        this.p2 = (Human)p2;
     }
 
     public Board() {
