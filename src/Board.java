@@ -1,59 +1,57 @@
-//import randomizer
-​
 class Board {
-    Player p1;
-    Player p2;
-    int p1Type = 0; // 0 human (default), 1 computer
-    int p2Type = 0; // 0 human (default), 1 computer
-    int p1Color = 0; // 0 white (default), 1 black
-    int p2Color = 0; // 0 white (default), 1 black
-    int p1Checked = 0; // 0 not checked (default), 1 checked
-    int p2Checked = 0; // 0 not checked default), 1 checked
-​
+    private Human p1;
+    private Human p2;
+//    int p1Type = 0; // 0 human (default), 1 computer
+//    int p2Type = 0; // 0 human (default), 1 computer
+//    int p1Color = 0; // 0 white (default), 1 black
+//    int p2Color = 0; // 0 white (default), 1 black
+//    int p1Checked = 0; // 0 not checked (default), 14 checked
+//    int p2Checked = 0; // 0 not checked default), 1 checked
 
     //Player class will provide way to read role and color inputed
-    public Board(Player player1, Player player2) {
-        p1 = player1;
-        p2 = player2;
-        p1Role = p1.getRole();
-        //player1.initialize();
-        //player2.initialize();
-​
+    public Board(Human p1, Human p2) {
+        this.p1 = p1;
+        this.p2 = p2;
     }
 
-    void start() {
-        //who is which color
-        // player type (human, computer)
-        // white player go first
-        // assign p1/p2 Color = 0 for white
-        // assign p1/p2 Color = 1 for black
-        // white player move first check if human or computer type
-​
+    public Board() {
+        p1 = new Human(true);
+        p2 = new Human(false);
     }
 
-    void humanPlayerMove(Player currentPlayer) {
-        // am I checked, if so move king. If can move p1/p2 Checked = 0 else print checkmate, end game
-        // ask which piece & where,
-        // legal/illegal, if illegal ask again
-        // check if checking opponent. if so print check, p1/p2 checked = 1
-        // check if capturing, if so remove captured piece
-        // set current location after validation
-        // next player turn
+    // need to confirm color value of player class
+    // assume player takes care of move method & pass the next moves
+    public void start() {
+        if (p1.isSidewhite()) {
+            p1.movePiece();
+        } else {
+            p2.movePiece();
+        }
     }
+/*
+    public ChessPiece isLocationOccupied(int x, int y) {
 
-    void computerPlayerMove(Player currentPlayer) {
-        // am I checked, if so move king. If can move p1/p2 Checked = 0 else print checkmate, end game
-        // pick a piece(randomizer)
-        // generate new location
-        // check if checking opponent. if so print check, p1/p2 checked = 1
-        // check if capturing, if so remove captured piece
-        // set current location after validation
-        // next player turn
+        for (int i = 0; i < p1.arrayList.size(); i++) { // arrayList defined in player class
+            if (x == arrayList[i].getX() && y == arrayList[i].getY()) {
+                return arrayList[i];
+            }
+        }
+        for (int i = 0; i < p2.arrayList.size(); i++) { // arrayList defined in player class
+            if (x == arraylist[i].getX() && y == arraylist[i].getY()) {
+                return arrayList[i];
+            }
+        }
+        return null;
     }
+    */
 
+    //waiting for the arrayList from player class
+
+
+    /*
     void analysis() { //method called in above
         //check if king in danger, print check
-    }
-​
-        ​
+
+     }
+     */
 }
