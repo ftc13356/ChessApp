@@ -28,17 +28,24 @@ class Board {
             p2.movePiece();
         }
     }
+    public boolean isOutOfBoard(int x, int y) {
+        if (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 /*
     public ChessPiece isLocationOccupied(int x, int y) {
 
         for (int i = 0; i < p1.arrayList.size(); i++) { // arrayList defined in player class
-            if (x == arrayList[i].getX() && y == arrayList[i].getY()) {
-                return arrayList[i];
+            if (x == p1.arrayList[i].getX() && y == p1.arrayList[i].getY()) {
+                return p1.arrayList[i];
             }
         }
         for (int i = 0; i < p2.arrayList.size(); i++) { // arrayList defined in player class
-            if (x == arraylist[i].getX() && y == arraylist[i].getY()) {
-                return arrayList[i];
+            if (x == p2.arraylist[i].getX() && y == p2.arraylist[i].getY()) {
+                return p2.arrayList[i];
             }
         }
         return null;
