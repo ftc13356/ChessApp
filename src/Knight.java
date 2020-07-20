@@ -5,13 +5,7 @@ public class Knight extends ChessPiece{
     public Knight(int x, int y, Board board) {
         super(x, y, board);
     }
-
-    public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
-        return false;
-    }
-    public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
-        return false;
-    }
+    
 
     public ArrayList<Location> getLegalMoves() {
 
@@ -24,7 +18,7 @@ public class Knight extends ChessPiece{
                 int new_x = x_y[0] + x_directions[i]; // new starting location + the x
                 int new_y = x_y[1] + y_directions[i]; // new starting location + the y
                     if ( (!isOutOfBoard(new_x, new_y)) && // ! means not
-                         (locationOccupied(new_x, new_y)) ); {
+                         (locationOccupied(new_x, new_y)) ) {
                         Location location = new Location();
                         location.setLocation(new_x, new_y); // sets location
                         moves.add(location);
