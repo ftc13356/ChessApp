@@ -20,7 +20,7 @@ public class Pawn extends ChessPiece{
         int[] y_directions = {0}; // same as above except y axis
         int new_x = x_directions[0]; // new starting location + the x
         int new_y = y_directions[0]; // new starting location + the y
-        if ((locationOccupied(new_x, new_y)) && (isOutOfBoard(new_x, new_y))) ;
+        if ((locationOccupied(new_x, new_y)) && (isOutOfBoard(new_x, new_y))) 
         {
             Location location = new Location();
             location.setLocation(new_x, new_y); // sets new location
