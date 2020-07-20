@@ -9,10 +9,13 @@ public class Rook extends ChessPiece{
         return getLocation();
     }
     public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
-        return true;
-    }
-    public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
         return false;
+    }
+    public boolean isOutOfBoard( int x, int y){
+        if(x>8||y>8||x<1||y<1){
+            return false;
+        }
+        return true;
     }
     public ArrayList<Location> getLegalMoves() {
         int[] x_directions = {1, -1, 0, 0};

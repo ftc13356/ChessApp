@@ -35,6 +35,9 @@ class Board {
             return true;
         }
     }
+    public ChessPiece isLocationOccupied(int x, int y) {
+        return null;
+    }
 /*
     public ChessPiece isLocationOccupied(int x, int y) {
 
