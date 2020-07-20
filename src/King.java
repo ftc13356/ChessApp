@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class King extends ChessPiece{
 
-    public King(int x, int y, Board board){
-        super(x,y,board);
+    public King(int x, int y, Board board, Player player){
+        super(x,y,board, player);
     }
 
     private boolean isCastled = false;

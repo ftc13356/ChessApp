@@ -11,8 +11,8 @@ public class Queen extends ChessPiece{
         public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
             return false;
         }
-        public Queen(int x, int y, Board board){
-            super(x,y,board);
+        public Queen(int x, int y, Board board, Player player){
+            super(x, y, board, player);
         }
 
         public ArrayList<Location> getLegalMoves() {

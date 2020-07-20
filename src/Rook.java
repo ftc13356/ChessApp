@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Rook extends ChessPiece{
 
-    public Rook(int x, int y, Board boardRef) {
-        super(x, y, boardRef);
+    public Rook(int x, int y, Board boardRef, Player player) {
+        super(x, y, boardRef, player);
     }
     public int[] Location() {
         return getLocation();

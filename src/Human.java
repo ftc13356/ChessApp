@@ -7,35 +7,36 @@ public class Human extends Player{
     public static List listterms = new ArrayList();
     public static int[] arrayterms = {0,0};
 
+    public static Player player = new Player() {};
     public static Player human1 = new Player() {};
     public static Player human2 = new Player() {};
     public static Board board = new Board(human1, human2);
 
-    public static Pawn wpawn1 = new Pawn(0, 1, board );
-    public static Pawn wpawn2 = new Pawn(1,1,board);
-    public static Pawn wpawn3 = new Pawn(2,1,board);
-    public static Pawn wpawn4 = new Pawn(3,1,board);
-    public static Pawn wpawn5 = new Pawn(4,1,board);
-    public static Pawn wpawn6 = new Pawn(5,1,board);
-    public static Pawn wpawn7 = new Pawn(6,1,board);
-    public static Pawn wpawn8 = new Pawn(7,1,board);
-    public static Rook wrook1 = new Rook(0,0,board);
-    public static Rook wrook2 = new Rook(0,7,board);
-    public static Knight wknight1 = new Knight(1,0,board) {
+    public static Pawn wpawn1 = new Pawn(0, 1, board, player);
+    public static Pawn wpawn2 = new Pawn(1,1, board, player);
+    public static Pawn wpawn3 = new Pawn(2,1, board, player);
+    public static Pawn wpawn4 = new Pawn(3,1, board, player);
+    public static Pawn wpawn5 = new Pawn(4,1, board, player);
+    public static Pawn wpawn6 = new Pawn(5,1, board, player);
+    public static Pawn wpawn7 = new Pawn(6,1, board, player);
+    public static Pawn wpawn8 = new Pawn(7,1, board, player);
+    public static Rook wrook1 = new Rook(0,0, board, player);
+    public static Rook wrook2 = new Rook(0,7, board, player);
+    public static Knight wknight1 = new Knight(1,0, board, player) {
         @Override
         public void move(int x, int y) {
 
         }
     };
-    public static Knight wknight2 = new Knight(6,0,board) {
+    public static Knight wknight2 = new Knight(6,0, board, player) {
         @Override
         public void move(int x, int y) {
         }
     };
-    public static Bishop wbishop1 = new Bishop(2,0,board);
-    public static Bishop wbishop2 = new Bishop(5,0,board);
-    public static Queen wqueen = new Queen(3,0, board);
-    public static King wking = new King(4,0,board);
+    public static Bishop wbishop1 = new Bishop(2,0, board, player);
+    public static Bishop wbishop2 = new Bishop(5,0, board, player);
+    public static Queen wqueen = new Queen(3,0, board, player);
+    public static King wking = new King(4,0, board, player);
 
     public Human(boolean sidewhite) {
         this.sideWhite = sidewhite;

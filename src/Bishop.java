@@ -5,8 +5,8 @@ public class Bishop extends ChessPiece{
     public int[] Location() {
         return getLocation();
     }
-    public Bishop(int x, int y, Board board){
-            super(x,y,board);
+    public Bishop(int x, int y, Board board, Player player){
+            super(x, y, board, player);
     }
 
     public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
