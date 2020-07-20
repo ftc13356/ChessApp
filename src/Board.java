@@ -1,6 +1,6 @@
 class Board {
-    private Human p1;
-    private Human p2;
+    private Player p1;
+    private Player p2;
 //    int p1Type = 0; // 0 human (default), 1 computer
 //    int p2Type = 0; // 0 human (default), 1 computer
 //    int p1Color = 0; // 0 white (default), 1 black
@@ -9,11 +9,16 @@ class Board {
 //    int p2Checked = 0; // 0 not checked default), 1 checked
 
     //Player class will provide way to read role and color inputed
+    public static void main(String args[]){
+        /**Instantiating**/
+        Board board = new Board();
+        Board.start();
+    }
+    //left this in so rest of code would compile
     public Board(Player p1, Player p2) {
         this.p1 = (Human)p1;
         this.p2 = (Human)p2;
     }
-
     public Board() {
         p1 = new Human(true);
         p2 = new Human(false);
@@ -21,11 +26,16 @@ class Board {
 
     // need to confirm color value of player class
     // assume player takes care of move method & pass the next moves
-    public void start() {
-        if (p1.isSidewhite()) {
-            p1.movePiece();
-        } else {
-            p2.movePiece();
+    public static void start() {
+        int turn=0;
+        while(true){
+            if(turn%2==0){
+                //p1.movePiece();
+            }
+            else{
+                //p2.movePiece();
+            }
+            turn++;
         }
     }
     public boolean isOutOfBoard(int x, int y) {
