@@ -3,9 +3,24 @@ public class Computer extends Player{
         super(sidewhite,board);
     }
 
-    public static Player player = new Player() {};
-    public static Player human1 = new Player() {};
-    public static Player computer = new Player() {};
+    public static Player player = new Player(true, board) {
+        @Override
+        public void movePiece() {
+
+        }
+    };
+    public static Player human1 = new Player(true, board) {
+        @Override
+        public void movePiece() {
+
+        }
+    };
+    public static Player computer = new Player(false, board) {
+        @Override
+        public void movePiece() {
+
+        }
+    };
     public static Board board = new Board(human1, computer);
 
     public static Pawn wpawn1 = new Pawn(0,7, board, player);

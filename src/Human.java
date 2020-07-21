@@ -7,9 +7,24 @@ public class Human extends Player{
     public static List listterms = new ArrayList();
     public static int[] arrayterms = {0,0};
 
-    public static Player player = new Player() {};
-    public static Player human1 = new Player() {};
-    public static Player human2 = new Player() {};
+    public static Player player = new Player(true, board) {
+        @Override
+        public void movePiece() {
+
+        }
+    };
+    public static Player human1 = new Player(true, board) {
+        @Override
+        public void movePiece() {
+
+        }
+    };
+    public static Player human2 = new Player(true,board) {
+        @Override
+        public void movePiece() {
+
+        }
+    };
     public static Board board = new Board(human1, human2);
 
     public static Pawn wpawn1 = new Pawn(0, 1, board, player);
@@ -110,7 +125,7 @@ public class Human extends Player{
 
 
 
-    public static void movePiece() {
+    public void movePiece() {
         // Create a prompt and get an input from the human player
         JTextField startField = new JTextField(5);
         JTextField endField = new JTextField(5);
