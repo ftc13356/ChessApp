@@ -1,11 +1,6 @@
 public class Computer extends Player{
-    public Computer(boolean sidewhite) {
-        if (sidewhite == true)
-                this.sideWhite = false;
-        else
-            this.sideWhite = true;
-
-        this.isHuman = false;
+    public Computer(boolean sidewhite, Board board) {
+        super(sidewhite,board);
     }
 
     public static Player player = new Player() {};
@@ -39,4 +34,8 @@ public class Computer extends Player{
     public static Queen wqueen = new Queen(3,8, board, player);
     public static King wking = new King(4,0, board, player);
 
+    @Override
+    public void movePiece() {
+
+    }
 }

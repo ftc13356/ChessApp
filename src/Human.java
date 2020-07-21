@@ -38,12 +38,10 @@ public class Human extends Player{
     public static Queen wqueen = new Queen(3,0, board, player);
     public static King wking = new King(4,0, board, player);
 
-    public Human(boolean sidewhite) {
-        this.sideWhite = sidewhite;
-        this.isHuman = true;
+    public Human(boolean sidewhite, Board board) {
+        super(sidewhite,board);
 
-        };
-
+    }
 
     public static void convertToCoordinates(String letter, int number) {
         List listterms1 = new ArrayList();
