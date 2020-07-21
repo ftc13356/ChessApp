@@ -162,9 +162,8 @@ public class Human extends Player{
 
 
     }
-
-    public static void main(String[] args){
-        movePiece();
-    }
+    //public static void main(String[] args){
+//        movePiece();
+//    }
 
 }
