@@ -37,17 +37,8 @@ public class Human extends Player{
     public static Pawn wpawn8 = new Pawn(7,1, board, player);
     public static Rook wrook1 = new Rook(0,0, board, player);
     public static Rook wrook2 = new Rook(0,7, board, player);
-    public static Knight wknight1 = new Knight(1,0, board, player) {
-        @Override
-        public void move(int x, int y) {
-
-        }
-    };
-    public static Knight wknight2 = new Knight(6,0, board, player) {
-        @Override
-        public void move(int x, int y) {
-        }
-    };
+    public static Knight wknight1 = new Knight(1,0, board, player);
+    public static Knight wknight2 = new Knight(6,0, board, player);
     public static Bishop wbishop1 = new Bishop(2,0, board, player);
     public static Bishop wbishop2 = new Bishop(5,0, board, player);
     public static Queen wqueen = new Queen(3,0, board, player);
