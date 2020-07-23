@@ -11,12 +11,12 @@ public abstract class Player {
         if(sideWhite==true){
             this.isHuman=true;
         } else {
-            this.isHuman=false;
+            this.isHuman=true; // will change to false when computer class is finished
         }
 
         board1 = board;
 
-        Player player = null;
+        Player player = this;
         
         List pieceList = new ArrayList();
 

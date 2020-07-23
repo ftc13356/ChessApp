@@ -7,31 +7,9 @@ public class Human extends Player{
     public static List listterms = new ArrayList();
     public static int[] arrayterms = {0,0};
 
-    public static Player player = new Player(true, board1) {
-        @Override
-        public void movePiece() {
-
-        }
-    };
-    public static Player human1 = new Player(true, board1) {
-        @Override
-        public void movePiece() {
-
-        }
-    };
-    public static Player human2 = new Player(true,board1) {
-        @Override
-        public void movePiece() {
-
-        }
-    };
-
-    public Human(boolean sidewhite, Board board) {
-        super(sidewhite,board);
-
+    public Human(boolean sideWhite, Board board) {
+        super(sideWhite, board);
     }
-
-
 
     public void movePiece() {
         // Create a prompt and get an input from the human player
