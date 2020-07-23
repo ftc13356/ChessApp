@@ -3,7 +3,7 @@ import java.util.List;
 
 public abstract class Player {
     public boolean sideWhite;
-    public Board board1;
+    public static Board board1;
     public boolean isHuman;
     
     public Player(boolean sideWhite, Board board){
