@@ -1,5 +1,4 @@
 class Board {
-    private Board board;
     private Player p1;
     private Player p2;
 //    int p1Type = 0; // 0 human (default), 1 computer
@@ -21,8 +20,8 @@ class Board {
         this.p2 = (Human)p2;
     }
     public Board() {
-        p1 = new Human(true, board);
-        p2 = new Human(false, board);
+        p1 = new Human(true, this);
+        p2 = new Human(false, this);
     }
 
     // need to confirm color value of player class
