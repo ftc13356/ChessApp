@@ -17,22 +17,22 @@ public abstract class Player {
         }
 
         board1 = board;
-        Pawn wpawn1 = new Pawn(0, 1, board, this);
-        Pawn wpawn2 = new Pawn(1,1, board, this);
-        Pawn wpawn3 = new Pawn(2,1, board, this);
-        Pawn wpawn4 = new Pawn(3,1, board, this);
-        Pawn wpawn5 = new Pawn(4,1, board, this);
-        Pawn wpawn6 = new Pawn(5,1, board, this);
-        Pawn wpawn7 = new Pawn(6,1, board, this);
-        Pawn wpawn8 = new Pawn(7,1, board, this);
-        Rook wrook1 = new Rook(0,0, board, this);
-        Rook wrook2 = new Rook(0,7, board, this);
-        Knight wknight1 = new Knight(1,0, board, this);
-        Knight wknight2 = new Knight(6,0, board, this);
-        Bishop wbishop1 = new Bishop(2,0, board, this);
-        Bishop wbishop2 = new Bishop(5,0, board, this);
-        Queen wqueen = new Queen(3,0, board, this);
-        King wking = new King(4,0, board, this);
+        Pawn wpawn1 = new Pawn(1, 2, board, this);
+        Pawn wpawn2 = new Pawn(2,2, board, this);
+        Pawn wpawn3 = new Pawn(3,2, board, this);
+        Pawn wpawn4 = new Pawn(4,2, board, this);
+        Pawn wpawn5 = new Pawn(5,2, board, this);
+        Pawn wpawn6 = new Pawn(6,2, board, this);
+        Pawn wpawn7 = new Pawn(7,2, board, this);
+        Pawn wpawn8 = new Pawn(8,2, board, this);
+        Rook wrook1 = new Rook(1,1, board, this);
+        Rook wrook2 = new Rook(1,8, board, this);
+        Knight wknight1 = new Knight(2,1, board, this);
+        Knight wknight2 = new Knight(7,1, board, this);
+        Bishop wbishop1 = new Bishop(3,1, board, this);
+        Bishop wbishop2 = new Bishop(6,1, board, this);
+        Queen wqueen = new Queen(4,1, board, this);
+        King wking = new King(5,1, board, this);
 
         pieceList.add(wpawn1);
         pieceList.add(wpawn2);
