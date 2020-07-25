@@ -13,9 +13,9 @@ public class Rook extends ChessPiece{
     }
     public boolean isOutOfBoard( int x, int y){
         if(x>8||y>8||x<1||y<1){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     public ArrayList<Location> getLegalMoves() {
         int[] x_directions = {1, -1, 0, 0};
