@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class PawnTest {
+public class PawnTest extends BaseTest {
     public static void main(String[] args) {
 
         System.out.println("Pawn basic move test " + (testPawnBasicMove() ? "passed" : "failed"));
