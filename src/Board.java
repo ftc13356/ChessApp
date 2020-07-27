@@ -14,11 +14,6 @@ class Board {
         Board board = new Board();
         board.start();
     }
-    //left this in so rest of code would compile
-    public Board(Player p1, Player p2) {
-        this.p1 = (Human)p1;
-        this.p2 = (Human)p2;
-    }
     public Board() {
         p1 = new Human(true, this);
         p2 = new Human(false, this);
@@ -30,10 +25,10 @@ class Board {
         int turn=0;
         while(true){
             if(turn%2==0){
-                //p1.movePiece();
+                p1.movePiece();
             }
             else{
-                //p2.movePiece();
+                p2.movePiece();
             }
             turn++;
         }
