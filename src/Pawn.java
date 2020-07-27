@@ -5,12 +5,6 @@ public class Pawn extends ChessPiece{
         super(x, y, board, player);
     }
 
-    public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
-        return false;
-    }
-    public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
-        return false;
-    }
 
     @Override
     public ArrayList<Location> getLegalMoves() {
@@ -20,7 +14,7 @@ public class Pawn extends ChessPiece{
         int[] y_directions = {1}; // same as above except y axis
         int new_x = x_directions[0] + x_y[0]; // new starting location + the x
         int new_y = y_directions[0] + x_y[1]; // new starting location + the y
-        if (!locationOccupied(new_x, new_y) && !isOutOfBoard(new_x, new_y) )
+        if (null==getBoard().isLocationOccupied(new_x, new_y) && !getBoard().isOutOfBoard(new_x, new_y) )
         {
             Location location = new Location();
             location.setLocation(new_x, new_y); // sets new location
@@ -31,8 +25,7 @@ public class Pawn extends ChessPiece{
     }
 
 
-    @Override
-    public void move(int x, int y) {
+    public void move(int x, int y){
 
     }
 }
