@@ -4,6 +4,7 @@ import java.util.Arrays;
 public class KnightTest extends BaseTest {
     public static void main(String[] args) {
         System.out.println("Knight move test " + (testKnightMove() ? "passed" : "failed"));
+        System.out.println("Knight move inside board has not been programmed yet");
 
     }
 
@@ -29,9 +30,21 @@ public class KnightTest extends BaseTest {
 
 
     }
+    public static boolean testKnightMoveInsideBoard(){
+        Player player1 = null;
+        Player player2 = null;
+        Board board1 = null;
 
+        Knight knight1 = new Knight(1,1, board1, player1);
 
+        Location l1 = new Location(3, 2);
+        Location l2 = new Location(2, 3);
 
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2));
+        ArrayList<Location> knightLegalMoves = knight1.getLegalMoves();
+
+        return compare2Arrays(expectedLegalMoves, knightLegalMoves);
+    }
 
 }
 
