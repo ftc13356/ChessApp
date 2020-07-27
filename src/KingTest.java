@@ -4,6 +4,7 @@ import java.util.Arrays;
 public class KingTest extends BaseTest{
     public static void main(String[] args) {
         System.out.println("King move test " + (testKingMove() ? "passed" : "failed"));
+        System.out.println("King move inside board has not been programmed yet");
     }
     public static boolean testKingMove() {
         Player player1 = null;
@@ -22,6 +23,23 @@ public class KingTest extends BaseTest{
         Location l8 = new Location(3, 5);
 
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8));
+        ArrayList<Location>KingLegalMoves = king1.getLegalMoves();
+
+        return compare2Arrays(expectedLegalMoves, KingLegalMoves);
+
+    }
+    public static boolean testKingMoveInsideBoard() {
+        Player player1 = null;
+        Player player2 = null;
+        Board board1 = null;
+
+        King king1 = new King(1, 1, board1, player1);
+
+        Location l1 = new Location(2, 1);
+        Location l2 = new Location(2, 2);
+        Location l3 = new Location(1, 2);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3));
         ArrayList<Location>KingLegalMoves = king1.getLegalMoves();
 
         return compare2Arrays(expectedLegalMoves, KingLegalMoves);
