@@ -26,7 +26,7 @@ public class Bishop extends ChessPiece{
         int []bishop_pos = getLocation();
         for (int i = 0; i < 4; i++) {
             int x = 1;
-            while (locationOccupied(bishop_pos[0] + x_directions[i] * x, bishop_pos[1] + y_directions[i] * x)  == false&&!isOutOfBoard(bishop_pos[0] + x_directions[i] * x, bishop_pos[1] + y_directions[i] * x)){
+            while (getBoard().isLocationOccupied(bishop_pos[0] + x_directions[i] * x, bishop_pos[1] + y_directions[i] * x)  == null && !getBoard().isOutOfBoard(bishop_pos[0] + x_directions[i] * x, bishop_pos[1] + y_directions[i] * x)){
                 ArrayList<Integer> points= new ArrayList<Integer>();
                 Location location= new Location();
                 location.setLocation(bishop_pos[0] + x_directions[i] * x,bishop_pos[1] + y_directions[i] * x);
