@@ -27,9 +27,9 @@ public class Queen extends ChessPiece{
             return available_points;
         }
 
-        public void move(int x, int y) {
-            setLocation(x,y);
-        }
+//        public void move(int x, int y) {
+//            setLocation(x,y);
+//        }
 
         public boolean check(int x, int y) {
             ArrayList<Location> available_points=new ArrayList<Location>();
