@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Board {
     private Player p1;
     private Player p2;
@@ -50,6 +52,19 @@ class Board {
         for (int i = 0; i < p2.pieceList.size(); i++) { // arrayList defined in player class
             if (location == p2.pieceList.get(i).getLocation()) {
                 return p2.pieceList.get(i);
+            }
+        }
+        return null;
+    }
+    public ChessPiece check(int x, int y, Player player) {
+        Location location= new Location();
+        location.setLocation(x,y);
+        for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
+            ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
+            for(int j=0;j<moves.size();j++){
+                if(moves.get(j)==location){
+                    return player.pieceList.get(i);
+                }
             }
         }
         return null;
