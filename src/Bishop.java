@@ -9,16 +9,6 @@ public class Bishop extends ChessPiece{
             super(x, y, board, player);
     }
 
-    public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
-        return false;
-    }
-    public boolean isOutOfBoard( int x, int y){
-        if(x > 8||y > 8||x < 1||y < 1){
-            return true;
-        }
-        return false;
-    }
-
         public ArrayList<Location> getLegalMoves() {
         int[] x_directions = {1, -1, 1, -1};
         int[] y_directions = {1, 1, -1, -1};
@@ -36,22 +26,6 @@ public class Bishop extends ChessPiece{
         }
         return available_points;
 
-    }
-    public void move(int x, int y) {
-        setLocation(x,y);
-    }
-
-    public boolean check(int x, int y) {
-        ArrayList<Location> available_points=new ArrayList<Location>();
-        available_points = getLegalMoves();
-        Location location = new Location();
-        location.setLocation(x,y);
-        for (int i = 0; i < available_points.size(); i++) {
-            if (available_points.get(i) == location){
-                return true;
-            }
-        }
-        return false;
     }
 }
 

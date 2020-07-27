@@ -28,11 +28,12 @@ public abstract class ChessPiece{
         return player;
     }
 
-    //public abstract ArrayList<Location> getLegalMoves();
-    //public void move(int x, int y){
-      //  if (int new_x && int new_y==getLegalMoves()){
-
-        }
+    public abstract ArrayList<Location> getLegalMoves();
+    public boolean move(int x, int y) {
+        //  if (int new_x && int new_y==getLegalMoves()){
+        return false;
+    }
+}
 /*        if isLocationOccupied=True
 return try again
 if move is legal=true
