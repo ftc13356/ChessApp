@@ -9,7 +9,7 @@ public class RookTest extends BaseTest {
     public static boolean testRookMove() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Rook rook1 = new Rook(4, 4, board1, player1);
 
@@ -37,7 +37,7 @@ public class RookTest extends BaseTest {
     public static boolean testRookMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Rook rook1 = new Rook(1, 1, board1, player1);
 

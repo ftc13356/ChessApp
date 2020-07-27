@@ -4,14 +4,14 @@ import java.util.Arrays;
 public class KnightTest extends BaseTest {
     public static void main(String[] args) {
         System.out.println("Knight move test " + (testKnightMove() ? "passed" : "failed"));
-        System.out.println("Knight move inside board has not been programmed yet");
+        System.out.println("Knight move inside board test " + (testKnightMoveInsideBoard() ? "passed" : "failed"));
 
     }
 
     public static boolean testKnightMove(){
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Knight knight1 = new Knight(4,4, board1, player1);
 
@@ -33,7 +33,7 @@ public class KnightTest extends BaseTest {
     public static boolean testKnightMoveInsideBoard(){
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Knight knight1 = new Knight(1,1, board1, player1);
 

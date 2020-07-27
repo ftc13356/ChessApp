@@ -4,12 +4,12 @@ import java.util.Arrays;
 public class QueenTest extends BaseTest{
     public static void main(String[] args) {
         System.out.println("Queen move test " + (testQueenMove() ? "passed" : "failed"));
-        System.out.println("Queen move inside board has not been programmed yet");
+        System.out.println("Queen move inside board test " + (testQueenMoveInsideBoard() ? "passed" : "failed"));
     }
     public static boolean testQueenMove() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Queen queen1 = new Queen(4, 4, board1, player1);
 
@@ -50,7 +50,7 @@ public class QueenTest extends BaseTest{
     public static boolean testQueenMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Queen queen1 = new Queen(1, 1, board1, player1);
 

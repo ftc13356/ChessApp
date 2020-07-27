@@ -4,12 +4,12 @@ import java.util.Arrays;
 public class KingTest extends BaseTest{
     public static void main(String[] args) {
         System.out.println("King move test " + (testKingMove() ? "passed" : "failed"));
-        System.out.println("King move inside board has not been programmed yet");
+        System.out.println("King move inside board test " + (testKingMoveInsideBoard() ? "passed" : "failed"));
     }
     public static boolean testKingMove() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         King king1 = new King(4, 4, board1, player1);
 
@@ -31,7 +31,7 @@ public class KingTest extends BaseTest{
     public static boolean testKingMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         King king1 = new King(1, 1, board1, player1);
 

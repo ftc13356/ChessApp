@@ -10,7 +10,7 @@ public class BishopTest extends BaseTest {
     public static boolean testBishopMove() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Bishop bishop1 = new Bishop(4, 4, board1, player1);
 
@@ -37,7 +37,7 @@ public class BishopTest extends BaseTest {
     public static boolean testBishopMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Bishop bishop1 = new Bishop(1, 1, board1, player1);
 

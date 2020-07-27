@@ -4,16 +4,16 @@ public class PawnTest extends BaseTest {
     public static void main(String[] args) {
 
         System.out.println("Pawn basic move test " + (testPawnBasicMove() ? "passed" : "failed"));
-        System.out.println("Pawn basic move location occupied has not been programmed yet");
-        System.out.println("Pawn 2 square move has not been programmed yet");
-        System.out.println("Pawn 2 square move target square 1 occupied has not been programmed yet");
-        System.out.println("Pawn 2 square move target square 2 occupied has not been programmed yet");
+        System.out.println("Pawn basic move location occupied test " + (testPawnBasicMoveLocationOccupied() ? "passed" : "failed"));
+        System.out.println("Pawn 2 square move test " + (testPawn2SquareMove() ? "passed" : "failed"));
+        System.out.println("Pawn 2 square move target square 1 occupied test " + (testPawn2SquareMoveTS1Occupied() ? "passed" : "failed"));
+        System.out.println("Pawn 2 square move target square 2 occupied test has " + (testPawn2SquareMoveTS2Occupied() ? "passed" : "failed"));
     }
 
     public static boolean testPawnBasicMove() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Pawn pawn1 = new Pawn(1, 3, board1, player1);
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
@@ -32,7 +32,7 @@ public class PawnTest extends BaseTest {
     public static boolean testPawnBasicMoveLocationOccupied() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Pawn ocupadoPawn = new Pawn(1, 4, board1, player1);
 
@@ -49,7 +49,7 @@ public class PawnTest extends BaseTest {
     public static boolean testPawn2SquareMove() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Pawn pawn1 = new Pawn(1, 2, board1, player1);
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
@@ -68,7 +68,7 @@ public class PawnTest extends BaseTest {
     public static boolean testPawn2SquareMoveTS1Occupied() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Pawn ocupadoPawn = new Pawn(1, 3, board1, player1);
 
@@ -85,7 +85,7 @@ public class PawnTest extends BaseTest {
     public static boolean testPawn2SquareMoveTS2Occupied() {
         Player player1 = null;
         Player player2 = null;
-        Board board1 = null;
+        Board board1 = new Board();
 
         Pawn ocupadoPawn = new Pawn(1, 4, board1, player1);
 
