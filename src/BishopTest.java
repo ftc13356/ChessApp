@@ -1,13 +1,17 @@
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BishopTest extends BaseTest {
-    public static void main(String[] args) {
-        System.out.println("Bishop move test " + (testBishopMove() ? "passed" : "failed"));
-        System.out.println("Bishop move test " + (testBishopMoveInsideBoard() ? "passed" : "failed"));
-    }
+//    public static void main(String[] args) {
+//        System.out.println("Bishop move test " + (testBishopMove() ? "passed" : "failed"));
+//        System.out.println("Bishop move test " + (testBishopMoveInsideBoard() ? "passed" : "failed"));
+//    }
 
-    public static boolean testBishopMove() {
+    @Test
+    public void testBishopMove() {
         Player player1 = null;
         Player player2 = null;
         Board board1 = new Board();
@@ -31,10 +35,12 @@ public class BishopTest extends BaseTest {
         ArrayList<Location> expectedLegalMoves = new ArrayList<>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13));
         ArrayList<Location> bishopLegalMoves = bishop1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, bishopLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, bishopLegalMoves));
 
     }
-    public static boolean testBishopMoveInsideBoard() {
+
+    @Test
+    public void testBishopMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
         Board board1 = new Board();
@@ -52,7 +58,7 @@ public class BishopTest extends BaseTest {
         ArrayList<Location> expectedLegalMoves = new ArrayList<>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7));
         ArrayList<Location> bishopLegalMoves = bishop1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, bishopLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, bishopLegalMoves));
 
     }
 }

@@ -1,15 +1,21 @@
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RookTest extends BaseTest {
-    public static void main(String[] args) {
-        System.out.println("Rook move test " + (testRookMove() ? "passed" : "failed"));
-        System.out.println("Rook move inside board test " + (testRookMoveInsideBoard() ? "passed" : "failed"));
-    }
-    public static boolean testRookMove() {
-        Player player1 = null;
-        Player player2 = null;
+//    public static void main(String[] args) {
+//        System.out.println("Rook move test " + (testRookMove() ? "passed" : "failed"));
+//        System.out.println("Rook move inside board test " + (testRookMoveInsideBoard() ? "passed" : "failed"));
+//    }
+
+    @Test
+    public void testRookMove() {
+
         Board board1 = new Board();
+
+        Player player1 = new Human(true, board1);
 
         Rook rook1 = new Rook(4, 4, board1, player1);
 
@@ -31,13 +37,16 @@ public class RookTest extends BaseTest {
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14));
         ArrayList<Location> rookLegalMoves = rook1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, rookLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, rookLegalMoves));
 
     }
-    public static boolean testRookMoveInsideBoard() {
-        Player player1 = null;
-        Player player2 = null;
+
+    @Test
+    public void testRookMoveInsideBoard() {
+
         Board board1 = new Board();
+
+        Player player1 = new Human(true, board1);
 
         Rook rook1 = new Rook(1, 1, board1, player1);
 
@@ -59,7 +68,7 @@ public class RookTest extends BaseTest {
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14));
         ArrayList<Location> rookLegalMoves = rook1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, rookLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, rookLegalMoves));
 
     }
 }

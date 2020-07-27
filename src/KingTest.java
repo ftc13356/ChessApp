@@ -1,12 +1,17 @@
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class KingTest extends BaseTest{
-    public static void main(String[] args) {
-        System.out.println("King move test " + (testKingMove() ? "passed" : "failed"));
-        System.out.println("King move inside board test " + (testKingMoveInsideBoard() ? "passed" : "failed"));
-    }
-    public static boolean testKingMove() {
+//    public static void main(String[] args) {
+//        System.out.println("King move test " + (testKingMove() ? "passed" : "failed"));
+//        System.out.println("King move inside board test " + (testKingMoveInsideBoard() ? "passed" : "failed"));
+//    }
+
+    @Test
+    public void testKingMove() {
         Player player1 = null;
         Player player2 = null;
         Board board1 = new Board();
@@ -25,10 +30,12 @@ public class KingTest extends BaseTest{
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8));
         ArrayList<Location>KingLegalMoves = king1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, KingLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, KingLegalMoves));
 
     }
-    public static boolean testKingMoveInsideBoard() {
+
+    @Test
+    public void testKingMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
         Board board1 = new Board();
@@ -42,7 +49,6 @@ public class KingTest extends BaseTest{
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3));
         ArrayList<Location>KingLegalMoves = king1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, KingLegalMoves);
-
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, KingLegalMoves));
     }
 }

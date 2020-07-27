@@ -1,12 +1,17 @@
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class QueenTest extends BaseTest{
-    public static void main(String[] args) {
-        System.out.println("Queen move test " + (testQueenMove() ? "passed" : "failed"));
-        System.out.println("Queen move inside board test " + (testQueenMoveInsideBoard() ? "passed" : "failed"));
-    }
-    public static boolean testQueenMove() {
+//    public static void main(String[] args) {
+//        System.out.println("Queen move test " + (testQueenMove() ? "passed" : "failed"));
+//        System.out.println("Queen move inside board test " + (testQueenMoveInsideBoard() ? "passed" : "failed"));
+//    }
+
+    @Test
+    public void testQueenMove() {
         Player player1 = null;
         Player player2 = null;
         Board board1 = new Board();
@@ -44,10 +49,12 @@ public class QueenTest extends BaseTest{
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24, l25, l26, l27));
         ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, queenLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, queenLegalMoves));
 
     }
-    public static boolean testQueenMoveInsideBoard() {
+
+    @Test
+    public void testQueenMoveInsideBoard() {
         Player player1 = null;
         Player player2 = null;
         Board board1 = new Board();
@@ -80,7 +87,7 @@ public class QueenTest extends BaseTest{
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21));
         ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
 
-        return compare2Arrays(expectedLegalMoves, queenLegalMoves);
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, queenLegalMoves));
 
     }
 }
