@@ -29,5 +29,14 @@ public abstract class ChessPiece{
     }
 
     public abstract ArrayList<Location> getLegalMoves();
-    public abstract void move(int x, int y);
+    public void move(int x, int y){
+        if (int new_x && int new_y==getLegalMoves()){
+
+        }
+/*        if isLocationOccupied=True
+return try again
+if move is legal=true
+then move piece to place user specified
+ */
+    }
 }
