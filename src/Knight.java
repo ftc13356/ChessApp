@@ -27,11 +27,6 @@ public class Knight extends ChessPiece{
         return moves;
     }
 
-    @Override
-    public void move(int x, int y) {
-
-    }
-
     public static void main(String[] args){
         Knight k = new Knight (1, 1,null, null);
         System.out.println(k.getLegalMoves());
