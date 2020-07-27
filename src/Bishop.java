@@ -10,7 +10,7 @@ public class Bishop extends ChessPiece{
     }
 
     public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
-        return true;
+        return false;
     }
     public boolean isOutOfBoard( int x, int y){
         if(x > 8||y > 8||x < 1||y < 1){
