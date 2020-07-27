@@ -37,21 +37,5 @@ public class Bishop extends ChessPiece{
         return available_points;
 
     }
-    public void move(int x, int y) {
-        setLocation(x,y);
-    }
-
-    public boolean check(int x, int y) {
-        ArrayList<Location> available_points=new ArrayList<Location>();
-        available_points = getLegalMoves();
-        Location location = new Location();
-        location.setLocation(x,y);
-        for (int i = 0; i < available_points.size(); i++) {
-            if (available_points.get(i) == location){
-                return true;
-            }
-        }
-        return false;
-    }
 }
 
