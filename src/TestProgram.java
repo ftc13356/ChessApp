@@ -4,7 +4,7 @@ public class TestProgram {
 
         Player player1 = null;
         Player player2 = null;
-        Board board1 = new Board(null, null);
+        Board board1 = new Board();
 
         King king = new King(1,1, board1, player1);
         System.out.println("========================================================");

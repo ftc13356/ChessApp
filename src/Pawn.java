@@ -4,7 +4,7 @@ public class Pawn extends ChessPiece{
     public Pawn(int x, int y, Board board, Player player) {
         super(x, y, board, player);
     }
-    
+
 
     @Override
     public ArrayList<Location> getLegalMoves() {
