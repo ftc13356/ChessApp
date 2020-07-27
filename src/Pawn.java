@@ -25,7 +25,5 @@ public class Pawn extends ChessPiece{
     }
 
 
-    public void move(int x, int y){
 
-    }
 }
