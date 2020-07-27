@@ -22,7 +22,7 @@ public class Queen extends ChessPiece{
             int []queen_pos=getLocation();
             for (int i = 0; i < 8; i++) {
                 int x = 1;
-                while (locationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == false&&!isOutOfBoard(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)){
+                while (getBoard().isLocationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)  == null&&!getBoard().isOutOfBoard(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)){
                     ArrayList<Integer> points= new ArrayList<Integer>();
                     Location location= new Location();
                     location.setLocation(queen_pos[0] + x_directions[i] * x,queen_pos[1] + y_directions[i] * x);
