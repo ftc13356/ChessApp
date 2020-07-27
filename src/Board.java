@@ -46,24 +46,20 @@ class Board {
         }
     }
     public ChessPiece isLocationOccupied(int x, int y) {
+        int[] location = {x,y};
+        for (int i = 0; i < p1.pieceList.size(); i++) { // arrayList defined in player class
+            if (location == p1.pieceList.get(i).getLocation()) {
+                return p1.pieceList.get(i);
+            }
+        }
+        for (int i = 0; i < p2.pieceList.size(); i++) { // arrayList defined in player class
+            if (location == p2.pieceList.get(i).getLocation()) {
+                return p2.pieceList.get(i);
+            }
+        }
         return null;
     }
-/*
-    public ChessPiece isLocationOccupied(int x, int y) {
 
-        for (int i = 0; i < p1.arrayList.size(); i++) { // arrayList defined in player class
-            if (x == p1.arrayList[i].getX() && y == p1.arrayList[i].getY()) {
-                return p1.arrayList[i];
-            }
-        }
-        for (int i = 0; i < p2.arrayList.size(); i++) { // arrayList defined in player class
-            if (x == p2.arraylist[i].getX() && y == p2.arraylist[i].getY()) {
-                return p2.arrayList[i];
-            }
-        }
-        return null;
-    }
-    */
 
     //waiting for the arrayList from player class
 
