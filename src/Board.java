@@ -12,7 +12,7 @@ class Board {
     public static void main(String args[]){
         /**Instantiating**/
         Board board = new Board();
-        Board.start();
+        board.start();
     }
     //left this in so rest of code would compile
     public Board(Player p1, Player p2) {
@@ -26,7 +26,7 @@ class Board {
 
     // need to confirm color value of player class
     // assume player takes care of move method & pass the next moves
-    public static void start() {
+    public void start() {
         int turn=0;
         while(true){
             if(turn%2==0){
