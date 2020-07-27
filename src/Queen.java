@@ -5,12 +5,6 @@ public class Queen extends ChessPiece{
         public int[] Location() {
             return getLocation();
         }
-        public static boolean locationOccupied(int x, int y){ //empty waiting for andrew
-            return true;
-        }
-        public static boolean isOutOfBoard(int x, int y){ // empty: waiting for someone to make this function
-            return false;
-        }
         public Queen(int x, int y, Board board, Player player){
             super(x, y, board, player);
         }
