@@ -29,8 +29,16 @@ public abstract class ChessPiece{
     }
 
     public abstract ArrayList<Location> getLegalMoves();
-    public boolean move(int x, int y) {
-        //  if (int new_x && int new_y==getLegalMoves()){
+    public boolean move(int x, int y,ChessPiece piece) {
+        Location moveLocation=new Location();
+        moveLocation.setLocation(x,y);
+        ArrayList<Location> moves= piece.getLegalMoves();
+        for(int i=0;i<moves.size();i++){
+            if(moveLocation==moves.get(i)){
+                piece.setLocation(x,y);
+                return true;
+            }
+        }
         return false;
     }
 }
