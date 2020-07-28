@@ -16,12 +16,18 @@ public class Rook extends ChessPiece{
         boolean side = getPlayer().isSidewhite();
         for (int i = 0; i < 4; i++) {
             int x = 1;
-            while (getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)  == null&&!getBoard().isOutOfBoard(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)||getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x).getPlayer().isSidewhite()!=side) {
+            while (getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)  == null&&!getBoard().isOutOfBoard(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)) {
                 ArrayList<Integer> points= new ArrayList<Integer>();
                 Location location= new Location();
                 location.setLocation(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x);
                 available_points.add(location);
                 x++;
+            }
+            if(getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)!=null&&getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x).getPlayer().isSidewhite()!=side){
+                ArrayList<Integer> points= new ArrayList<Integer>();
+                Location location= new Location();
+                location.setLocation(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x);
+                available_points.add(location);
             }
         }
         return available_points;
