@@ -11,45 +11,60 @@ public abstract class Player {
     public Player(boolean sideWhite, Board board){
         this.sideWhite = sideWhite;
         if(sideWhite==true){
+            this.sideWhite=true;
             this.isHuman=true;
         } else {
-            this.isHuman=true; // will change to false when computer class is finished
+            this.sideWhite=false;
+            this.isHuman=true; // will change to false later when computer is made
         }
 
         board1 = board;
-        Pawn wpawn1 = new Pawn(1, 2, board, this);
-        Pawn wpawn2 = new Pawn(2,2, board, this);
-        Pawn wpawn3 = new Pawn(3,2, board, this);
-        Pawn wpawn4 = new Pawn(4,2, board, this);
-        Pawn wpawn5 = new Pawn(5,2, board, this);
-        Pawn wpawn6 = new Pawn(6,2, board, this);
-        Pawn wpawn7 = new Pawn(7,2, board, this);
-        Pawn wpawn8 = new Pawn(8,2, board, this);
-        Rook wrook1 = new Rook(1,1, board, this);
-        Rook wrook2 = new Rook(1,8, board, this);
-        Knight wknight1 = new Knight(2,1, board, this);
-        Knight wknight2 = new Knight(7,1, board, this);
-        Bishop wbishop1 = new Bishop(3,1, board, this);
-        Bishop wbishop2 = new Bishop(6,1, board, this);
-        Queen wqueen = new Queen(4,1, board, this);
-        King wking = new King(5,1, board, this);
 
-        pieceList.add(wpawn1);
-        pieceList.add(wpawn2);
-        pieceList.add(wpawn3);
-        pieceList.add(wpawn4);
-        pieceList.add(wpawn5);
-        pieceList.add(wpawn6);
-        pieceList.add(wpawn7);
-        pieceList.add(wpawn8);
-        pieceList.add(wrook1);
-        pieceList.add(wrook2);
-        pieceList.add(wknight1);
-        pieceList.add(wknight2);
-        pieceList.add(wbishop1);
-        pieceList.add(wbishop2);
-        pieceList.add(wqueen);
-        pieceList.add(wking);
+        int y;
+        int y2;
+
+        if(sideWhite != true) {
+            y = 7;
+            y2 = 8;
+        }
+        else{
+            y = 1;
+            y2 = 2;
+        }
+
+        Pawn pawn1 = new Pawn(1, y, board, this);
+        Pawn pawn2 = new Pawn(2, y, board, this);
+        Pawn pawn3 = new Pawn(3, y, board, this);
+        Pawn pawn4 = new Pawn(4, y, board, this);
+        Pawn pawn5 = new Pawn(5, y, board, this);
+        Pawn pawn6 = new Pawn(6, y, board, this);
+        Pawn pawn7 = new Pawn(7, y, board, this);
+        Pawn pawn8 = new Pawn(8, y, board, this);
+        Rook rook1 = new Rook(1, y2, board, this);
+        Rook rook2 = new Rook(8, y2, board, this);
+        Knight knight1 = new Knight(2, y2, board, this);
+        Knight knight2 = new Knight(7, y2, board, this);
+        Bishop bishop1 = new Bishop(3, y2, board, this);
+        Bishop bishop2 = new Bishop(6, y2, board, this);
+        Queen queen = new Queen(4, 1, board, this);
+        King king = new King(5, 1, board, this);
+
+        pieceList.add(pawn1);
+        pieceList.add(pawn2);
+        pieceList.add(pawn3);
+        pieceList.add(pawn4);
+        pieceList.add(pawn5);
+        pieceList.add(pawn6);
+        pieceList.add(pawn7);
+        pieceList.add(pawn8);
+        pieceList.add(rook1);
+        pieceList.add(rook2);
+        pieceList.add(knight1);
+        pieceList.add(knight2);
+        pieceList.add(bishop1);
+        pieceList.add(bishop2);
+        pieceList.add(queen);
+        pieceList.add(king);
     }
 
     public abstract void movePiece();
