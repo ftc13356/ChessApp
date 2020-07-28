@@ -52,5 +52,64 @@ public class KnightTest extends BaseTest {
         Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, knightLegalMoves));
     }
 
+    @Test
+    public void testKnightMoveLocationOccupiedbySameSide(){
+        Board board1 = new Board();
+        Player player1 = new Player(true, board1) {
+            @Override
+            public void movePiece() {
+            }
+        };
+
+        Knight knight1 = new Knight(4,4, board1, player1);
+        Pawn ocupadopawn = new Pawn(5, 6, board1, player1);
+
+        Location l1 = new Location(6, 3);
+        Location l2 = new Location(6, 5);
+        Location l3 = new Location(5, 2);
+        Location l4 = new Location(3, 2);
+        Location l5 = new Location(2, 3);
+        Location l6 = new Location(6, 5);
+        Location l7 = new Location(3, 6);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7));
+        ArrayList<Location> knightLegalMoves = knight1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, knightLegalMoves));
+    }
+
+    @Test
+    public void testKnightMoveLocationOccupiedbyOppSide(){
+        Board board1 = new Board();
+        Player player1 = new Player(true, board1) {
+            @Override
+            public void movePiece() {
+            }
+        };
+        Player player2 = new Player(false, board1) {
+            @Override
+            public void movePiece() {
+
+            }
+        };
+
+        Knight knight1 = new Knight(4,4, board1, player1);
+        Pawn ocupadopawn = new Pawn(5, 6, board1, player2);
+
+        Location l1 = new Location(6, 3);
+        Location l2 = new Location(6, 5);
+        Location l3 = new Location(5, 2);
+        Location l4 = new Location(3, 2);
+        Location l5 = new Location(2, 3);
+        Location l6 = new Location(6, 5);
+        Location l7 = new Location(3, 6);
+        Location l8 = new Location(5, 6);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8));
+        ArrayList<Location> knightLegalMoves = knight1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, knightLegalMoves));
+    }
+
 }
 
