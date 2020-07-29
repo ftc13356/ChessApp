@@ -41,7 +41,7 @@ class Board {
             System.out.println("_________________________________________________");
             for(int j=1;j<9;j++){
                 System.out.print('|');
-                if(this.isLocationOccupied(i,j)!=null){
+                if(this.isLocationOccupied(j,i)!=null){
                     System.out.print("  a  ");
                 }
                 else{
