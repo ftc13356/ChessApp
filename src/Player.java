@@ -24,12 +24,12 @@ public abstract class Player {
         int y2;
 
         if(sideWhite != true) {
-            y = 7;
-            y2 = 8;
+            y = 8;
+            y2 = 7;
         }
         else{
-            y = 1;
-            y2 = 2;
+            y = 2;
+            y2 = 1;
         }
 
         Pawn pawn1 = new Pawn(1, y, board, this);
