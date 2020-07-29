@@ -46,8 +46,8 @@ public abstract class Player {
         Knight knight2 = new Knight(7, y2, board, this);
         Bishop bishop1 = new Bishop(3, y2, board, this);
         Bishop bishop2 = new Bishop(6, y2, board, this);
-        Queen queen = new Queen(4, 1, board, this);
-        King king = new King(5, 1, board, this);
+        Queen queen = new Queen(4, y2, board, this);
+        King king = new King(5, y2, board, this);
 
         pieceList.add(pawn1);
         pieceList.add(pawn2);
