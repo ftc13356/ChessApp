@@ -26,6 +26,7 @@ class Board {
     public void start() {
         int turn=0;
         while(true){
+            printBoard();
             if(turn%2==0){
                 p1.movePiece();
             }
@@ -34,6 +35,23 @@ class Board {
             }
             turn++;
         }
+    }
+    public void printBoard(){
+        for(int i=1;i<9;i++) {
+            System.out.println("_________________________________________________");
+            for(int j=1;j<9;j++){
+                System.out.print('|');
+                if(this.isLocationOccupied(i,j)!=null){
+                    System.out.print("  a  ");
+                }
+                else{
+                    System.out.print("     ");//a will be replaced with chesspiece name
+                }
+            }
+            System.out.print('|');
+            System.out.print("\n");
+        }
+        System.out.println("_________________________________________________");
     }
     public boolean isOutOfBoard(int x, int y) {
         if (x >= 1 && x <= 8 && y >= 1 && y <= 8) {
@@ -45,12 +63,12 @@ class Board {
     public ChessPiece isLocationOccupied(int x, int y) {
         int[] location = {x,y};
         for (int i = 0; i < p1.pieceList.size(); i++) { // arrayList defined in player class
-            if (location == p1.pieceList.get(i).getLocation()) {
+            if (location[0] == p1.pieceList.get(i).getLocation()[0]&&location[1] == p1.pieceList.get(i).getLocation()[1]) {
                 return p1.pieceList.get(i);
             }
         }
         for (int i = 0; i < p2.pieceList.size(); i++) { // arrayList defined in player class
-            if (location == p2.pieceList.get(i).getLocation()) {
+            if (location[0] == p2.pieceList.get(i).getLocation()[0]&&location[1] == p2.pieceList.get(i).getLocation()[1]) {
                 return p2.pieceList.get(i);
             }
         }
