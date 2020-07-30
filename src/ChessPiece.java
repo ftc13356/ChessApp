@@ -29,13 +29,13 @@ public abstract class ChessPiece{
     }
 
     public abstract ArrayList<Location> getLegalMoves();
-    public boolean move(int x, int y,ChessPiece piece) {
+    public boolean move(int x, int y) {
         Location moveLocation=new Location();
         moveLocation.setLocation(x,y);
-        ArrayList<Location> moves= piece.getLegalMoves();
+        ArrayList<Location> moves= this.getLegalMoves();
         for(int i=0;i<moves.size();i++){
             if(moveLocation==moves.get(i)){
-                piece.setLocation(x,y);
+                this.setLocation(x,y);
                 return true;
             }
         }
