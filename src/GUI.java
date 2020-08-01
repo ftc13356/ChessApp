@@ -1,3 +1,4 @@
+/*
 import com.sun.javafx.geom.Line2D;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -15,12 +16,14 @@ import javafx.stage.Stage;
 
 import javax.swing.border.StrokeBorder;
 
+*/
 /**
  * This is the Graphical User Interface for the ChessApp
  *
  * @author Aiden Ma
  * @version 1.0
- */
+ *//*
+
 public class GUI extends Application {
 
     // FIELDS
@@ -97,3 +100,4 @@ public class GUI extends Application {
 //    }
 
 }
+*/

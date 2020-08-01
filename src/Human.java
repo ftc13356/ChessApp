@@ -45,7 +45,7 @@ public class Human extends Player{
         myPanel.add(endField);
         while (true) {
             int result = JOptionPane.showConfirmDialog(null, myPanel,
-                    "Please Enter Your Move (ex. 3,2)", JOptionPane.OK_CANCEL_OPTION);
+                    "Please Enter Your Move (ex. a3)", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 start = startField.getText();
                 end = endField.getText();
