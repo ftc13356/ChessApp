@@ -33,11 +33,8 @@ public abstract class ChessPiece{
         Location moveLocation=new Location();
         moveLocation.setLocation(x,y);
         ArrayList<Location> moves= this.getLegalMoves();
-        for(int i=0;i<moves.size();i++){
-            if(moveLocation==moves.get(i)){
-                this.setLocation(x,y);
-                return true;
-            }
+        if(moves.contains(moveLocation)){
+            this.setLocation(x,y);return true;
         }
         return false;
     }
