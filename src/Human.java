@@ -79,16 +79,14 @@ public class Human extends Player{
             System.out.println("There is no piece at the chosen square. Please input again.");
             movePiece();
         }
-        List legalMoves = chosenPiece.getLegalMoves();
         Location chosenMove = new Location(endletternumber, endnumber2);
-        System.out.println(chosenPiece.getLegalMoves());
-        System.out.println(chosenMove);
         if (chosenPiece.move(endletternumber, endnumber2)) {
             chosenPiece.setLocation(endletternumber, endnumber2);
         }
-        else
+        else {
             System.out.println("The move is not legal. Please input again.");
             movePiece();
+        }
 
 
 
