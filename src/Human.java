@@ -58,11 +58,13 @@ public class Human extends Player{
             }
         }
         String letter = start.substring(0,1);
-        String number = start.substring(1);
+        char number = start.charAt(2);
+        int number1 = number-49;
+        System.out.println("letter");
         System.out.println(letter);
-        System.out.println(number);
+        System.out.println("number");
+        System.out.println(number1);
         //Convert the inputs to [x, y] coordinates
-        int number1 = Integer.parseInt(number);
         int letternumber = convertToCoordinates(letter);
         ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
         if (chosenPiece==null){
