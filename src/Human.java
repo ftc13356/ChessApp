@@ -2,13 +2,33 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Human extends Player{
     public static List listterms = new ArrayList();
     public static int[] arrayterms = {0,0};
 
     public Human(boolean sideWhite, Board board) {
         super(sideWhite, board);
+    }
+
+    public int convertToCoordinates(String letter) {
+        if (letter=="a")
+            return 0;
+        else if (letter.equals("b"))
+            return 1;
+        else if (letter.equals("c"))
+            return 2;
+        else if (letter.equals("d"))
+            return 3;
+        else if (letter.equals("e"))
+            return 4;
+        else if (letter.equals("f"))
+            return 5;
+        else if (letter.equals("g"))
+            return 6;
+        else if (letter.equals("h"))
+            return 7;
+        else
+            return 8;
     }
 
     public void movePiece() {
@@ -43,7 +63,23 @@ public class Human extends Player{
         System.out.println(number);
         //Convert the inputs to [x, y] coordinates
         int number1 = Integer.parseInt(number);
-        int letternumber = 0;
+        int letternumber = convertToCoordinates(letter);
+        ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
+        if (chosenPiece==null){
+            System.out.println("There is no piece at the chosen square. Please input again.");
+            movePiece();
+        }
+        List legalMoves = chosenPiece.getLegalMoves();
+        ArrayList chosenMove = new ArrayList();
+        chosenMove.add(letternumber);
+        chosenMove.add(number1);
+        if (legalMoves.contains(chosenMove)) {
+            chosenPiece.setLocation(letternumber, number1);
+        }
+        else
+            System.out.println("The move is not legal. Please input again.");
+            movePiece();
+
 
 
     }
