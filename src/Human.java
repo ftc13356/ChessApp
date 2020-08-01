@@ -11,22 +11,22 @@ public class Human extends Player{
     }
 
     public int convertToCoordinates(String letter) {
-        if (letter=="a")
-            return 0;
-        else if (letter.equals("b"))
+        if (letter.equals("a"))
             return 1;
-        else if (letter.equals("c"))
+        else if (letter.equals("b"))
             return 2;
-        else if (letter.equals("d"))
+        else if (letter.equals("c"))
             return 3;
-        else if (letter.equals("e"))
+        else if (letter.equals("d"))
             return 4;
-        else if (letter.equals("f"))
+        else if (letter.equals("e"))
             return 5;
-        else if (letter.equals("g"))
+        else if (letter.equals("f"))
             return 6;
-        else if (letter.equals("h"))
+        else if (letter.equals("g"))
             return 7;
+        else if (letter.equals("h"))
+            return 8;
         else
             return 8;
     }
@@ -45,7 +45,7 @@ public class Human extends Player{
         myPanel.add(endField);
         while (true) {
             int result = JOptionPane.showConfirmDialog(null, myPanel,
-                    "Please Enter Your Move", JOptionPane.OK_CANCEL_OPTION);
+                    "Please Enter Your Move (ex. 3,2)", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 start = startField.getText();
                 end = endField.getText();
@@ -59,22 +59,32 @@ public class Human extends Player{
         }
         String letter = start.substring(0,1);
         String number = start.substring(1);
-        System.out.println(letter);
-        System.out.println(number);
+        String endletter = end.substring(0,1);
+        String endnumber = end.substring(1);
+
         //Convert the inputs to [x, y] coordinates
         int number1 = Integer.parseInt(number);
+        number1 = number1;
         int letternumber = convertToCoordinates(letter);
+        System.out.println(letternumber);
+        System.out.println(number1);
+        int endnumber2 = Integer.parseInt(endnumber);
+        endnumber2 = endnumber2 ;
+        int endletternumber = convertToCoordinates(endletter);
+        System.out.println(endletternumber);
+        System.out.println(endnumber2);
         ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
+        System.out.println(chosenPiece);
         if (chosenPiece==null){
             System.out.println("There is no piece at the chosen square. Please input again.");
             movePiece();
         }
         List legalMoves = chosenPiece.getLegalMoves();
-        ArrayList chosenMove = new ArrayList();
-        chosenMove.add(letternumber);
-        chosenMove.add(number1);
-        if (legalMoves.contains(chosenMove)) {
-            chosenPiece.setLocation(letternumber, number1);
+        Location chosenMove = new Location(endletternumber, endnumber2);
+        System.out.println(chosenPiece.getLegalMoves());
+        System.out.println(chosenMove);
+        if (chosenPiece.move(endletternumber, endnumber2)) {
+            chosenPiece.setLocation(endletternumber, endnumber2);
         }
         else
             System.out.println("The move is not legal. Please input again.");
@@ -83,8 +93,8 @@ public class Human extends Player{
 
 
     }
-    //public static void main(String[] args){
-//        movePiece();
-//    }
+    public void main(String[] args){
+        movePiece();
+    }
 
 }
