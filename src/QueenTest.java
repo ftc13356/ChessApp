@@ -1,20 +1,16 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class QueenTest extends BaseTest{
-//    public static void main(String[] args) {
-//        System.out.println("Queen move test " + (testQueenMove() ? "passed" : "failed"));
-//        System.out.println("Queen move inside board test " + (testQueenMoveInsideBoard() ? "passed" : "failed"));
-//    }
 
     @Test
     public void testQueenMove() {
-        Player player1 = null;
-        Player player2 = null;
         Board board1 = new Board();
+        Player player1 = new Human(true, board1);
 
         Queen queen1 = new Queen(4, 4, board1, player1);
 
@@ -55,9 +51,8 @@ public class QueenTest extends BaseTest{
 
     @Test
     public void testQueenMoveInsideBoard() {
-        Player player1 = null;
-        Player player2 = null;
         Board board1 = new Board();
+        Player player1 = new Human(true, board1);
 
         Queen queen1 = new Queen(1, 1, board1, player1);
 
@@ -92,13 +87,10 @@ public class QueenTest extends BaseTest{
     }
 
     @Test
+    @Ignore
     public void testQueenMoveLocationOccupiedbySameSide(){
         Board board1 = new Board();
-        Player player1 = new Player(true, board1) {
-            @Override
-            public void movePiece() {
-            }
-        };
+        Player player1 = new Human(true, board1);
 
         Queen queen1 = new Queen(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player1);
@@ -135,19 +127,11 @@ public class QueenTest extends BaseTest{
     }
 
     @Test
+    @Ignore
     public void testQueenMoveLocationOccupiedbyOppSide(){
         Board board1 = new Board();
-        Player player1 = new Player(true, board1) {
-            @Override
-            public void movePiece() {
-            }
-        };
-        Player player2 = new Player(false, board1) {
-            @Override
-            public void movePiece() {
-
-            }
-        };
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
 
         Queen queen1 = new Queen(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(5, 6, board1, player2);
@@ -178,6 +162,47 @@ public class QueenTest extends BaseTest{
         Location l24 = new Location(7, 1);
 
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24));
+        ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, queenLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void testQueenBlockCheck(){
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
+
+        Queen queen1 = new Queen(2,4, board1, player1);
+        King king1 = new King(1, 1, board1, player1);
+        Queen checkqueen = new Queen(1, 8, board1, player2);
+
+        Location l1 = new Location(1, 3);
+        Location l2 = new Location(1, 4);
+        Location l3 = new Location(1, 5);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3));
+        ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, queenLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void testQueenCaptureCheck(){
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
+
+        Queen queen1 = new Queen(8,1, board1, player1);
+        King king1 = new King(1, 1, board1, player1);
+        Queen checkqueen = new Queen(1, 8, board1, player2);
+
+        Location l1 = new Location(1, 8);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
         ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
 
 

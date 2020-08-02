@@ -1,20 +1,16 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BishopTest extends BaseTest {
-//    public static void main(String[] args) {
-//        System.out.println("Bishop move test " + (testBishopMove() ? "passed" : "failed"));
-//        System.out.println("Bishop move test " + (testBishopMoveInsideBoard() ? "passed" : "failed"));
-//    }
 
     @Test
     public void testBishopMove() {
-        Player player1 = null;
-        Player player2 = null;
         Board board1 = new Board();
+        Player player1 = new Human(true, board1);
 
         Bishop bishop1 = new Bishop(4, 4, board1, player1);
 
@@ -41,9 +37,8 @@ public class BishopTest extends BaseTest {
 
     @Test
     public void testBishopMoveInsideBoard() {
-        Player player1 = null;
-        Player player2 = null;
         Board board1 = new Board();
+        Player player1 = new Human(true, board1);
 
         Bishop bishop1 = new Bishop(1, 1, board1, player1);
 
@@ -63,13 +58,10 @@ public class BishopTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void testBishopMoveLocationOccupiedbySameSide(){
         Board board1 = new Board();
-        Player player1 = new Player(true, board1) {
-            @Override
-            public void movePiece() {
-            }
-        };
+        Player player1 = new Human(true, board1);
 
         Bishop bishop1 = new Bishop(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(5, 5, board1, player1);
@@ -92,19 +84,11 @@ public class BishopTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void testBishopMoveLocationOccupiedbyOppSide(){
         Board board1 = new Board();
-        Player player1 = new Player(true, board1) {
-            @Override
-            public void movePiece() {
-            }
-        };
-        Player player2 = new Player(false, board1) {
-            @Override
-            public void movePiece() {
-
-            }
-        };
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
 
         Bishop bishop1 = new Bishop(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(5, 5, board1, player2);
@@ -125,4 +109,44 @@ public class BishopTest extends BaseTest {
 
         Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, bishopLegalMoves));
     }
+
+    @Test
+    @Ignore
+    public void testBishopBlockCheck(){
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
+
+        Bishop bishop1 = new Bishop(2,1, board1, player1);
+        King king1 = new King(8, 1, board1, player1);
+        Queen checkqueen = new Queen(1, 8, board1, player2);
+
+        Location l1 = new Location(5, 4);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> bishopLegalMoves = bishop1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, bishopLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void testBishopCaptureCheck(){
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
+
+        Bishop bishop1 = new Bishop(1,1, board1, player1);
+        King king1 = new King(8, 1, board1, player1);
+        Queen checkqueen = new Queen(8, 8, board1, player2);
+
+        Location l1 = new Location(8, 8);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> bishopLegalMoves = bishop1.getLegalMoves();
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, bishopLegalMoves));
+    }
+
 }
