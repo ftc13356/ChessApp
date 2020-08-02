@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+//This class represents the knight class for the ChessApp
+
 public class Knight extends ChessPiece{
 
     public Knight(int x, int y, Board board, Player player) {
