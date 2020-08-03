@@ -157,8 +157,8 @@ public class gui extends Application {
     }
 
     public static void drawBoard(Board board) {
-        Player p1 = board.getPlayers()[0];
-        Player p2 = board.getPlayers()[1];
+        Player p1 = board.getP1();
+        Player p2 = board.getP2();
         ArrayList<ChessPiece> pieceList1 = p1.pieceList;
         ArrayList<ChessPiece> pieceList2 = p2.pieceList;
 
