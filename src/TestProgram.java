@@ -1,33 +1,32 @@
 public class TestProgram {
-    public static void main(String args[]){
-        /**Instantiating**/
+    public static void main(String[] args){
 
-        Player player1 = null;
-        Player player2 = null;
         Board board1 = new Board();
+        Human player1 = new Human(true, board1);
 
-        King king = new King(1,1, board1, player1);
-        System.out.println("========================================================");
-        System.out.println("king was place at 1,1");
-        System.out.println("\tLegal moves should be 1,2 2,1 2,2");
-        System.out.println("\tgetLegalMoves: " + king.getLegalMoves());
-        System.out.println("\n");
+        System.out.println("king");
+        King king = new King(5,5, board1, player1);
+        System.out.println(king.getLegalMoves());
 
-        Knight knight1 = new Knight(8,1,board1, player1);
-        System.out.println(knight1.getLegalMoves());
-        System.out.println("knight ");
+        System.out.println("queen");
+        Queen queen = new Queen(4,4, board1, player1);
+        System.out.println(queen.getLegalMoves());
 
-        Pawn pawn1 = new Pawn(1,8, board1, player1);
-        System.out.println(pawn1.getLegalMoves());
+        System.out.println("rook");
+        Rook rook = new Rook(8,8, board1, player1);
+        System.out.println(rook.getLegalMoves());
+
+        System.out.println("bishop");
+        Bishop bishop = new Bishop(3,3,board1, player1);
+        System.out.println(bishop.getLegalMoves());
+
+        System.out.println("knight");
+        Knight knight = new Knight(4,5,board1, player1);
+        System.out.println(knight.getLegalMoves());
+
         System.out.println("pawn");
-
-        Queen queen1 = new Queen(4,4, board1, player2);
-        System.out.println(queen1.getLegalMoves());
-        System.out.println("queen finished");
-
-        Rook rook1 = new Rook(8,8, board1, player1);
-        System.out.println(rook1.getLegalMoves());
-        System.out.println("rook finished");
+        Pawn pawn = new Pawn(2,2, board1, player1);
+        System.out.println(pawn.getLegalMoves());
 
     }
 }
