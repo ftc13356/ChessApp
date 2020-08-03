@@ -9,10 +9,12 @@ public class RookTest extends BaseTest {
 
     @Test
     public void testRookMove() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Rook rook1 = new Rook(4, 4, board1, player1);
+        p1P.add(rook1);
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 6);
@@ -38,10 +40,12 @@ public class RookTest extends BaseTest {
 
     @Test
     public void testRookMoveInsideBoard() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Rook rook1 = new Rook(1, 1, board1, player1);
+        p1P.add(rook1);
 
         Location l1 = new Location(2, 1);
         Location l2 = new Location(3, 1);
@@ -66,13 +70,14 @@ public class RookTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testRookMoveLocationOccupiedbySameSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Rook rook1 = new Rook(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player1);
+        p1P.add(rook1); p1P.add(ocupadopawn);
 
         Location l1 = new Location(4, 3);
         Location l2 = new Location(4, 2);
@@ -93,14 +98,16 @@ public class RookTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testRookMoveLocationOccupiedbyOppSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P,p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Rook rook1 = new Rook(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player2);
+        p1P.add(rook1); p2P.add(ocupadopawn);
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 3);

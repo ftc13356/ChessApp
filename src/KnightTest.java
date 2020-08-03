@@ -9,10 +9,12 @@ public class KnightTest extends BaseTest {
 
     @Test
     public void testKnightMove() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Knight knight1 = new Knight(4, 4, board1, player1);
+        p1P.add(knight1);
 
         Location l1 = new Location(6, 3);
         Location l2 = new Location(6, 5);
@@ -31,10 +33,12 @@ public class KnightTest extends BaseTest {
 
     @Test
     public void testKnightMoveInsideBoard() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Knight knight1 = new Knight(1, 1, board1, player1);
+        p1P.add(knight1);
 
         Location l1 = new Location(3, 2);
         Location l2 = new Location(2, 3);

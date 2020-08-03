@@ -9,10 +9,12 @@ public class QueenTest extends BaseTest{
 
     @Test
     public void testQueenMove() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Queen queen1 = new Queen(4, 4, board1, player1);
+        p1P.add(queen1);
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 6);
@@ -51,10 +53,12 @@ public class QueenTest extends BaseTest{
 
     @Test
     public void testQueenMoveInsideBoard() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Queen queen1 = new Queen(1, 1, board1, player1);
+        p1P.add(queen1);
 
         Location l1 = new Location(2, 1);
         Location l2 = new Location(3, 1);

@@ -40,10 +40,3 @@ public abstract class ChessPiece{
         return false;
     }
 }
-/*        if isLocationOccupied=True
-return try again
-if move is legal=true
-then move piece to place user specified
- */
-//    }
-//}
