@@ -10,6 +10,11 @@ public class Human extends Player{
         super(sideWhite, board);
     }
 
+    // testing only!!!
+    public Human(boolean sideWhite, Board board, boolean emptyBoardTest, ArrayList<ChessPiece> pieces) {
+        super(sideWhite,board,emptyBoardTest,pieces);
+    }
+
     public int convertToCoordinates(String letter) {
         if (letter.equals("a"))
             return 1;
@@ -91,8 +96,6 @@ public class Human extends Player{
 
 
     }
-    public void main(String[] args){
-        movePiece();
-    }
+
 
 }

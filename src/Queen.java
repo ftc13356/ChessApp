@@ -2,7 +2,11 @@ import java.util.ArrayList;
 
 public class Queen extends ChessPiece{
 
-        public int[] Location() {
+    public static final String whitePath = "src\\White Pieces\\QUEEN.png";
+    private static final String blackPath = "src\\Black Pieces\\QUEEN.png";
+
+
+    public int[] Location() {
             return getLocation();
         }
         public Queen(int x, int y, Board board, Player player){
@@ -43,4 +47,5 @@ public class Queen extends ChessPiece{
             }
             return false;
         }
+
 }

@@ -3,22 +3,35 @@ import java.util.ArrayList;
 class Board {
     private Player p1;
     private Player p2;
-//    int p1Type = 0; // 0 human (default), 1 computer
-//    int p2Type = 0; // 0 human (default), 1 computer
-//    int p1Color = 0; // 0 white (default), 1 black
-//    int p2Color = 0; // 0 white (default), 1 black
-//    int p1Checked = 0; // 0 not checked (default), 14 checked
-//    int p2Checked = 0; // 0 not checked default), 1 checked
 
     //Player class will provide way to read role and color inputed
-    public static void main(String args[]){
-        /**Instantiating**/
+    public static void main(String[] args){
+        /*Instantiating**/
         Board board = new Board();
         board.start();
     }
+
     public Board() {
         p1 = new Human(true, this);
         p2 = new Human(false, this);
+    }
+
+    // testing only!!!
+    public Board(boolean emptyBoardTest, ArrayList<ChessPiece> p1Pieces) {
+        p1 = new Human(true, this, true, p1Pieces);
+        p2 = new Human(false, this, true, new ArrayList<>());
+    }
+    public Board(boolean emptyBoardTest, ArrayList<ChessPiece> p1Pieces, ArrayList<ChessPiece> p2Pieces) {
+        p1 = new Human(true, this, true, p1Pieces);
+        p2 = new Human(false, this, true, p2Pieces);
+    }
+
+    public Player getP1() {
+        return p1;
+    }
+
+    public Player getP2() {
+        return p2;
     }
 
     // need to confirm color value of player class
@@ -36,6 +49,7 @@ class Board {
             turn++;
         }
     }
+
     public void printBoard(){
         for(int i=8;i>0;i--) {
             System.out.println("_________________________________________________");
@@ -53,6 +67,7 @@ class Board {
         }
         System.out.println("_________________________________________________");
     }
+
     public boolean isOutOfBoard(int x, int y) {
         if (x >= 1 && x <= 8 && y >= 1 && y <= 8) {
             return false;
@@ -60,6 +75,7 @@ class Board {
             return true;
         }
     }
+
     public ChessPiece isLocationOccupied(int x, int y) {
         int[] location = {x,y};
         for (int i = 0; i < p1.pieceList.size(); i++) { // arrayList defined in player class
@@ -74,6 +90,7 @@ class Board {
         }
         return null;
     }
+
     public ChessPiece check(int x, int y, Player player) {
         Location location= new Location();
         location.setLocation(x,y);
@@ -87,10 +104,6 @@ class Board {
         }
         return null;
     }
-
-
-    //waiting for the arrayList from player class
-
 
     /*
     void analysis() { //method called in above

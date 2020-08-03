@@ -67,6 +67,13 @@ public abstract class Player {
         pieceList.add(king);
     }
 
+    // testing only!!!
+    public Player(boolean sideWhite, Board board, boolean emptyBoardTest, ArrayList<ChessPiece> pieces) {
+        this.sideWhite = sideWhite;
+        this.board1 = board;
+        pieceList = pieces;
+    }
+
     public abstract void movePiece();
 
     public boolean isSidewhite() {

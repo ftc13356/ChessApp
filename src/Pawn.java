@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
 public class Pawn extends ChessPiece{
+
+    public static final String whitePath = "src\\White Pieces\\PAWN.png";
+    private static final String blackPath = "src\\Black Pieces\\PAWN.png";
+
     public Pawn(int x, int y, Board board, Player player) {
         super(x, y, board, player);
     }
@@ -43,6 +47,12 @@ public boolean firstMovePawn () {
         return moves;
     }
 
+    public String getWhitePath(){
+        return whitePath;
+    }
 
+    public String getBlackPath(){
+        return blackPath;
+    }
 
 }

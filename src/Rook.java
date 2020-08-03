@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 public class Rook extends ChessPiece{
 
+    public static final String whitePath = "src\\White Pieces\\ROOK.png";
+    private static final String blackPath = "src\\Black Pieces\\ROOK.png";
+
+
     public Rook(int x, int y, Board boardRef, Player player) {
         super(x, y, boardRef, player);
     }

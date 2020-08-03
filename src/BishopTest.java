@@ -9,10 +9,12 @@ public class BishopTest extends BaseTest {
 
     @Test
     public void testBishopMove() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(4, 4, board1, player1);
+        p1P.add(bishop1);
 
         Location l1 = new Location(5, 5);
         Location l2 = new Location(6, 6);
@@ -37,10 +39,12 @@ public class BishopTest extends BaseTest {
 
     @Test
     public void testBishopMoveInsideBoard() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(1, 1, board1, player1);
+        p1P.add(bishop1);
 
         Location l1 = new Location(2, 2);
         Location l2 = new Location(3, 3);
