@@ -56,7 +56,7 @@ class Board {
             for(int j=1;j<9;j++){
                 System.out.print('|');
                 if(this.isLocationOccupied(j,i)!=null){
-                    System.out.print("  a  ");
+                    System.out.print(" "+this.isLocationOccupied(j,i).getAbbreviation()+" ");
                 }
                 else{
                     System.out.print("     ");//a will be replaced with chesspiece name
@@ -103,6 +103,14 @@ class Board {
             }
         }
         return null;
+    }
+    public void remove(ChessPiece piece){
+        if(piece.getPlayer().isSidewhite()!=p1.isSidewhite()){
+            //p2.remove(piece);
+        }
+        else{
+            //p1.remove(piece);
+        }
     }
 
     /*

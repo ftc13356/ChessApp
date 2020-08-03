@@ -33,10 +33,39 @@ public abstract class ChessPiece{
         ArrayList<Location> moves= this.getLegalMoves();
         for(int i=0;i<moves.size();i++){
             if(moves.get(i).getLocation()[0]==x&&moves.get(i).getLocation()[1]==y){
+                if(getBoard().isLocationOccupied(x,y)!=null&&getBoard().isLocationOccupied(x,y).getPlayer().isSidewhite()!=this.getPlayer().isSidewhite()){
+                    getBoard().remove(getBoard().isLocationOccupied(x, y));
+                }
                 this.setLocation(x,y);
                 return true;
             }
         }
         return false;
+    }
+    public String getAbbreviation(){
+        String side;
+        String abr=" ";
+        if(this.getPlayer().isSidewhite()){
+            side="W";
+        }
+        else{
+            side="B";
+        }
+        if(this instanceof Pawn){
+            abr=side+"-"+"P";
+        }
+        else if(this instanceof Knight){
+            abr=side+"KT";
+        }
+        else if(this instanceof Rook){
+            abr=side+"-"+"R";
+        }else if(this instanceof Queen){
+            abr=side+"-"+"Q";
+        }else if(this instanceof King){
+            abr=side+"-"+"K";
+        }else if(this instanceof Bishop){
+            abr=side+"-"+"B";
+        }
+        return abr;
     }
 }
