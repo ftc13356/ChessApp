@@ -1,20 +1,15 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RookTest extends BaseTest {
-//    public static void main(String[] args) {
-//        System.out.println("Rook move test " + (testRookMove() ? "passed" : "failed"));
-//        System.out.println("Rook move inside board test " + (testRookMoveInsideBoard() ? "passed" : "failed"));
-//    }
 
     @Test
     public void testRookMove() {
-
         Board board1 = new Board();
-
         Player player1 = new Human(true, board1);
 
         Rook rook1 = new Rook(4, 4, board1, player1);
@@ -43,9 +38,7 @@ public class RookTest extends BaseTest {
 
     @Test
     public void testRookMoveInsideBoard() {
-
         Board board1 = new Board();
-
         Player player1 = new Human(true, board1);
 
         Rook rook1 = new Rook(1, 1, board1, player1);
@@ -73,13 +66,10 @@ public class RookTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void testRookMoveLocationOccupiedbySameSide(){
         Board board1 = new Board();
-        Player player1 = new Player(true, board1) {
-            @Override
-            public void movePiece() {
-            }
-        };
+        Player player1 = new Human(true, board1);
 
         Rook rook1 = new Rook(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player1);
@@ -103,19 +93,11 @@ public class RookTest extends BaseTest {
     }
 
     @Test
+    @Ignore
     public void testRookMoveLocationOccupiedbyOppSide(){
         Board board1 = new Board();
-        Player player1 = new Player(true, board1) {
-            @Override
-            public void movePiece() {
-            }
-        };
-        Player player2 = new Player(false, board1) {
-            @Override
-            public void movePiece() {
-
-            }
-        };
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
 
         Rook rook1 = new Rook(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player2);
@@ -133,6 +115,46 @@ public class RookTest extends BaseTest {
         Location l11 = new Location(8, 4);
 
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11));
+        ArrayList<Location> rookLegalMoves = rook1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, rookLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void testRookBlockCheck(){
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
+
+        Rook rook1 = new Rook(8,2, board1, player1);
+        King king1 = new King(1, 1, board1, player1);
+        Queen checkqueen = new Queen(1, 8, board1, player2);
+
+        Location l1 = new Location(1, 2);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> rookLegalMoves = rook1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, rookLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void testRookBCaptureCheck(){
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Player player2 = new Human(false, board1);
+
+        Rook rook1 = new Rook(8,8, board1, player1);
+        King king1 = new King(1, 1, board1, player1);
+        Queen checkqueen = new Queen(1, 8, board1, player2);
+
+        Location l1 = new Location(1, 8);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
         ArrayList<Location> rookLegalMoves = rook1.getLegalMoves();
 
 
