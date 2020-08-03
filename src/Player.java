@@ -24,8 +24,8 @@ public abstract class Player {
         int y2;
 
         if(sideWhite != true) {
-            y = 7;
-            y2 = 8;
+            y = 8;
+            y2 = 7;
         }
         else{
             y = 2;

@@ -42,30 +42,4 @@ public abstract class ChessPiece{
         }
         return false;
     }
-    public String getAbbreviation(){
-        String side;
-        String abr=" ";
-        if(this.getPlayer().isSidewhite()){
-            side="W";
-        }
-        else{
-            side="B";
-        }
-        if(this instanceof Pawn){
-            abr=side+"-"+"P";
-        }
-        else if(this instanceof Knight){
-            abr=side+"KT";
-        }
-        else if(this instanceof Rook){
-            abr=side+"-"+"R";
-        }else if(this instanceof Queen){
-            abr=side+"-"+"Q";
-        }else if(this instanceof King){
-            abr=side+"-"+"K";
-        }else if(this instanceof Bishop){
-            abr=side+"-"+"B";
-        }
-        return abr;
-    }
 }
