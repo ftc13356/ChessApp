@@ -18,7 +18,8 @@ public class Knight extends ChessPiece{
                 int new_x = x_y[0] + x_directions[i]; // new starting location + the x
                 int new_y = x_y[1] + y_directions[i]; // new starting location + the y
                     if ( (!getBoard().isOutOfBoard(new_x, new_y)) && // ! means not
-                         (getBoard().isLocationOccupied(new_x, new_y) == null) ) {
+                         (getBoard().isLocationOccupied(new_x, new_y) == null) &&
+                            (getPlayer().isSidewhite()) ) {
                         Location location = new Location();
                         location.setLocation(new_x, new_y); // sets location
                         moves.add(location);
@@ -28,7 +29,9 @@ public class Knight extends ChessPiece{
     }
 
     public static void main(String[] args){
-        Knight k = new Knight (1, 1,null, null);
+        Board board1 = new Board();
+        Player player1 = new Human(true, board1);
+        Knight k = new Knight (1, 1, board1, player1);
         System.out.println(k.getLegalMoves());
     }
 }
