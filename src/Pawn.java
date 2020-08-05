@@ -9,11 +9,11 @@ public class Pawn extends ChessPiece{
         super(x, y, board, player);
     }
 public boolean firstMovePawn () {
-        if (this.getPlayer().isSidewhite()==true && getLocation()[1]==2) {
-            int [] x_directions = {0};
+        if (this.getPlayer().isSidewhite()==true && null == getBoard().isLocationOccupied(0,1) ) {
+
             return true;
         }
-        else if (this.getPlayer().isSidewhite()==false && getLocation()[1]==7){
+        else if (this.getPlayer().isSidewhite()==false && getLocation()[1]==7 && null == getBoard().isLocationOccupied(0,1)){
             return true;
         }
         else {
