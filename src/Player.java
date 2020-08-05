@@ -81,4 +81,8 @@ public abstract class Player {
         // Later have to change to input from Human to decide sides
     }
 
+    public void remove(ChessPiece piece){
+        pieceList.remove(piece);
+    }
+
 }
