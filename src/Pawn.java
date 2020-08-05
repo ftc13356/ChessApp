@@ -94,12 +94,4 @@ public boolean firstMovePawn () {
 
 
 
-        /*if (firstMovePawn()==true) {
-            int[] x_directions = {0};
-            int[] y_directions = {1, 2};
-
-        }
-        else{
-            int[] x_directions = {0}; //the x of the board
-            int[] y_directions = {1}; // same as above except y axis
-        }*/
+        
