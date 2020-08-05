@@ -16,25 +16,31 @@ public class Knight extends ChessPiece{
         int[] x_y = this.getLocation(); //takes in starting point
         int[] x_directions = {-2, -1, 1, 2, 2, 1, -1, -2}; //the x of the chessboard ex: x axis = -2, y axis = 1
         int[] y_directions = {1, 2, 2, 1, -1, -2, -2, -1}; // same as above except y axis
+        boolean side = getPlayer().isSidewhite();
 
-            for (int i = 0; i < 8; i++) {
-                int new_x = x_y[0] + x_directions[i]; // new starting location + the x
-                int new_y = x_y[1] + y_directions[i]; // new starting location + the y
-                    if ( (!getBoard().isOutOfBoard(new_x, new_y)) && // ! means not
-                         (getBoard().isLocationOccupied(new_x, new_y) == null) &&
-                            (getPlayer().isSidewhite()) ) {
-                        Location location = new Location();
-                        location.setLocation(new_x, new_y); // sets location
-                        moves.add(location);
-                    }
-                }
-        return moves;
-    }
+        for (int i = 0; i < 8; i++) {
+            int new_x = x_y[0] + x_directions[i]; // new starting location + the x
+            int new_y = x_y[1] + y_directions[i]; // new starting location + the y
+            while ((!getBoard().isOutOfBoard(new_x, new_y)) && // ! means not
+                    (getBoard().isLocationOccupied(new_x, new_y) == null)) {
+                Location location = new Location();
+                location.setLocation(new_x, new_y); // sets location
+                moves.add(location);
+            }
+            if (getBoard().isLocationOccupied(new_x, new_y) != null && getBoard().isLocationOccupied(new_x, new_y).getPlayer().isSidewhite() != side) {
+                Location location = new Location();
+                location.setLocation(new_x, new_y);
+                moves.add(location);
 
-    public static void main(String[] args){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Knight k = new Knight (1, 1, board1, player1);
-        System.out.println(k.getLegalMoves());
+            }
+            return moves;
+        }
+
+        public static void main (String[]args){
+            Board board1 = new Board();
+            Player player1 = new Human(true, board1);
+            Knight k = new Knight(1, 1, board1, player1);
+            System.out.println(k.getLegalMoves());
+        }
     }
 }
