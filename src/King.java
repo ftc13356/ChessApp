@@ -34,7 +34,7 @@ public class King extends ChessPiece{
         for (int i = 0; i < 8; i++) {
             int new_x = x_y[0] + x_directions[i]; // new starting location + the x
             int new_y = x_y[1] + y_directions[i]; // new starting location + the y
-            while ( (getBoard().isLocationOccupied(new_x, new_y)==null) && (!getBoard().isOutOfBoard(new_x, new_y)) ){
+            if ( (getBoard().isLocationOccupied(new_x, new_y)==null) && (!getBoard().isOutOfBoard(new_x, new_y)) ){
                 Location location = new Location();
                 location.setLocation(new_x, new_y); // sets new location
                 moves.add(location);
