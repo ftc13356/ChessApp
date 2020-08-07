@@ -198,5 +198,57 @@ public class PawnTest extends BaseTest {
         Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
 
     }
+
+    @Test
+    @Ignore
+    public void TestWhitePawnCapture() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 2, board1, player1);
+        p1P.add(pawn1);
+
+        Pawn capturablepawn = new Pawn(2, 3, board1, player2);
+        p2P.add(capturablepawn);
+
+        Pawn blockpawn = new Pawn(2, 2, board1, player2);
+        p2P.add(blockpawn);
+
+        Location l1 = new Location(2,3);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void TestBlackPawnCapture() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player2);
+        p2P.add(pawn1);
+
+        Pawn capturablepawn = new Pawn(2, 6, board1, player1);
+        p1P.add(capturablepawn);
+
+        Pawn blockpawn = new Pawn(1, 6, board1, player1);
+        p1P.add(blockpawn);
+
+        Location l1 = new Location(2,6);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+    }
 }
 
