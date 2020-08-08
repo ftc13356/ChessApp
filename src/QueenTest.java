@@ -91,13 +91,16 @@ public class QueenTest extends BaseTest{
     }
 
     @Test
-    @Ignore
     public void testQueenMoveLocationOccupiedbySameSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Queen queen1 = new Queen(4,4, board1, player1);
+        p1P.add(queen1);
+
         Pawn ocupadopawn = new Pawn(4, 5, board1, player1);
+        p1P.add(ocupadopawn);
 
         Location l1 = new Location(4, 3);
         Location l2 = new Location(4, 2);
@@ -131,14 +134,18 @@ public class QueenTest extends BaseTest{
     }
 
     @Test
-    @Ignore
     public void testQueenMoveLocationOccupiedbyOppSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Queen queen1 = new Queen(4,4, board1, player1);
+        p1P.add(queen1);
+
         Pawn ocupadopawn = new Pawn(5, 6, board1, player2);
+        p2P.add(ocupadopawn);
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 3);
@@ -174,13 +181,20 @@ public class QueenTest extends BaseTest{
     @Test
     @Ignore
     public void testQueenBlockCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Queen queen1 = new Queen(2,4, board1, player1);
+        p1P.add(queen1);
+
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(1, 3);
         Location l2 = new Location(1, 4);
@@ -196,13 +210,20 @@ public class QueenTest extends BaseTest{
     @Test
     @Ignore
     public void testQueenCaptureCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Queen queen1 = new Queen(8,1, board1, player1);
+        p1P.add(queen1);
+
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(1, 8);
 

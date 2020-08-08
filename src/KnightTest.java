@@ -50,13 +50,17 @@ public class KnightTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testKnightMoveLocationOccupiedbySameSide() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
+
 
         Knight knight1 = new Knight(4, 4, board1, player1);
+        p1P.add(knight1);
+
         Pawn ocupadopawn = new Pawn(5, 6, board1, player1);
+        p1P.add(ocupadopawn);
 
         Location l1 = new Location(6, 3);
         Location l2 = new Location(6, 5);
@@ -73,14 +77,19 @@ public class KnightTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testKnightMoveLocationOccupiedbyOppSide() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Knight knight1 = new Knight(4, 4, board1, player1);
+        p1P.add(knight1);
+
         Pawn ocupadopawn = new Pawn(5, 6, board1, player2);
+        p2P.add(ocupadopawn);
+
 
         Location l1 = new Location(6, 3);
         Location l2 = new Location(6, 5);
@@ -100,13 +109,20 @@ public class KnightTest extends BaseTest {
     @Test
     @Ignore
     public void testKnightBlockCheck() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Knight knight1 = new Knight(3, 1, board1, player1);
+        p1P.add(knight1);
+
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(knight1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(6, 2);
 
@@ -120,13 +136,20 @@ public class KnightTest extends BaseTest {
     @Test
     @Ignore
     public void testKnightCaptureCheck() {
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Knight knight1 = new Knight(3, 7, board1, player1);
+        p1P.add(knight1);
+
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(1, 8);
         Location l2 = new Location(1, 6);
