@@ -106,10 +106,10 @@ class Board {
     }
     public void remove(ChessPiece piece){
         if(piece.getPlayer().isSidewhite()!=p1.isSidewhite()){
-            //p2.remove(piece);
+            p2.remove(piece);
         }
         else{
-            //p1.remove(piece);
+            p1.remove(piece);
         }
     }
 
