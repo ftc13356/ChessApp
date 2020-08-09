@@ -14,7 +14,7 @@ public class BishopTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(4, 4, board1, player1);
-        p1P.add(bishop1);
+        p1P.add(bishop1); board1.printBoard();
 
         Location l1 = new Location(5, 5);
         Location l2 = new Location(6, 6);
@@ -44,7 +44,7 @@ public class BishopTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(1, 1, board1, player1);
-        p1P.add(bishop1);
+        p1P.add(bishop1); board1.printBoard();
 
         Location l1 = new Location(2, 2);
         Location l2 = new Location(3, 3);
@@ -71,7 +71,7 @@ public class BishopTest extends BaseTest {
         p1P.add(bishop1);
 
         Pawn ocupadopawn = new Pawn(5, 5, board1, player1);
-        p1P.add(ocupadopawn);
+        p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(3, 3);
         Location l2 = new Location(2, 2);
@@ -102,7 +102,7 @@ public class BishopTest extends BaseTest {
         p1P.add(bishop1);
 
         Pawn ocupadopawn = new Pawn(5, 5, board1, player2);
-        p2P.add(ocupadopawn);
+        p2P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(5, 5);
         Location l2 = new Location(3, 3);

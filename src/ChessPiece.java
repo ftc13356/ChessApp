@@ -42,4 +42,10 @@ public abstract class ChessPiece{
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        String side = player.sideWhite ? "White " : "Black ";
+        return side + getClass().getName() + " at " + currentLocation;
+    }
 }

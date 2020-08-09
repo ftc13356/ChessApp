@@ -15,7 +15,7 @@ public class KingTest extends BaseTest{
         Player player1 = board1.getP1();
 
         King king1 = new King(4, 4, board1, player1);
-        p1P.add(king1);
+        p1P.add(king1); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(5, 5);
@@ -40,7 +40,7 @@ public class KingTest extends BaseTest{
         Player player1 = board1.getP1();
 
         King king1 = new King(1, 1, board1, player1);
-        p1P.add(king1);
+        p1P.add(king1); board1.printBoard();
 
         Location l1 = new Location(2, 1);
         Location l2 = new Location(2, 2);
@@ -62,7 +62,7 @@ public class KingTest extends BaseTest{
         p1P.add(king1);
 
         Pawn ocupadopawn = new Pawn(3, 5, board1, player1);
-        p1P.add(ocupadopawn);
+        p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(5, 5);
@@ -91,7 +91,7 @@ public class KingTest extends BaseTest{
         p1P.add(king1);
 
         Pawn ocupadopawn = new Pawn(3, 5, board1, player2);
-        p2P.add(ocupadopawn);
+        p2P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(5, 5);

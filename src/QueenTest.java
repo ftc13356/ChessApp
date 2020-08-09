@@ -14,7 +14,7 @@ public class QueenTest extends BaseTest{
         Player player1 = board1.getP1();
 
         Queen queen1 = new Queen(4, 4, board1, player1);
-        p1P.add(queen1);
+        p1P.add(queen1); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 6);
@@ -58,7 +58,7 @@ public class QueenTest extends BaseTest{
         Player player1 = board1.getP1();
 
         Queen queen1 = new Queen(1, 1, board1, player1);
-        p1P.add(queen1);
+        p1P.add(queen1); board1.printBoard();
 
         Location l1 = new Location(2, 1);
         Location l2 = new Location(3, 1);
@@ -99,8 +99,8 @@ public class QueenTest extends BaseTest{
         Queen queen1 = new Queen(4,4, board1, player1);
         p1P.add(queen1);
 
-        Pawn ocupadopawn = new Pawn(4, 5, board1, player1);
-        p1P.add(ocupadopawn);
+        Pawn ocupadopawn = new Pawn(5, 5, board1, player1);
+        p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 3);
         Location l2 = new Location(4, 2);
@@ -144,8 +144,8 @@ public class QueenTest extends BaseTest{
         Queen queen1 = new Queen(4,4, board1, player1);
         p1P.add(queen1);
 
-        Pawn ocupadopawn = new Pawn(5, 6, board1, player2);
-        p2P.add(ocupadopawn);
+        Pawn ocupadopawn = new Pawn(4, 6, board1, player2);
+        p2P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 3);

@@ -14,7 +14,7 @@ public class KnightTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Knight knight1 = new Knight(4, 4, board1, player1);
-        p1P.add(knight1);
+        p1P.add(knight1); board1.printBoard();
 
         Location l1 = new Location(6, 3);
         Location l2 = new Location(6, 5);
@@ -38,7 +38,7 @@ public class KnightTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Knight knight1 = new Knight(1, 1, board1, player1);
-        p1P.add(knight1);
+        p1P.add(knight1); board1.printBoard();
 
         Location l1 = new Location(3, 2);
         Location l2 = new Location(2, 3);
@@ -60,7 +60,7 @@ public class KnightTest extends BaseTest {
         p1P.add(knight1);
 
         Pawn ocupadopawn = new Pawn(5, 6, board1, player1);
-        p1P.add(ocupadopawn);
+        p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(6, 3);
         Location l2 = new Location(6, 5);
@@ -88,7 +88,7 @@ public class KnightTest extends BaseTest {
         p1P.add(knight1);
 
         Pawn ocupadopawn = new Pawn(5, 6, board1, player2);
-        p2P.add(ocupadopawn);
+        p2P.add(ocupadopawn); board1.printBoard();
 
 
         Location l1 = new Location(6, 3);

@@ -25,7 +25,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBlackPawnBasicMove() {
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p2P);
@@ -62,7 +61,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBlackPawnBasicMoveLocationOccupied() {
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p2P);
@@ -100,7 +98,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBlackPawnFirstMove() {
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p2P);
@@ -138,7 +135,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBlackPawnFirstMoveTS1Occupied() {
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p2P);
@@ -178,7 +174,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBlackPawn2SquareMoveTS2Occupied() {
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p2P);
