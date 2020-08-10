@@ -90,6 +90,11 @@ public boolean firstMovePawn () {
         return moves;
     }
 
+    @Override
+    public String abbreviation() {
+        return null;
+    }
+
     public String getWhitePath(){
         return whitePath;
     }
