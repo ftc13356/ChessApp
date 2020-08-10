@@ -27,7 +27,7 @@ public class Queen extends ChessPiece{
                         Location location= new Location();
                         location.setLocation(queen_pos[0] + x_directions[i] * x,queen_pos[1] + y_directions[i] * x);
                         available_points.add(location);
-                    } else (getBoard().isLocationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x) != null) {
+                    } else if (getBoard().isLocationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x) != null) {
                         if (getBoard().isLocationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x).getPlayer().isSidewhite() != sideColor) {
                             // ArrayList<Integer> points= new ArrayList<Integer>();
                             Location location= new Location();
