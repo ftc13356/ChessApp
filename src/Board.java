@@ -55,11 +55,12 @@ class Board {
             System.out.println("_________________________________________________");
             for(int j=1;j<9;j++){
                 System.out.print('|');
-                if(this.isLocationOccupied(j,i)!=null){
-                    System.out.print("  a  ");
+                ChessPiece piece = this.isLocationOccupied(j, i);
+                if(piece == null) {
+                    System.out.print("     ");
                 }
-                else{
-                    System.out.print("     ");//a will be replaced with chesspiece name
+                else {
+                    System.out.print("  " + piece.abbreviation() + "  ");
                 }
             }
             System.out.print('|');
