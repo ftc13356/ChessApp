@@ -37,15 +37,12 @@ public class Human extends Player{
     }
 
     public void movePiece() {
-        int playerMove = 0;
         while (true) {
-            if (playerMove==0){
+            if (sideWhite==true){
                 System.out.println("It is the white side's turn");
-                playerMove += 1;
             }
             else {
                 System.out.println("It is the black side's turn");
-                playerMove -= 1;
             }
 
             // Create a prompt and get an input from the human player
