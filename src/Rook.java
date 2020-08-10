@@ -26,6 +26,7 @@ public class Rook extends ChessPiece{
                 location.setLocation(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x);
                 available_points.add(location);
                 x++;
+                
             }
             if(getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)!=null&&getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x).getPlayer().isSidewhite()!=side){
                 ArrayList<Integer> points= new ArrayList<Integer>();
