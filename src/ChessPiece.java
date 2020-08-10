@@ -43,6 +43,8 @@ public abstract class ChessPiece{
         return false;
     }
 
+    public  abstract String abbreviation();
+
     @Override
     public String toString() {
         String side = player.sideWhite ? "White " : "Black ";
