@@ -44,5 +44,9 @@ public class Bishop extends ChessPiece {
         Bishop b = new Bishop (1, 1, board1, player1);
         System.out.println(b.getLegalMoves());
     }
+    public String abbreviation() {
+        return null;
+    }
+
 }
 

@@ -40,4 +40,8 @@ public class Knight extends ChessPiece {
         Knight k = new Knight(1, 1, board1, player1);
         System.out.println(k.getLegalMoves());
     }
+    public String abbreviation() {
+        return null;
+    }
+
 }
