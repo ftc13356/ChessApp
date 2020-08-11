@@ -92,7 +92,7 @@ public boolean firstMovePawn () {
 
     @Override
     public String abbreviation() {
-        return null;
+        return "P";
     }
 
     public String getWhitePath(){

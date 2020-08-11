@@ -55,11 +55,12 @@ class Board {
             System.out.println("_________________________________________________");
             for(int j=1;j<9;j++){
                 System.out.print('|');
-                if(this.isLocationOccupied(j,i)!=null){
-                    System.out.print("  a  ");
+                ChessPiece piece = this.isLocationOccupied(j, i);
+                if(piece == null) {
+                    System.out.print("     ");
                 }
-                else{
-                    System.out.print("     ");//a will be replaced with chesspiece name
+                else {
+                    System.out.print("  " + piece.abbreviation() + "  ");
                 }
             }
             System.out.print('|');
@@ -91,18 +92,19 @@ class Board {
         return null;
     }
 
-    public ChessPiece check(int x, int y, Player player) {
-        Location location= new Location();
-        location.setLocation(x,y);
+    public boolean checkMove(int x, int y, Player player,ChessPiece piece) {//false means is in danger, true means safe
+        int[] start_pos=piece.getLocation();
+        piece.setLocation(x,y);
         for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
             for(int j=0;j<moves.size();j++){
-                if(moves.get(j)==location){
-                    return player.pieceList.get(i);
+                if(moves.get(j).getLocation()==player.pieceList.get(15).getLocation()){
+                    return false;
                 }
             }
         }
-        return null;
+        piece.setLocation(start_pos[0],start_pos[1]);
+        return true;
     }
     public void remove(ChessPiece piece){
         if(piece.getPlayer().isSidewhite()!=p1.isSidewhite()){

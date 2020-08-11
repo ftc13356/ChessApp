@@ -49,4 +49,10 @@ public class King extends ChessPiece{
         return moves;
     }
 
+    @Override
+    public String abbreviation() {
+        String abb = "K";
+        return abb;
+    }
+
 }
