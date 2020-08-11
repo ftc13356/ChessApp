@@ -41,7 +41,7 @@ public class Knight extends ChessPiece {
         System.out.println(k.getLegalMoves());
     }
     public String abbreviation() {
-        return "K";
+        return "N";
     }
 
 }
