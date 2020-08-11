@@ -45,7 +45,7 @@ public class Bishop extends ChessPiece {
         System.out.println(b.getLegalMoves());
     }
     public String abbreviation() {
-        return null;
+        return "B";
     }
 
 }
