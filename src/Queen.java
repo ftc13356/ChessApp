@@ -44,6 +44,11 @@ public class Queen extends ChessPiece{
             return available_points;
         }
 
+    @Override
+    public String abbreviation() {
+        return "Q";
+    }
+
 //        public void move(int x, int y) {
 //            setLocation(x,y);
 //        }
