@@ -62,8 +62,6 @@ public class Human extends Player{
                 if (result == JOptionPane.OK_OPTION) {
                     start = startField.getText();
                     end = endField.getText();
-                    System.out.println(start);
-                    System.out.println(end);
                     break;
                 } else {
                     continue;
@@ -78,15 +76,10 @@ public class Human extends Player{
             int number1 = Integer.parseInt(number);
             number1 = number1;
             int letternumber = convertToCoordinates(letter);
-            System.out.println(letternumber);
-            System.out.println(number1);
             int endnumber2 = Integer.parseInt(endnumber);
             endnumber2 = endnumber2;
             int endletternumber = convertToCoordinates(endletter);
-            System.out.println(endletternumber);
-            System.out.println(endnumber2);
             ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
-            System.out.println(chosenPiece);
             if (chosenPiece == null) {
                 System.out.println("There is no piece at the chosen square. Please input again.");
             }
