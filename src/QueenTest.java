@@ -112,21 +112,17 @@ public class QueenTest extends BaseTest{
         Location l8 = new Location(6, 4);
         Location l9 = new Location(7, 4);
         Location l10 = new Location(8, 4);
-        Location l11 = new Location(5, 5);
-        Location l12 = new Location(6, 6);
-        Location l13 = new Location(7, 7);
-        Location l14 = new Location(8, 8);
-        Location l15 = new Location(3, 3);
-        Location l16 = new Location(2, 2);
-        Location l17 = new Location(1, 1);
-        Location l18 = new Location(3, 5);
-        Location l19 = new Location(2, 6);
-        Location l20 = new Location(1, 7);
-        Location l21 = new Location(5, 3);
-        Location l22 = new Location(6, 2);
-        Location l23 = new Location(7, 1);
+        Location l11 = new Location(3, 3);
+        Location l12 = new Location(2, 2);
+        Location l13 = new Location(1, 1);
+        Location l14 = new Location(3, 5);
+        Location l15 = new Location(2, 6);
+        Location l16 = new Location(1, 7);
+        Location l17 = new Location(5, 3);
+        Location l18 = new Location(6, 2);
+        Location l19 = new Location(7, 1);
 
-        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23));
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19));
         ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
 
 
@@ -144,35 +140,31 @@ public class QueenTest extends BaseTest{
         Queen queen1 = new Queen(4,4, board1, player1);
         p1P.add(queen1);
 
-        Pawn ocupadopawn = new Pawn(4, 6, board1, player2);
+        Pawn ocupadopawn = new Pawn(5, 5, board1, player2);
         p2P.add(ocupadopawn); board1.printBoard();
 
-        Location l1 = new Location(4, 5);
-        Location l2 = new Location(4, 3);
-        Location l3 = new Location(4, 2);
-        Location l4 = new Location(4, 1);
-        Location l5 = new Location(3, 4);
-        Location l6 = new Location(2, 4);
-        Location l7 = new Location(1, 4);
-        Location l8 = new Location(5, 4);
-        Location l9 = new Location(6, 4);
-        Location l10 = new Location(7, 4);
-        Location l11 = new Location(8, 4);
-        Location l12 = new Location(5, 5);
-        Location l13 = new Location(6, 6);
-        Location l14 = new Location(7, 7);
-        Location l15 = new Location(8, 8);
-        Location l16 = new Location(3, 3);
-        Location l17 = new Location(2, 2);
-        Location l18 = new Location(1, 1);
-        Location l19 = new Location(3, 5);
-        Location l20 = new Location(2, 6);
-        Location l21 = new Location(1, 7);
-        Location l22 = new Location(5, 3);
-        Location l23 = new Location(6, 2);
-        Location l24 = new Location(7, 1);
+        Location l1 = new Location(4, 3);
+        Location l2 = new Location(4, 2);
+        Location l3 = new Location(4, 1);
+        Location l4 = new Location(3, 4);
+        Location l5 = new Location(2, 4);
+        Location l6 = new Location(1, 4);
+        Location l7 = new Location(5, 4);
+        Location l8 = new Location(6, 4);
+        Location l9 = new Location(7, 4);
+        Location l10 = new Location(8, 4);
+        Location l11 = new Location(3, 3);
+        Location l12 = new Location(2, 2);
+        Location l13 = new Location(1, 1);
+        Location l14 = new Location(3, 5);
+        Location l15 = new Location(2, 6);
+        Location l16 = new Location(1, 7);
+        Location l17 = new Location(5, 3);
+        Location l18 = new Location(6, 2);
+        Location l19 = new Location(7, 1);
+        Location l20 = new Location(5, 5);
 
-        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24));
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20));
         ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
 
         Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, queenLegalMoves));

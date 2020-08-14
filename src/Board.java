@@ -54,21 +54,29 @@ class Board {
         for(int i=8;i>0;i--) {
             System.out.println("_________________________________________________");
             for(int j=1;j<9;j++){
-                System.out.print('|');
+                System.out.print("|");
                 ChessPiece piece = this.isLocationOccupied(j, i);
                 if(piece == null) {
                     System.out.print("     ");
                 }
                 else {
-                    System.out.print("  " + piece.abbreviation() + "  ");
+
+                    if (piece.getPlayer().isSidewhite() == true) {
+                        System.out.print(" W-" + piece.abbreviation() + " ");
+
+                    } else {
+                        System.out.print(" B-" + piece.abbreviation() + " ");
+                    }
+
                 }
             }
-            System.out.print('|');
+            System.out.print("| " + i);
             System.out.print("\n");
         }
         System.out.println("_________________________________________________");
+        System.out.println("   a     b     c     d     e     f     g     h");
     }
-
+    
     public boolean isOutOfBoard(int x, int y) {
         if (x >= 1 && x <= 8 && y >= 1 && y <= 8) {
             return false;

@@ -86,4 +86,7 @@ public abstract class Player {
         pieceList.remove(piece);
     }
 
+    public void add (ChessPiece piece){
+        pieceList.add(piece);
+    }
 }
