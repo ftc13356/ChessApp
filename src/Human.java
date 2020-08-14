@@ -91,8 +91,8 @@ public class Human extends Player{
                 System.out.println("There is no piece at the chosen square. Please input again.");
             }
             Location chosenMove = new Location(endletternumber, endnumber2);
-            if (chosenPiece.getPlayer().isSidewhite()==this.isSidewhite() && chosenPiece.move(endletternumber, endnumber2)) {
-                chosenPiece.setLocation(endletternumber, endnumber2);
+            if (((chosenPiece != null && chosenPiece.getPlayer().isSidewhite()) == this.isSidewhite()) && chosenPiece.move(endletternumber, endnumber2)) {
+                chosenPiece.move(endletternumber, endnumber2);
                 break;
             } else {
                 System.out.println("The move is not legal. Please input again.");
