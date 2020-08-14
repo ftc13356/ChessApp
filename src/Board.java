@@ -60,7 +60,14 @@ class Board {
                     System.out.print("     ");
                 }
                 else {
-                    System.out.print("  " + piece.abbreviation() + "  ");
+
+                    if (piece.getPlayer().isSidewhite() == true) {
+                        System.out.print(" W-" + piece.abbreviation() + " ");
+
+                    } else {
+                        System.out.print(" B-" + piece.abbreviation() + " ");
+                    }
+
                 }
             }
             System.out.print('|');
