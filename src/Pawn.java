@@ -31,27 +31,35 @@ public boolean firstMovePawn () {
             int[] x_directions = {0};
             int[] y_directions = {1, 2, -1, -2};
             boolean side = getPlayer().isSidewhite();
+            if (getPlayer().isSidewhite()==true) {
+                for (int i = 0; i < 2; i++) {
+                    int new_x = x_directions[0] + x_y[0]; // new starting location + the x
+                    int new_y = y_directions[i] + x_y[1]; // new starting location + the y
 
+                    if (getBoard().isLocationOccupied(new_x, new_y) == null && !getBoard().isOutOfBoard(new_x, new_y)) {
+                        Location location = new Location();
+                        location.setLocation(new_x, new_y); // sets new location
+                        moves.add(location);
+                    }
+                    else{
+                        break;
+                    }
 
-            for (int i = 0; i < 2; i++) {
-                int new_x = x_directions[0] + x_y[0]; // new starting location + the x
-                int new_y = y_directions[i] + x_y[1]; // new starting location + the y
-
-                if (getBoard().isLocationOccupied(getLocation()[0],3)==null && getBoard().isLocationOccupied(new_x, new_y)==null && !getBoard().isOutOfBoard(new_x, new_y)) {
-                    Location location = new Location();
-                    location.setLocation(new_x, new_y); // sets new location
-                    moves.add(location);
                 }
-
             }
-            for (int i = 2; i <4; i++) {
-                int new_x = x_directions[0] + x_y[0]; // new starting location + the x
-                int new_y = y_directions[i] + x_y[1]; // new starting location + the y
+            else {
+                for (int i = 2; i < 4; i++) {
+                    int new_x = x_directions[0] + x_y[0]; // new starting location + the x
+                    int new_y = y_directions[i] + x_y[1]; // new starting location + the y
 
-                if (getBoard().isLocationOccupied(getLocation()[0],6)!=null &&getBoard().isLocationOccupied(new_x, new_y) != null && getBoard().isLocationOccupied(new_x, new_y).getPlayer().isSidewhite() != side) {
-                    Location location = new Location();
-                    location.setLocation(new_x, new_y);
-                    moves.add(location);
+                    if ( getBoard().isLocationOccupied(new_x, new_y) == null && !getBoard().isOutOfBoard(new_x, new_y)) {
+                        Location location = new Location();
+                        location.setLocation(new_x, new_y);
+                        moves.add(location);
+                    }
+                    else{
+                        break;
+                    }
                 }
             }
 
@@ -64,22 +72,24 @@ public boolean firstMovePawn () {
             boolean side = getPlayer().isSidewhite();
                 int new_x = x_directions[0] + x_y[0]; // new starting location + the x
                 int new_y = y_directions[0] + x_y[1]; // new starting location + the y
+            if (getPlayer().isSidewhite()==true) {
 
                 if (null == getBoard().isLocationOccupied(new_x, new_y) && !getBoard().isOutOfBoard(new_x, new_y)) {
                     Location location = new Location();
                     location.setLocation(new_x, new_y); // sets new location
                     moves.add(location);
                 }
-
-
+            }
+            else {
                 int new_x_black = x_directions[0] + x_y[0]; // new starting location + the x
                 int new_y_black = y_directions[1] + x_y[1]; // new starting location + the y
 
-                if (getBoard().isLocationOccupied(new_x_black, new_y_black) != null && getBoard().isLocationOccupied(new_x_black, new_y_black).getPlayer().isSidewhite() != side) {
+                if (getBoard().isLocationOccupied(new_x_black, new_y_black)== null && !getBoard().isOutOfBoard(new_x_black, new_y_black)) {
                     Location location = new Location();
                     location.setLocation(new_x_black, new_y_black);
                     moves.add(location);
                 }
+            }
         }
 
 
