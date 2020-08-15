@@ -19,6 +19,7 @@ public class Computer extends Player{
                 int x = Integer.parseInt(xstring);
                 int y = Integer.parseInt(ystring);
                 chosenPiece.setLocation(x,y);
+                break;
             }
         }
     }
