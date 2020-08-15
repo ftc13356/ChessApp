@@ -103,10 +103,16 @@ class Board {
     public boolean checkMove(int x, int y, Player player,ChessPiece piece) {//false means is in danger, true means safe
         int[] start_pos=piece.getLocation();
         piece.setLocation(x,y);
+        if(getP1().isSidewhite()==player.isSidewhite()){
+            player=getP2();
+        }
+        else{
+            player=getP1();
+        }
         for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
             for(int j=0;j<moves.size();j++){
-                if(moves.get(j).getLocation()==player.pieceList.get(15).getLocation()){
+                if(moves.get(j).getLocation()==player.getKing().getLocation()){
                     return false;
                 }
             }

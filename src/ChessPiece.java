@@ -48,12 +48,15 @@ public abstract class ChessPiece {
 
 
                 if (isPromoteLegal() == true) {
-
-                    getBoard().remove(this);
-                    Queen promoteQueen = new Queen(x, y, this.getBoard(), this.getPlayer());
-                    this.getPlayer().add(promoteQueen);
+                    if(getBoard().checkMove(x,y,getPlayer(),this)) {
+                        getBoard().remove(this);
+                        Queen promoteQueen = new Queen(x, y, this.getBoard(), this.getPlayer());
+                        this.getPlayer().add(promoteQueen);
+                    }
                 } else {
-                    this.setLocation(x, y);
+                    if(getBoard().checkMove(x,y,getPlayer(),this)) {
+                        this.setLocation(x, y);
+                    }
                 }
 
                 return true;

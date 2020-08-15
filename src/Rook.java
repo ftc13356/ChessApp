@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Rook extends ChessPiece{
 
-    public static final String whitePath = "src\\White Pieces\\ROOK.png";
+    private static final String whitePath = "src\\White Pieces\\ROOK.png";
     private static final String blackPath = "src\\Black Pieces\\ROOK.png";
 
 
@@ -24,18 +24,12 @@ public class Rook extends ChessPiece{
                 ArrayList<Integer> points= new ArrayList<Integer>();
                 Location location= new Location();
                 location.setLocation(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x);
-                if(getBoard().checkMove(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x,getPlayer(),this)) {
-                    available_points.add(location);
-                }
                 x++;
             }
             if(getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x)!=null&&getBoard().isLocationOccupied(rook_pos[0] + x_directions[i] * x, rook_pos[1] + y_directions[i] * x).getPlayer().isSidewhite()!=side){
                 ArrayList<Integer> points= new ArrayList<Integer>();
                 Location location= new Location();
                 location.setLocation(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x);
-                if(getBoard().checkMove(rook_pos[0] + x_directions[i] * x,rook_pos[1] + y_directions[i] * x,getPlayer(),this)) {
-                    available_points.add(location);
-                }
             }
         }
         return available_points;
