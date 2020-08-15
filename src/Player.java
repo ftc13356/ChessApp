@@ -85,14 +85,6 @@ public abstract class Player {
         System.out.println(piece + " has been captured");
         pieceList.remove(piece);
     }
-    public ChessPiece getKing(){
-        for(int i=0;i<this.pieceList.size();i++){
-            if(this.pieceList.get(i) instanceof King){
-                return this.pieceList.get(i);
-            }
-        }
-        return null;
-    }
 
     public void add (ChessPiece piece){
         pieceList.add(piece);
