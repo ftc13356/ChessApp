@@ -167,8 +167,12 @@ public class QueenTest extends BaseTest{
         Location l18 = new Location(6, 2);
         Location l19 = new Location(7, 1);
         Location l20 = new Location(5, 5);
+        Location l21 = new Location(4, 5);
+        Location l22 = new Location(4, 6);
+        Location l23 = new Location(4, 7);
+        Location l24 = new Location(4, 8);
 
-        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20));
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24));
         ArrayList<Location> queenLegalMoves = queen1.getLegalMoves();
 
         Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, queenLegalMoves));
