@@ -36,7 +36,7 @@ public abstract class ChessPiece {
         //Go through each legal move
         for (int i = 0; i < moves.size(); i++) {
             //Check if the move is the legal move.
-            if (moves.get(i).getLocation()[0] == x && moves.get(i).getLocation()[1] == y) {
+            if (moves.get(i).getLocation()[0] == x && moves.get(i).getLocation()[1] == y&&getBoard().checkMove(x,y,getPlayer(),this)) {
 
                 //THis is the move.. now check.. if the taget location is occupied and there is oppoents at target location
                 if (getBoard().isLocationOccupied(x, y) != null && getBoard().isLocationOccupied(x, y).getPlayer().isSidewhite() != this.getPlayer().isSidewhite()) {
