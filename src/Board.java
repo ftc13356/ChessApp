@@ -104,10 +104,10 @@ class Board {
         int[] start_pos=piece.getLocation();
         piece.setLocation(x,y);
         if(getP1().isSidewhite()==player.isSidewhite()){
-            player=getP2();
+            player=getP1();
         }
         else{
-            player=getP1();
+            player=getP2();
         }
         for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
