@@ -129,7 +129,7 @@ class Board {
     public boolean Checkmate(Player player){
         if(!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())){
             for(int i=0;i<player.getKing().getLegalMoves().size();i++){
-                if(checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())){
+                if(checkMove(player.getKing().getLegalMoves().get(i).getLocation()[0],player.getKing().getLegalMoves().get(i).getLocation()[1],player,player.getKing())){
                     return false;
                 }
             }
