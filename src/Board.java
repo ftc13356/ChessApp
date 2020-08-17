@@ -25,6 +25,11 @@ class Board {
         p1 = new Human(true, this, true, p1Pieces);
         p2 = new Human(false, this, true, p2Pieces);
     }
+    
+    public Board(boolean p1SideWhite, boolean p2SideWhite) {
+        p1 = new Computer(p1SideWhite, this);
+        p2 = new Computer(p2SideWhite, this);
+    }
 
     public Player getP1() {
         return p1;
