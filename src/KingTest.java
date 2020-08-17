@@ -15,7 +15,7 @@ public class KingTest extends BaseTest{
         Player player1 = board1.getP1();
 
         King king1 = new King(4, 4, board1, player1);
-        p1P.add(king1);
+        p1P.add(king1); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(5, 5);
@@ -40,7 +40,7 @@ public class KingTest extends BaseTest{
         Player player1 = board1.getP1();
 
         King king1 = new King(1, 1, board1, player1);
-        p1P.add(king1);
+        p1P.add(king1); board1.printBoard();
 
         Location l1 = new Location(2, 1);
         Location l2 = new Location(2, 2);
@@ -53,13 +53,16 @@ public class KingTest extends BaseTest{
     }
 
     @Test
-    @Ignore
     public void testKingMoveLocationOccupiedbySameSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         King king1 = new King(4,4, board1, player1);
+        p1P.add(king1);
+
         Pawn ocupadopawn = new Pawn(3, 5, board1, player1);
+        p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(5, 5);
@@ -77,14 +80,18 @@ public class KingTest extends BaseTest{
     }
 
     @Test
-    @Ignore
     public void testKingMoveLocationOccupiedbyOppSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         King king1 = new King(4,4, board1, player1);
+        p1P.add(king1);
+
         Pawn ocupadopawn = new Pawn(3, 5, board1, player2);
+        p2P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(5, 5);
@@ -105,12 +112,17 @@ public class KingTest extends BaseTest{
     @Test
     @Ignore
     public void testKingMoveOutofCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 3, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(2, 1);
 
@@ -124,12 +136,17 @@ public class KingTest extends BaseTest{
     @Test
     @Ignore
     public void testKingCaptureCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 2, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(1, 2);
 

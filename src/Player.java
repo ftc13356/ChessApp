@@ -24,8 +24,8 @@ public abstract class Player {
         int y2;
 
         if(sideWhite != true) {
-            y = 8;
-            y2 = 7;
+            y = 7;
+            y2 = 8;
         }
         else{
             y = 2;
@@ -81,4 +81,20 @@ public abstract class Player {
         // Later have to change to input from Human to decide sides
     }
 
+    public void remove(ChessPiece piece){
+        System.out.println(piece + " has been captured");
+        pieceList.remove(piece);
+    }
+    public ChessPiece getKing(){
+        for(int i=0;i<this.pieceList.size();i++){
+            if(this.pieceList.get(i) instanceof King){
+                return this.pieceList.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void add (ChessPiece piece){
+        pieceList.add(piece);
+    }
 }

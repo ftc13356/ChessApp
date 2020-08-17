@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -124,7 +123,7 @@ public class gui extends Application {
         Stage stage2 = new Stage();
 
         GridPane gridPane = new GridPane();
-        Scene scene2 = new Scene(gridPane,450,120);
+        Scene scene2 = new Scene(gridPane, 450, 120);
 
         Button whereToMove = new Button("MOVE");
         TextField startingPos = new TextField();
@@ -152,8 +151,8 @@ public class gui extends Application {
         stage2.setTitle("Where to move");
         stage2.setScene(scene2);
         stage2.showAndWait();
-        System.out.println("hi");
-        return new String[] {startingPos.getText(),moveToPos.getText()};
+
+        return new String[]{startingPos.getText(), moveToPos.getText()};
     }
 
     public static void drawBoard(Board board) {
@@ -165,27 +164,72 @@ public class gui extends Application {
         // draws chess pieces for both sides
 
         // WHITE
-        if (p1.isSidewhite()){
-            for (int i = 0; i < pieceList1.size(); i++){
-                ChessPiece piece = pieceList1.get(i);
-                int[] pieceCoordinate = piece.getLocation();
-                ImageView pieceView = new ImageView("file:" + Pawn.whitePath);
-                pieceView.setX(pieceCoordinate[0]);
-                pieceView.setY(pieceCoordinate[1]);
-                if (Debug){
-                    System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
-                }
-                gamePane.getChildren().add(pieceView);
+        for (ChessPiece piece : pieceList1) {
+            String whichSide = "";
 
-                if (Debug){
-                    System.out.println("X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1]);
-                }
+            int[] pieceCoordinate = piece.getLocation();
 
+            if (piece.getPlayer().sideWhite) {
+                whichSide = piece.whitePath;
             }
-//            carView.setX(getX());
-//            carView.setY(getY());
+            ImageView pieceView = new ImageView("file:" + whichSide);
+            if (Debug) {
+                System.out.println("\tSide: " + whichSide);
+            }
+            int horizontalSquareNum = pieceCoordinate[0];
+            int verticalSquareNum = pieceCoordinate[1];
+            int squareSideLength = 70;
+            int topLeftX = -20;
+            int topLeftY = -30;
+
+            pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
+            pieceView.setY(verticalSquareNum * squareSideLength + topLeftY);
+            if (Debug) {
+                System.out.println("X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1]);
+            }
+            gamePane.getChildren().add(pieceView);
+
+            if (Debug) {
+                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
+            }
         }
-        // BLACK
+
+        for (ChessPiece piece : pieceList2) {
+            String whichSide = "";
+
+            int[] pieceCoordinate = piece.getLocation();
+
+            if (!piece.getPlayer().sideWhite) {
+                whichSide = piece.blackPath;
+            }
+            ImageView pieceView = new ImageView("file:" + whichSide);
+            if (Debug) {
+                System.out.println("\tSide: " + whichSide);
+            }
+            int horizontalSquareNum = pieceCoordinate[0];
+            int verticalSquareNum = pieceCoordinate[1];
+            int squareSideLength = 70;
+            int topLeftX = -20;
+            int topLeftY = -30;
+
+            if (pieceCoordinate[1] == 7) {
+                pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
+                pieceView.setY(verticalSquareNum * squareSideLength + -topLeftY);
+            } else {
+                pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
+                pieceView.setY((verticalSquareNum - 1) * squareSideLength + topLeftY);
+            }
+            if (Debug) {
+                System.out.println("X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1]);
+            }
+
+            gamePane.getChildren().add(pieceView);
+
+            if (Debug) {
+                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
+            }
+        }
+//        }
 
     }
 }

@@ -1,45 +1,58 @@
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PawnTest extends BaseTest {
-//    public static void main(String[] args) {
-//
-//        System.out.println("Pawn basic move test " + (testPawnBasicMove() ? "passed" : "failed"));
-//        System.out.println("Pawn basic move location occupied test " + (testPawnBasicMoveLocationOccupied() ? "passed" : "failed"));
-//        System.out.println("Pawn 2 square move test " + (testPawn2SquareMove() ? "passed" : "failed"));
-//        System.out.println("Pawn 2 square move target square 1 occupied test " + (testPawn2SquareMoveTS1Occupied() ? "passed" : "failed"));
-//        System.out.println("Pawn 2 square move target square 2 occupied test has " + (testPawn2SquareMoveTS2Occupied() ? "passed" : "failed"));
-//    }
-
 
     @Test
-    public void testPawnBasicMove() {
-        Player player1 = null;
-        Player player2 = null;
-        Board board1 = new Board();
+    public void testWhitePawnBasicMove() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Pawn pawn1 = new Pawn(1, 3, board1, player1);
+        p1P.add(pawn1);
+
+        Location l1 = new Location(1, 4);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
 
-        Assert.assertEquals("Validating number of legal moves", 1, pawnLegalMoves.size());
-
-        Assert.assertTrue("Expected 1,4 legal move", (pawnLegalMoves.get(0).getLocation()[0] == 1 && pawnLegalMoves.get(0).getLocation()[1] == 4));
-
-
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
     }
 
     @Test
-    public void testPawnBasicMoveLocationOccupied() {
-        Player player1 = null;
-        Player player2 = null;
-        Board board1 = new Board();
+    public void testBlackPawnBasicMove() {
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p2P);
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 6, board1, player2);
+        p2P.add(pawn1);
+
+        Location l1 = new Location(1, 5);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+    }
+
+    @Test
+    public void testWhitePawnBasicMoveLocationOccupied() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Pawn ocupadoPawn = new Pawn(1, 4, board1, player1);
+        p1P.add(ocupadoPawn);
 
         Pawn pawn1 = new Pawn(1, 3, board1, player1);
+        p1P.add(pawn1);
+
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
 
         Assert.assertTrue("Not expecting any legal moves when occupied", pawnLegalMoves.size() == 0);
@@ -48,58 +61,238 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    public void testPawn2SquareMove() {
-        Player player1 = null;
-        Player player2 = null;
-        Board board1 = new Board();
+    public void testBlackPawnBasicMoveLocationOccupied() {
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p2P);
+        Player player2 = board1.getP2();
 
-        Pawn pawn1 = new Pawn(1, 2, board1, player1);
+        Pawn ocupadoPawn = new Pawn(1, 5, board1, player2);
+        p2P.add(ocupadoPawn);
+
+        Pawn pawn1 = new Pawn(1, 6, board1, player2);
+        p2P.add(pawn1);
+
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
 
-
-        Assert.assertTrue("Expecting 2 legal moves when on 2nd rank", pawnLegalMoves.size() == 2);
-        Assert.assertTrue("Expecting valid 2 moves when on 2nd rank", (pawnLegalMoves.get(0).getLocation()[0] == 1 && pawnLegalMoves.get(0).getLocation()[1] == 3 && pawnLegalMoves.get(0).getLocation()[2] == 1 && pawnLegalMoves.get(0).getLocation()[3] == 4));
-    }
-
-    @Test
-    public void testPawn2SquareMoveTS1Occupied() {
-        Player player1 = null;
-        Player player2 = null;
-        Board board1 = new Board();
-
-        Pawn ocupadoPawn = new Pawn(1, 3, board1, player1);
-
-        Pawn pawn1 = new Pawn(1, 2, board1, player1);
-        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
-        Assert.assertEquals("Validating number of legal moves", 0, pawnLegalMoves.size());
-//        if (pawnLegalMoves.size() != 0) {
-//            return false;
-//        } else {
-//            return true;
-//        }
-    }
-
-
-    @Before
-    public void setupBoard(){
+        Assert.assertTrue("Not expecting any legal moves when occupied", pawnLegalMoves.size() == 0);
 
     }
 
     @Test
-    public void testPawn2SquareMoveTS2Occupied() {
-        Player player1 = null;
-        Player player2 = null;
-        Board board1 = new Board();
+    public void testWhitePawnFirstMove() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
+
+        Pawn pawn1 = new Pawn(1, 2, board1, player1);
+        p1P.add(pawn1);
+
+        Location l1 = new Location(1, 3);
+        Location l2 = new Location(1, 4);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+
+    }
+
+    @Test
+    public void testBlackPawnFirstMove() {
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p2P);
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player2);
+        p2P.add(pawn1);
+
+        Location l1 = new Location(1, 6);
+        Location l2 = new Location(1, 5);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+
+    }
+
+    @Test
+    public void testWhitePawnFirstMoveTS1Occupied() {
+            ArrayList<ChessPiece> p1P = new ArrayList<>();
+            Board board1 = new Board(true, p1P);
+            Player player1 = board1.getP1();
+
+            Pawn ocupadoPawn = new Pawn(1, 3, board1, player1);
+            p1P.add(ocupadoPawn);
+
+            Pawn pawn1 = new Pawn(1, 2, board1, player1);
+            p1P.add(pawn1);
+
+            ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+            Assert.assertTrue("Not expecting any legal moves when occupied", pawnLegalMoves.size() == 0);
+
+    }
+
+    @Test
+    public void testBlackPawnFirstMoveTS1Occupied() {
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p2P);
+        Player player2 = board1.getP2();
+
+        Pawn ocupadoPawn = new Pawn(1, 6, board1, player2);
+        p2P.add(ocupadoPawn);
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player2);
+        p2P.add(pawn1);
+
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+        Assert.assertTrue("Not expecting any legal moves when occupied", pawnLegalMoves.size() == 0);
+
+    }
+
+    @Test
+    public void testWhitePawn2SquareMoveTS2Occupied() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Pawn ocupadoPawn = new Pawn(1, 4, board1, player1);
+        p1P.add(ocupadoPawn);
 
         Pawn pawn1 = new Pawn(1, 2, board1, player1);
+        p1P.add(pawn1);
+
+        Location l1 = new Location(1, 3);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
 
-        Assert.assertEquals("Validating number of legal moves", 1, pawnLegalMoves.size());
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
 
-        Assert.assertTrue("Validating the move", (pawnLegalMoves.get(0).getLocation()[0] == 1 && pawnLegalMoves.get(0).getLocation()[1] == 3));
+    }
 
+    @Test
+    public void testBlackPawn2SquareMoveTS2Occupied() {
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p2P);
+        Player player2 = board1.getP2();
+
+        Pawn ocupadoPawn = new Pawn(1, 5, board1, player2);
+        p2P.add(ocupadoPawn);
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player2);
+        p2P.add(pawn1);
+
+        Location l1 = new Location(1, 6);
+
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+
+    }
+
+    @Test
+    @Ignore
+    public void testWhitePawnCapture() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 2, board1, player1);
+        p1P.add(pawn1);
+
+        Pawn capturablepawn = new Pawn(2, 3, board1, player2);
+        p2P.add(capturablepawn);
+
+        Pawn blockpawn = new Pawn(2, 2, board1, player2);
+        p2P.add(blockpawn);
+
+        Location l1 = new Location(2,3);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+    }
+
+    @Test
+    @Ignore
+    public void testBlackPawnCapture() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player2);
+        p2P.add(pawn1);
+
+        Pawn capturablepawn = new Pawn(2, 6, board1, player1);
+        p1P.add(capturablepawn);
+
+        Pawn blockpawn = new Pawn(1, 6, board1, player1);
+        p1P.add(blockpawn);
+
+        Location l1 = new Location(2,6);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
+
+
+        Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
+    }
+
+    @Test
+    public void testPawnPromotion() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player1);
+        p1P.add(pawn1);
+
+        boolean moveSuccessful = pawn1.move(1, 8);
+        Assert.assertTrue("Pawn move to 8th rank", moveSuccessful);
+
+        ChessPiece possibleQueen = board1.isLocationOccupied(1,8);
+        Assert.assertTrue("Pawn promote to queen", (possibleQueen instanceof Queen));
+
+        ChessPiece nonexistentPawn = board1.isLocationOccupied(1, 7 );
+        Assert.assertTrue("Pawn is gone", (nonexistentPawn == null));
+    }
+
+    @Test
+    @Ignore
+    public void testPawnPromotionWithCapture() {
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
+
+        Pawn pawn1 = new Pawn(1, 7, board1, player1);
+        p1P.add(pawn1);
+
+        Knight knight1 = new Knight(2, 7, board1, player2);
+        p2P.add(knight1);
+
+        boolean moveSuccessful = pawn1.move(2, 8);
+        Assert.assertTrue("Pawn move to 8th rank", moveSuccessful);
+
+        ChessPiece possibleQueen = board1.isLocationOccupied(2,8);
+        Assert.assertTrue("Pawn promote to queen", (possibleQueen instanceof Queen));
+
+        ChessPiece nonexistentPawn = board1.isLocationOccupied(1, 7 );
+        Assert.assertTrue("Pawn is gone", (nonexistentPawn == null));
+
+        int numberOfWhitePieces = player1.pieceList.size();
+        int numberOfBlackPieces = player2.pieceList.size();
+        Assert.assertTrue("1 piece for white", (numberOfWhitePieces == 1));
+        Assert.assertTrue("0 pieces for black", (numberOfBlackPieces == 0));
 
     }
 }

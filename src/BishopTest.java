@@ -14,7 +14,7 @@ public class BishopTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(4, 4, board1, player1);
-        p1P.add(bishop1);
+        p1P.add(bishop1); board1.printBoard();
 
         Location l1 = new Location(5, 5);
         Location l2 = new Location(6, 6);
@@ -44,7 +44,7 @@ public class BishopTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(1, 1, board1, player1);
-        p1P.add(bishop1);
+        p1P.add(bishop1); board1.printBoard();
 
         Location l1 = new Location(2, 2);
         Location l2 = new Location(3, 3);
@@ -62,13 +62,16 @@ public class BishopTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBishopMoveLocationOccupiedbySameSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        Board board1 = new Board(true, p1P);
+        Player player1 = board1.getP1();
 
         Bishop bishop1 = new Bishop(4,4, board1, player1);
+        p1P.add(bishop1);
+
         Pawn ocupadopawn = new Pawn(5, 5, board1, player1);
+        p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(3, 3);
         Location l2 = new Location(2, 2);
@@ -88,14 +91,18 @@ public class BishopTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBishopMoveLocationOccupiedbyOppSide(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Bishop bishop1 = new Bishop(4,4, board1, player1);
+        p1P.add(bishop1);
+
         Pawn ocupadopawn = new Pawn(5, 5, board1, player2);
+        p2P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(5, 5);
         Location l2 = new Location(3, 3);
@@ -117,13 +124,20 @@ public class BishopTest extends BaseTest {
     @Test
     @Ignore
     public void testBishopBlockCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Bishop bishop1 = new Bishop(2,1, board1, player1);
+        p1P.add(bishop1);
+
         King king1 = new King(8, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(5, 4);
 
@@ -137,13 +151,20 @@ public class BishopTest extends BaseTest {
     @Test
     @Ignore
     public void testBishopCaptureCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Bishop bishop1 = new Bishop(1,1, board1, player1);
+        p1P.add(bishop1);
+
         King king1 = new King(8, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(8, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(8, 8);
 

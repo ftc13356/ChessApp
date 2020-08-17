@@ -14,7 +14,7 @@ public class RookTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Rook rook1 = new Rook(4, 4, board1, player1);
-        p1P.add(rook1);
+        p1P.add(rook1); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 6);
@@ -45,7 +45,7 @@ public class RookTest extends BaseTest {
         Player player1 = board1.getP1();
 
         Rook rook1 = new Rook(1, 1, board1, player1);
-        p1P.add(rook1);
+        p1P.add(rook1); board1.printBoard();
 
         Location l1 = new Location(2, 1);
         Location l2 = new Location(3, 1);
@@ -77,7 +77,7 @@ public class RookTest extends BaseTest {
 
         Rook rook1 = new Rook(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player1);
-        p1P.add(rook1); p1P.add(ocupadopawn);
+        p1P.add(rook1); p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 3);
         Location l2 = new Location(4, 2);
@@ -107,7 +107,7 @@ public class RookTest extends BaseTest {
 
         Rook rook1 = new Rook(4,4, board1, player1);
         Pawn ocupadopawn = new Pawn(4, 5, board1, player2);
-        p1P.add(rook1); p2P.add(ocupadopawn);
+        p1P.add(rook1); p2P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(4, 5);
         Location l2 = new Location(4, 3);
@@ -131,13 +131,20 @@ public class RookTest extends BaseTest {
     @Test
     @Ignore
     public void testRookBlockCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Rook rook1 = new Rook(8,2, board1, player1);
+        p1P.add(rook1);
+
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p2P.add(checkqueen);
 
         Location l1 = new Location(1, 2);
 
@@ -150,14 +157,21 @@ public class RookTest extends BaseTest {
 
     @Test
     @Ignore
-    public void testRookBCaptureCheck(){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Player player2 = new Human(false, board1);
+    public void testRookCaptureCheck(){
+        ArrayList<ChessPiece> p1P = new ArrayList<>();
+        ArrayList<ChessPiece> p2P = new ArrayList<>();
+        Board board1 = new Board(true, p1P, p2P);
+        Player player1 = board1.getP1();
+        Player player2 = board1.getP2();
 
         Rook rook1 = new Rook(8,8, board1, player1);
+        p1P.add(rook1);
+
         King king1 = new King(1, 1, board1, player1);
+        p1P.add(king1);
+
         Queen checkqueen = new Queen(1, 8, board1, player2);
+        p1P.add(checkqueen);
 
         Location l1 = new Location(1, 8);
 
