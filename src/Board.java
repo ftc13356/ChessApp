@@ -46,6 +46,12 @@ class Board {
             else{
                 p2.movePiece();
             }
+            if(Checkmate(p1)){
+                System.out.println("White side(p1) wins");break;
+            }
+            else if(Checkmate(p2)){
+                System.out.println("Black side(p2) wins");break;
+            }
             turn++;
         }
     }
@@ -112,13 +118,24 @@ class Board {
         for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
             for(int j=0;j<moves.size();j++){
-                if(moves.get(j).getLocation()==player.getKing().getLocation()){
+                if(moves.get(j).getLocation()[0]==piece.getPlayer().getKing().getLocation()[0]&&moves.get(j).getLocation()[1]==piece.getPlayer().getKing().getLocation()[1]){
                     return false;
                 }
             }
         }
         piece.setLocation(start_pos[0],start_pos[1]);
         return true;
+    }
+    public boolean Checkmate(Player player){
+        if(!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())){
+            for(int i=0;i<player.getKing().getLegalMoves().size();i++){
+                if(checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
     public void remove(ChessPiece piece){
         if(piece.getPlayer().isSidewhite()!=p1.isSidewhite()){
