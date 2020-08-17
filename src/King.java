@@ -49,6 +49,15 @@ public class King extends ChessPiece{
         return moves;
     }
 
+    public boolean checkmate(){
+       if(this.getLegalMoves() == null){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
+
     @Override
     public String abbreviation() {
         String abb = "K";
