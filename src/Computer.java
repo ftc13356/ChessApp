@@ -9,7 +9,7 @@ public class Computer extends Player{
     public void movePiece() {
         while (true) {
             Random rand = new Random();
-            int pieceIndex = rand.nextInt(15);
+            int pieceIndex = rand.nextInt(pieceList.size());
             ChessPiece chosenPiece = pieceList.get(pieceIndex);
             if (chosenPiece.getLegalMoves().size()>0) {
                 int chosenMove = rand.nextInt(chosenPiece.getLegalMoves().size());
@@ -18,7 +18,7 @@ public class Computer extends Player{
                 String ystring = coordinates.substring(1);
                 int x = Integer.parseInt(xstring);
                 int y = Integer.parseInt(ystring);
-                chosenPiece.setLocation(x,y);
+                chosenPiece.move(x,y);
                 break;
             }
         }

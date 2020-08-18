@@ -25,6 +25,11 @@ class Board {
         p1 = new Human(true, this, true, p1Pieces);
         p2 = new Human(false, this, true, p2Pieces);
     }
+    
+    public Board(boolean p1SideWhite, boolean p2SideWhite) {
+        p1 = new Computer(p1SideWhite, this);
+        p2 = new Computer(p2SideWhite, this);
+    }
 
     public Player getP1() {
         return p1;
@@ -45,6 +50,12 @@ class Board {
             }
             else{
                 p2.movePiece();
+            }
+            if(Checkmate(p1)){
+                System.out.println("White side(p1) wins");break;
+            }
+            else if(Checkmate(p2)){
+                System.out.println("Black side(p2) wins");break;
             }
             turn++;
         }
@@ -104,21 +115,32 @@ class Board {
         int[] start_pos=piece.getLocation();
         piece.setLocation(x,y);
         if(getP1().isSidewhite()==player.isSidewhite()){
-            player=getP2();
+            player=getP1();
         }
         else{
-            player=getP1();
+            player=getP2();
         }
         for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
             for(int j=0;j<moves.size();j++){
-                if(moves.get(j).getLocation()==player.getKing().getLocation()){
+                if(moves.get(j).getLocation()[0]==piece.getPlayer().getKing().getLocation()[0]&&moves.get(j).getLocation()[1]==piece.getPlayer().getKing().getLocation()[1]){
                     return false;
                 }
             }
         }
         piece.setLocation(start_pos[0],start_pos[1]);
         return true;
+    }
+    public boolean Checkmate(Player player){
+        if(!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())){
+            for(int i=0;i<player.getKing().getLegalMoves().size();i++){
+                if(checkMove(player.getKing().getLegalMoves().get(i).getLocation()[0],player.getKing().getLegalMoves().get(i).getLocation()[1],player,player.getKing())){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
     }
     public void remove(ChessPiece piece){
         if(piece.getPlayer().isSidewhite()!=p1.isSidewhite()){

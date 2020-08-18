@@ -14,7 +14,7 @@ public class BaseTest {
     }
     public static boolean compare2Arrays(ArrayList<Location> Array1, ArrayList<Location> Array2){
         System.out.println(Array1);
-        System.out.println(Array1);
+        System.out.println(Array2);
 
         if (Array1.size() != Array2.size()){
             return false;
