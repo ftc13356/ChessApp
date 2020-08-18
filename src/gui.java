@@ -214,10 +214,10 @@ public class gui extends Application {
 
             if (pieceCoordinate[1] == 7) {
                 pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
-                pieceView.setY(verticalSquareNum * squareSideLength + -topLeftY);
+                pieceView.setY(verticalSquareNum * squareSideLength + topLeftY);
             } else {
                 pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
-                pieceView.setY((verticalSquareNum - 1) * squareSideLength + topLeftY);
+                pieceView.setY((verticalSquareNum - 1) * squareSideLength + -topLeftY);
             }
             if (Debug) {
                 System.out.println("X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1]);
