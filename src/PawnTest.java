@@ -245,55 +245,5 @@ public class PawnTest extends BaseTest {
 
         Assert.assertTrue("Comparing expected legal moves", compare2Arrays(expectedLegalMoves, pawnLegalMoves));
     }
-
-    @Test
-    public void testPawnPromotion() {
-        ArrayList<ChessPiece> p1P = new ArrayList<>();
-        Board board1 = new Board(true, p1P);
-        Player player1 = board1.getP1();
-
-        Pawn pawn1 = new Pawn(1, 7, board1, player1);
-        p1P.add(pawn1);
-
-        boolean moveSuccessful = pawn1.move(1, 8);
-        Assert.assertTrue("Pawn move to 8th rank", moveSuccessful);
-
-        ChessPiece possibleQueen = board1.isLocationOccupied(1,8);
-        Assert.assertTrue("Pawn promote to queen", (possibleQueen instanceof Queen));
-
-        ChessPiece nonexistentPawn = board1.isLocationOccupied(1, 7 );
-        Assert.assertTrue("Pawn is gone", (nonexistentPawn == null));
-    }
-
-    @Test
-    @Ignore
-    public void testPawnPromotionWithCapture() {
-        ArrayList<ChessPiece> p1P = new ArrayList<>();
-        ArrayList<ChessPiece> p2P = new ArrayList<>();
-        Board board1 = new Board(true, p1P, p2P);
-        Player player1 = board1.getP1();
-        Player player2 = board1.getP2();
-
-        Pawn pawn1 = new Pawn(1, 7, board1, player1);
-        p1P.add(pawn1);
-
-        Knight knight1 = new Knight(2, 7, board1, player2);
-        p2P.add(knight1);
-
-        boolean moveSuccessful = pawn1.move(2, 8);
-        Assert.assertTrue("Pawn move to 8th rank", moveSuccessful);
-
-        ChessPiece possibleQueen = board1.isLocationOccupied(2,8);
-        Assert.assertTrue("Pawn promote to queen", (possibleQueen instanceof Queen));
-
-        ChessPiece nonexistentPawn = board1.isLocationOccupied(1, 7 );
-        Assert.assertTrue("Pawn is gone", (nonexistentPawn == null));
-
-        int numberOfWhitePieces = player1.pieceList.size();
-        int numberOfBlackPieces = player2.pieceList.size();
-        Assert.assertTrue("1 piece for white", (numberOfWhitePieces == 1));
-        Assert.assertTrue("0 pieces for black", (numberOfBlackPieces == 0));
-
-    }
 }
 
