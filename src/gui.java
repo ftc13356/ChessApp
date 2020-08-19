@@ -208,7 +208,7 @@ public class gui extends Application {
         GridPane.setHalignment(whereToMove, HPos.RIGHT);
         gridPane.setAlignment(Pos.CENTER);
 
-        stage2.setTitle("Where to move");
+        stage2.setTitle("Your Move");
         stage2.setScene(scene2);
         stage2.showAndWait();
 
