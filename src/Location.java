@@ -10,7 +10,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return ""+horizontal+vertical;
+        return horizontal+" "+vertical;
     }
 
     //constructor with any location

@@ -6,9 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -19,11 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.management.StandardEmitterMBean;
-import javax.sql.rowset.serial.SerialStruct;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 
 /**
  * This is the Graphical User Interface for the ChessApp
@@ -35,79 +29,73 @@ import java.util.Arrays;
 public class gui extends Application {
 
     // FIELDS
-    final private int TOPLEFTX = 40;
-    final private int TOPLEFTY = 40;
-    final private int SIDEOFSQUARE = 70;
-    final private int NUMOFSQUARESPERSIDE = 8;
+    private final static int TOPLEFTX = 40;
+    private final static int TOPLEFTY = 40;
+    private final static int SIDEOFSQUARE = 70;
+    private final static int NUMOFSQUARESPERSIDE = 8;
 
     private static BorderPane mainPane;
     private static Pane gamePane;
-    private Board board;
 
-    public static int hi = 0;
-
-    private static boolean Debug = true;
+    private static boolean Debug = false;
 
     @Override
     public void start(Stage stage) throws Exception {
 
         mainPane = new BorderPane();
         gamePane = new Pane();
-        board = new Board();
 
         // draws chess board with alternating colored squares
-        for (int row = 0; row < NUMOFSQUARESPERSIDE; row++) {
-
-            for (int col = 0; col < NUMOFSQUARESPERSIDE; col++) {
-
-                Rectangle chessSpace = new Rectangle(TOPLEFTX + SIDEOFSQUARE * col, TOPLEFTY + SIDEOFSQUARE * row, SIDEOFSQUARE, SIDEOFSQUARE);
-
-                if ((row + col) % 2 != 0) {
-                    // darker brown
-                    chessSpace.setFill(Color.rgb(109, 83, 56));
-                } else {
-                    // beige
-                    chessSpace.setFill(Color.BEIGE);
-                }
-                gamePane.getChildren().addAll(chessSpace);
-
-            }
-        }
-        int x = 3;
-        Line border1 = new Line(TOPLEFTX, TOPLEFTY, TOPLEFTX, 600);
-        Line border2 = new Line(TOPLEFTX, TOPLEFTY, 600, TOPLEFTY);
-        Line border3 = new Line(600, TOPLEFTY, 600, 600);
-        Line border4 = new Line(TOPLEFTX, 600, 600, 600);
-        border1.setStrokeWidth(x);
-        border2.setStrokeWidth(x);
-        border3.setStrokeWidth(x);
-        border4.setStrokeWidth(x);
-
-        // draws numbering/lettering
-        // lettering
-        Text letteringTop = new Text(67, 30, "a         b        c        d        e         f        g       h");
-        Text letteringBottom = new Text(67, 630, "a         b        c        d        e         f        g       h");
-        // numbering
-        for (int i = 9; i >= 1; i--) {
-
-            Text numbering = new Text(15, 640 - 73 * i, i + 0 + "");
-            numbering.setFont(Font.font(20));
-            gamePane.getChildren().add(numbering);
-        }
-
-        for (int i = 9; i >= 0; i--) {
-
-            Text numbering = new Text(615, 640 - 73 * i, i + 0 + "");
-            numbering.setFont(Font.font(20));
-            gamePane.getChildren().add(numbering);
-        }
-
-        letteringTop.setFont(Font.font(25));
-        letteringBottom.setFont(Font.font(25));
-
-        drawBoard(board);
-
-        gamePane.getChildren().addAll(border1, border2, border3, border4, letteringTop, letteringBottom);
+//        for (int row = 0; row < NUMOFSQUARESPERSIDE; row++) {
+//
+//            for (int col = 0; col < NUMOFSQUARESPERSIDE; col++) {
+//
+//                Rectangle chessSpace = new Rectangle(TOPLEFTX + SIDEOFSQUARE * col, TOPLEFTY + SIDEOFSQUARE * row, SIDEOFSQUARE, SIDEOFSQUARE);
+//
+//                if ((row + col) % 2 != 0) {
+//                    // darker brown
+//                    chessSpace.setFill(Color.rgb(109, 83, 56));
+//                } else {
+//                    // beige
+//                    chessSpace.setFill(Color.BEIGE);
+//                }
+//                gamePane.getChildren().addAll(chessSpace);
+//
+//            }
+//        }
+//        int x = 3;
+//        Line border1 = new Line(TOPLEFTX, TOPLEFTY, TOPLEFTX, 600);
+//        Line border2 = new Line(TOPLEFTX, TOPLEFTY, 600, TOPLEFTY);
+//        Line border3 = new Line(600, TOPLEFTY, 600, 600);
+//        Line border4 = new Line(TOPLEFTX, 600, 600, 600);
+//        border1.setStrokeWidth(x);
+//        border2.setStrokeWidth(x);
+//        border3.setStrokeWidth(x);
+//        border4.setStrokeWidth(x);
+//
+//        // draws numbering/lettering
+//        // lettering
+//        Text letteringTop = new Text(67, 30, "a         b        c        d        e         f        g       h");
+//        Text letteringBottom = new Text(67, 630, "a         b        c        d        e         f        g       h");
+//        // numbering
+//        for (int i = 9; i >= 1; i--) {
+//
+//            Text numbering = new Text(15, 640 - 73 * i, i + 0 + "");
+//            numbering.setFont(Font.font(20));
+//            gamePane.getChildren().add(numbering);
+//        }
+//
+//        for (int i = 9; i >= 1; i--) {
+//
+//            Text numbering = new Text(615, 640 - 73 * i, i + 0 + "");
+//            numbering.setFont(Font.font(20));
+//            gamePane.getChildren().add(numbering);
+//        }
+//
+//        letteringTop.setFont(Font.font(25));
+//        letteringBottom.setFont(Font.font(25));
+//
+//        gamePane.getChildren().addAll(border1, border2, border3, border4, letteringTop, letteringBottom);
 
         redraw();
 
@@ -116,11 +104,9 @@ public class gui extends Application {
         stage.setTitle("Chess App");
         stage.setScene(scene);
         stage.show();
-
-        System.out.println(getPlayerMove()[0]);
     }
 
-    public void redraw(){
+    public static void redraw(){
 
         gamePane.getChildren().clear();
 
@@ -163,7 +149,7 @@ public class gui extends Application {
             gamePane.getChildren().add(numbering);
         }
 
-        for (int i = 9; i >= 0; i--) {
+        for (int i = 9; i >= 1; i--) {
 
             Text numbering = new Text(615, 640 - 73 * i, i + 0 + "");
             numbering.setFont(Font.font(20));
@@ -174,8 +160,6 @@ public class gui extends Application {
         letteringBottom.setFont(Font.font(25));
 
         gamePane.getChildren().addAll(border1, border2, border3, border4, letteringTop, letteringBottom);
-
-        drawBoard(board);
     }
 
     public static String[] getPlayerMove() {
@@ -216,6 +200,9 @@ public class gui extends Application {
     }
 
     public static void drawBoard(Board board) {
+
+        redraw();
+
         Player p1 = board.getP1();
         Player p2 = board.getP2();
         ArrayList<ChessPiece> pieceList1 = p1.pieceList;
@@ -270,7 +257,7 @@ public class gui extends Application {
             int verticalSquareNum = pieceCoordinate[1];
             int squareSideLength = 70;
             int topLeftX = -20;
-            int topLeftY = -30;
+            int topLeftY = -35;
 
             if (pieceCoordinate[1] == 7) {
                 pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);

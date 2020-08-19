@@ -1,12 +1,22 @@
+import javafx.application.Application;
+import javafx.application.Platform;
+
 import java.util.ArrayList;
 
 class Board {
     private Player p1;
     private Player p2;
 
-    //Player class will provide way to read role and color inputed
+    private final static boolean usefxgui = true;
+
+    //Player class will provide way to read role and color inputted
     public static void main(String[] args){
-        /*Instantiating**/
+        if (usefxgui) {
+            new Thread(() -> Application.launch(gui.class)).start();
+            try { Thread.sleep(1000); }
+            catch (InterruptedException e) { e.printStackTrace(); }
+        }
+
         Board board = new Board();
         board.start();
     }
@@ -14,6 +24,11 @@ class Board {
     public Board() {
         p1 = new Human(true, this);
         p2 = new Human(false, this);
+    }
+
+    public Board(boolean p1SideWhite, boolean p2SideWhite) {
+        p1 = new Computer(p1SideWhite, this);
+        p2 = new Computer(p2SideWhite, this);
     }
 
     // testing only!!!
@@ -24,11 +39,6 @@ class Board {
     public Board(boolean emptyBoardTest, ArrayList<ChessPiece> p1Pieces, ArrayList<ChessPiece> p2Pieces) {
         p1 = new Human(true, this, true, p1Pieces);
         p2 = new Human(false, this, true, p2Pieces);
-    }
-    
-    public Board(boolean p1SideWhite, boolean p2SideWhite) {
-        p1 = new Computer(p1SideWhite, this);
-        p2 = new Computer(p2SideWhite, this);
     }
 
     public Player getP1() {
@@ -45,6 +55,10 @@ class Board {
         int turn=0;
         while(true){
             printBoard();
+            if (usefxgui) {
+                Platform.runLater(() -> gui.drawBoard(this));
+            }
+
             if(turn%2==0){
                 p1.movePiece();
             }
