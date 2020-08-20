@@ -21,7 +21,7 @@ public class Queen extends ChessPiece{
 
             for (int i = 0; i < 8; i++) {
                 int x = 1;
-                while (getBoard().isOutOfBoard(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x)) {
+                while (getBoard().isOutOfBoard(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x) == false) {
                     if (getBoard().isLocationOccupied(queen_pos[0] + x_directions[i] * x, queen_pos[1] + y_directions[i] * x) == null) {
                         //ArrayList<Integer> points= new ArrayList<Integer>();
                         Location location= new Location();
