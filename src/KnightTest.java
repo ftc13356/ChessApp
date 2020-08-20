@@ -21,7 +21,7 @@ public class KnightTest extends BaseTest {
         Location l3 = new Location(5, 2);
         Location l4 = new Location(3, 2);
         Location l5 = new Location(2, 3);
-        Location l6 = new Location(6, 5);
+        Location l6 = new Location(2, 5);
         Location l7 = new Location(3, 6);
         Location l8 = new Location(5, 6);
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1, l2, l3, l4, l5, l6, l7, l8));

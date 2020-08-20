@@ -16,7 +16,7 @@ public class BoardTest {
         p1P.add(pawn1);
 
         King king1 = new King(1, 2, board1, player1);
-        p1P.add(king1);
+        p1P.add(king1); board1.printBoard();
 
         boolean moveSuccessful = pawn1.move(1, 4);
         Assert.assertTrue("Pawn move to 3rd rank", moveSuccessful);
@@ -40,7 +40,7 @@ public class BoardTest {
         p2P.add(capturableKnight);
 
         King king1 = new King(1, 2, board1, player1);
-        p1P.add(king1);
+        p1P.add(king1); board1.printBoard();
 
         boolean moveSuccessful = bishop1.move(6, 8);
         Assert.assertTrue("bishop captures knight", moveSuccessful);
@@ -54,7 +54,7 @@ public class BoardTest {
 
     @Test
     public void checkBoardSetup() {
-        Board board1 = new Board();
+        Board board1 = new Board(); board1.printBoard();
         Player player1 = new Human(true, board1);
         Player player2 = new Human(false, board1);
 
@@ -83,7 +83,7 @@ public class BoardTest {
         Player player1 = board1.getP1();
 
         Pawn pawn1 = new Pawn(1, 7, board1, player1);
-        p1P.add(pawn1);
+        p1P.add(pawn1); board1.printBoard();
 
         boolean moveSuccessful = pawn1.move(1, 8);
         Assert.assertTrue("Pawn move to 8th rank", moveSuccessful);
@@ -96,7 +96,6 @@ public class BoardTest {
     }
 
     @Test
-    @Ignore
     public void testPawnPromotionWithCapture() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -108,7 +107,7 @@ public class BoardTest {
         p1P.add(pawn1);
 
         Knight knight1 = new Knight(2, 7, board1, player2);
-        p2P.add(knight1);
+        p2P.add(knight1); board1.printBoard();
 
         boolean moveSuccessful = pawn1.move(2, 8);
         Assert.assertTrue("Pawn move to 8th rank", moveSuccessful);
@@ -126,7 +125,6 @@ public class BoardTest {
     }
 
     @Test
-    @Ignore
     public void blockCheck() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -141,11 +139,10 @@ public class BoardTest {
         p1P.add(knight1);
 
         Queen checkqueen = new Queen(8, 8, board1, player2);
-        p2P.add(checkqueen);
+        p2P.add(checkqueen); board1.printBoard();
 
         boolean moveSuccessful = knight1.move(5, 2);
         Assert.assertTrue("Knight cannot move to 5, 2", moveSuccessful == false);
-
 
         moveSuccessful = knight1.move(6, 3);
         Assert.assertTrue("Knight cannot move to 6, 3", (moveSuccessful == false));
@@ -155,7 +152,6 @@ public class BoardTest {
     }
 
     @Test
-    @Ignore
     public void moveOutOfCheck() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -167,7 +163,7 @@ public class BoardTest {
         p1P.add(king1);
 
         Queen checkqueen = new Queen(8, 8, board1, player2);
-        p2P.add(checkqueen);
+        p2P.add(checkqueen); board1.printBoard();
 
         boolean moveSuccessful = king1.move(8, 2);
         Assert.assertTrue("King cannot move to 8, 2", moveSuccessful == false);
@@ -183,7 +179,6 @@ public class BoardTest {
     }
 
     @Test
-    @Ignore
     public void captureCheck() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -204,7 +199,7 @@ public class BoardTest {
         p1P.add(moveLimitingPawn);
 
         Knight moveLimitingKnight = new Knight(5, 8, board1, player1);
-        p1P.add(moveLimitingKnight);
+        p1P.add(moveLimitingKnight); board1.printBoard();
 
         boolean moveSuccessful = rook1.move(6, 8);
         Assert.assertTrue("Rook cannot move to 6, 8", moveSuccessful == false);
@@ -218,7 +213,6 @@ public class BoardTest {
     }
 
     @Test
-    @Ignore
     public void captureCheckWithKingLegal() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -230,14 +224,13 @@ public class BoardTest {
         p1P.add(king1);
 
         Queen checkqueen = new Queen(8, 8, board1, player2);
-        p2P.add(checkqueen);
+        p2P.add(checkqueen); board1.printBoard();
 
         boolean moveSuccessful = king1.move(8, 8);
         Assert.assertTrue("King can capture queen", (moveSuccessful == true));
     }
 
     @Test
-    @Ignore
     public void captureCheckWithKingIllegal() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -252,14 +245,13 @@ public class BoardTest {
         p2P.add(checkqueen);
 
         Queen checkQueenProtector = new Queen(1, 8, board1, player2);
-        p2P.add(checkQueenProtector);
+        p2P.add(checkQueenProtector); board1.printBoard();
 
         boolean moveSuccessful = king1.move(8, 8);
         Assert.assertTrue("King cannot capture queen", (moveSuccessful == false));
     }
 
     @Test
-    @Ignore
     public void absolutePin() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -274,7 +266,7 @@ public class BoardTest {
         p2P.add(pinqueen);
 
         Pawn pinnedPawn = new Pawn(6, 3, board1, player1);
-        p1P.add(pinnedPawn);
+        p1P.add(pinnedPawn); board1.printBoard();
 
         boolean moveSuccessful = pinnedPawn.move(6, 4);
         Assert.assertTrue("Pawn cannot move", (moveSuccessful == false));
