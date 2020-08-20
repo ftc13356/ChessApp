@@ -2,10 +2,6 @@ import java.util.ArrayList;
 
 public class Bishop extends ChessPiece {
 
-    public int[] Location() {
-        return getLocation();
-    }
-
     public Bishop(int x, int y, Board board, Player player) {
         super(x, y, board, player);
         whitePath = "src\\White Pieces\\BISHOP.png";
@@ -37,12 +33,7 @@ public class Bishop extends ChessPiece {
         return available_points;
 
     }
-    public static void main(String[] args){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Bishop b = new Bishop (1, 1, board1, player1);
-        System.out.println(b.getLegalMoves());
-    }
+
     public String abbreviation() {
         return "B";
     }

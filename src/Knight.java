@@ -33,12 +33,6 @@ public class Knight extends ChessPiece {
         }
         return moves;
     }
-    public static void main (String[]args){
-        Board board1 = new Board();
-        Player player1 = new Human(true, board1);
-        Knight k = new Knight(1, 1, board1, player1);
-        System.out.println(k.getLegalMoves());
-    }
     public String abbreviation() {
         return "N";
     }

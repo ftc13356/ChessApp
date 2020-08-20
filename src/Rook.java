@@ -7,9 +7,6 @@ public class Rook extends ChessPiece{
         whitePath = "src\\White Pieces\\ROOK.png";
         blackPath = "src\\Black Pieces\\ROOK.png";
     }
-    public int[] Location() {
-        return getLocation();
-    }
     public ArrayList<Location> getLegalMoves() {
         int[] x_directions = {1, -1, 0, 0};
         int[] y_directions = {0, 0, 1, -1};
