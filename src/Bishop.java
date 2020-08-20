@@ -2,15 +2,14 @@ import java.util.ArrayList;
 
 public class Bishop extends ChessPiece {
 
-    public static final String whitePath = "src\\White Pieces\\BISHOP.png";
-    private static final String blackPath = "src\\Black Pieces\\BISHOP.png";
-
     public int[] Location() {
         return getLocation();
     }
 
     public Bishop(int x, int y, Board board, Player player) {
         super(x, y, board, player);
+        whitePath = "src\\White Pieces\\BISHOP.png";
+        blackPath = "src\\Black Pieces\\BISHOP.png";
     }
 
     public ArrayList<Location> getLegalMoves() {
@@ -44,5 +43,9 @@ public class Bishop extends ChessPiece {
         Bishop b = new Bishop (1, 1, board1, player1);
         System.out.println(b.getLegalMoves());
     }
+    public String abbreviation() {
+        return "B";
+    }
+
 }
 

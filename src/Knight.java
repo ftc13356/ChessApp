@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 public class Knight extends ChessPiece {
 
-    public static final String whitePath = "src\\White Pieces\\KNIGHT.png";
-    private static final String blackPath = "src\\Black Pieces\\KNIGHT.png";
-
     public Knight(int x, int y, Board board, Player player) {
         super(x, y, board, player);
+        whitePath = "src\\White Pieces\\KNIGHT.png";
+        blackPath = "src\\Black Pieces\\KNIGHT.png";
     }
 
 
@@ -40,4 +39,8 @@ public class Knight extends ChessPiece {
         Knight k = new Knight(1, 1, board1, player1);
         System.out.println(k.getLegalMoves());
     }
+    public String abbreviation() {
+        return "N";
+    }
+
 }

@@ -196,7 +196,7 @@ public class PawnTest extends BaseTest {
 
     @Test
     @Ignore
-    public void TestWhitePawnCapture() {
+    public void testWhitePawnCapture() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p1P, p2P);
@@ -222,7 +222,7 @@ public class PawnTest extends BaseTest {
 
     @Test
     @Ignore
-    public void TestBlackPawnCapture() {
+    public void testBlackPawnCapture() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
         Board board1 = new Board(true, p1P, p2P);

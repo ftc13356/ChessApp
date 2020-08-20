@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 public class King extends ChessPiece{
 
-    public static final String whitePath = "src\\White Pieces\\KING.png";
-    private static final String blackPath = "src\\Black Pieces\\KING.png";
-
     public King(int x, int y, Board board, Player player){
         super(x,y,board, player);
+        whitePath = "src\\White Pieces\\KING.png";
+        blackPath = "src\\Black Pieces\\KING.png";
     }
 
     private boolean isCastled = false;
@@ -47,6 +46,21 @@ public class King extends ChessPiece{
         }
 
         return moves;
+    }
+
+    public boolean checkmate(){
+       if(this.getLegalMoves() == null){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
+
+    @Override
+    public String abbreviation() {
+        String abb = "K";
+        return abb;
     }
 
 }

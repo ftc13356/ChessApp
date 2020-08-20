@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class Human extends Player{
-    public static List listterms = new ArrayList();
-    public static int[] arrayterms = {0,0};
+public class Human extends Player {
 
     public Human(boolean sideWhite, Board board) {
         super(sideWhite, board);
@@ -62,8 +59,6 @@ public class Human extends Player{
                 if (result == JOptionPane.OK_OPTION) {
                     start = startField.getText();
                     end = endField.getText();
-                    System.out.println(start);
-                    System.out.println(end);
                     break;
                 } else {
                     continue;
@@ -76,30 +71,20 @@ public class Human extends Player{
 
             //Convert the inputs to [x, y] coordinates
             int number1 = Integer.parseInt(number);
-            number1 = number1;
             int letternumber = convertToCoordinates(letter);
-            System.out.println(letternumber);
-            System.out.println(number1);
             int endnumber2 = Integer.parseInt(endnumber);
-            endnumber2 = endnumber2;
             int endletternumber = convertToCoordinates(endletter);
-            System.out.println(endletternumber);
-            System.out.println(endnumber2);
             ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
-            System.out.println(chosenPiece);
             if (chosenPiece == null) {
                 System.out.println("There is no piece at the chosen square. Please input again.");
             }
             Location chosenMove = new Location(endletternumber, endnumber2);
-            if (chosenPiece.move(endletternumber, endnumber2)) {
-                chosenPiece.setLocation(endletternumber, endnumber2);
+            if (((chosenPiece != null && chosenPiece.getPlayer().isSidewhite()) == this.isSidewhite()) && chosenPiece.move(endletternumber, endnumber2)) {
+                chosenPiece.move(endletternumber, endnumber2);
                 break;
             } else {
                 System.out.println("The move is not legal. Please input again.");
             }
         }
-
     }
-
-
 }

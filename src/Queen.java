@@ -2,14 +2,13 @@ import java.util.ArrayList;
 
 public class Queen extends ChessPiece{
 
-    public static final String whitePath = "src\\White Pieces\\QUEEN.png";
-    private static final String blackPath = "src\\Black Pieces\\QUEEN.png";
-
     public int[] Location() {
             return getLocation();
         }
         public Queen(int x, int y, Board board, Player player){
             super(x, y, board, player);
+            whitePath = "src\\White Pieces\\QUEEN.png";
+            blackPath = "src\\Black Pieces\\QUEEN.png";
         }
 
         public ArrayList<Location> getLegalMoves() {
@@ -43,6 +42,11 @@ public class Queen extends ChessPiece{
             }
             return available_points;
         }
+
+    @Override
+    public String abbreviation() {
+        return "Q";
+    }
 
 //        public void move(int x, int y) {
 //            setLocation(x,y);
