@@ -63,7 +63,7 @@ public class KnightTest extends BaseTest {
         p1P.add(ocupadopawn); board1.printBoard();
 
         Location l1 = new Location(6, 3);
-        Location l2 = new Location(6, 5);
+        Location l2 = new Location(2, 5);
         Location l3 = new Location(5, 2);
         Location l4 = new Location(3, 2);
         Location l5 = new Location(2, 3);
@@ -92,7 +92,7 @@ public class KnightTest extends BaseTest {
 
 
         Location l1 = new Location(6, 3);
-        Location l2 = new Location(6, 5);
+        Location l2 = new Location(2, 5);
         Location l3 = new Location(5, 2);
         Location l4 = new Location(3, 2);
         Location l5 = new Location(2, 3);

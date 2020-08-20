@@ -32,6 +32,21 @@ public class BaseTest {
                 return false;
             }
         }
+
+        for (int i = 0; i < Array2.size(); i++){
+
+            boolean found = false;
+
+            for (int j = 0; j < Array1.size(); j++){
+                if (areLocationsSame(Array2.get(i), Array1.get(j))){
+                    found = true;
+                    break;
+                }
+            }
+            if (found == false){
+                return false;
+            }
+        }
         return true;
     }
 }
