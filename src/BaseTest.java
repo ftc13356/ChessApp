@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 
 public class BaseTest {
-    public static void main(String[] args) {
 
-    }
     public static boolean areLocationsSame(Location l1, Location l2){
         if (l1.getLocation()[0] == l2.getLocation()[0] && l1.getLocation()[1] == l2.getLocation()[1]){
             return true;
