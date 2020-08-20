@@ -128,7 +128,7 @@ class Board {
     public boolean checkMove(int x, int y, Player player,ChessPiece piece) {//false means is in danger, true means safe
         int[] start_pos=piece.getLocation();
         ChessPiece start_piece=null;
-        if(isLocationOccupied(x,y)!=null){
+        if(isLocationOccupied(x,y)!=null&&isLocationOccupied(x,y).getPlayer().isSidewhite()!=piece.getPlayer().isSidewhite()){
             start_piece=isLocationOccupied(x,y);
             remove(start_piece);
         }
@@ -143,7 +143,11 @@ class Board {
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
             for(int j=0;j<moves.size();j++){
                 if(moves.get(j).getLocation()[0]==piece.getPlayer().getKing().getLocation()[0]&&moves.get(j).getLocation()[1]==piece.getPlayer().getKing().getLocation()[1]){
-                    return false;
+                    piece.setLocation(start_pos[0],start_pos[1]);
+                    if(start_piece!=null){
+                        player.pieceList.add(start_piece);
+
+                    }return false;
                 }
             }
         }
