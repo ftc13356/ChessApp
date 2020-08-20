@@ -127,12 +127,17 @@ class Board {
 
     public boolean checkMove(int x, int y, Player player,ChessPiece piece) {//false means is in danger, true means safe
         int[] start_pos=piece.getLocation();
+        ChessPiece start_piece=null;
+        if(isLocationOccupied(x,y)!=null){
+            start_piece=isLocationOccupied(x,y);
+            remove(start_piece);
+        }
         piece.setLocation(x,y);
         if(getP1().isSidewhite()==player.isSidewhite()){
-            player=getP1();
+            player=getP2();
         }
         else{
-            player=getP2();
+            player=getP1();
         }
         for (int i = 0; i < player.pieceList.size(); i++) { // arrayList defined in player class
             ArrayList<Location> moves=player.pieceList.get(i).getLegalMoves();
@@ -143,13 +148,19 @@ class Board {
             }
         }
         piece.setLocation(start_pos[0],start_pos[1]);
+        if(start_piece!=null){
+            player.pieceList.add(start_piece);
+
+        }
         return true;
     }
     public boolean Checkmate(Player player){
-        if(!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())){
-            for(int i=0;i<player.getKing().getLegalMoves().size();i++){
-                if(checkMove(player.getKing().getLegalMoves().get(i).getLocation()[0],player.getKing().getLegalMoves().get(i).getLocation()[1],player,player.getKing())){
-                    return false;
+        if(!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())) {
+            for (int i = 0; i < player.pieceList.size(); i++) {
+                for (int j = 0; j < player.pieceList.get(i).getLegalMoves().size(); j++) {
+                    if (checkMove(player.pieceList.get(i).getLegalMoves().get(j).getLocation()[0], player.pieceList.get(i).getLegalMoves().get(j).getLocation()[1], player, player.pieceList.get(i))) {
+                        return false;
+                    }
                 }
             }
             return true;
