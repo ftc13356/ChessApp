@@ -9,7 +9,6 @@ class Board {
 
     private final static boolean usefxgui = true;
 
-    //Player class will provide way to read role and color inputted
     public static void main(String[] args){
         if (usefxgui) {
             new Thread(() -> Application.launch(gui.class)).start();
@@ -49,28 +48,28 @@ class Board {
         return p2;
     }
 
-    // need to confirm color value of player class
-    // assume player takes care of move method & pass the next moves
     public void start() {
-        int turn=0;
-        while(true){
+        int turn = 0;
+        while (true) {
             printBoard();
             if (usefxgui) {
                 Platform.runLater(() -> gui.drawBoard(this));
             }
 
-            if(turn%2==0){
-                p1.movePiece();
+            if (checkmate(p1)) {
+                System.out.println("White side wins");
+                break;
+            } else if (checkmate(p2)) {
+                System.out.println("Black side wins");
+                break;
             }
-            else{
+
+            if (turn % 2 == 0) {
+                p1.movePiece();
+            } else {
                 p2.movePiece();
             }
-            if(Checkmate(p1)){
-                System.out.println("White side(p1) wins");break;
-            }
-            else if(Checkmate(p2)){
-                System.out.println("Black side(p2) wins");break;
-            }
+
             turn++;
         }
     }
@@ -158,7 +157,8 @@ class Board {
         }
         return true;
     }
-    public boolean Checkmate(Player player){
+
+    public boolean checkmate(Player player){
         if(!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())) {
             for (int i = 0; i < player.pieceList.size(); i++) {
                 for (int j = 0; j < player.pieceList.get(i).getLegalMoves().size(); j++) {
@@ -171,6 +171,7 @@ class Board {
         }
         return false;
     }
+
     public void remove(ChessPiece piece){
         if(piece.getPlayer().isSidewhite()!=p1.isSidewhite()){
             p2.remove(piece);
@@ -179,11 +180,4 @@ class Board {
             p1.remove(piece);
         }
     }
-
-    /*
-    void analysis() { //method called in above
-        //check if king in danger, print check
-
-     }
-     */
 }
