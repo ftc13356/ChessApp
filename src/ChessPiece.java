@@ -41,14 +41,11 @@ public abstract class ChessPiece {
             //Check if the move is the legal move.
             if (moves.get(i).getLocation()[0] == x && moves.get(i).getLocation()[1] == y&&getBoard().checkMove(x,y,getPlayer(),this)) {
 
-                //THis is the move.. now check.. if the taget location is occupied and there is oppoents at target location
+                //This is the move.. now check.. if the target location is occupied and there is opponents at target location
                 if (getBoard().isLocationOccupied(x, y) != null && getBoard().isLocationOccupied(x, y).getPlayer().isSidewhite() != this.getPlayer().isSidewhite()) {
-
-                    //
+                    // capture
                     getBoard().remove(getBoard().isLocationOccupied(x, y));
                 }
-
-
 
                 if (isPromoteLegal() == true) {
 
@@ -76,10 +73,8 @@ public abstract class ChessPiece {
     public boolean isPromoteLegal() {
 
         if (this instanceof Pawn == true && ((getLocation()[1] == 7 && this.getPlayer().isSidewhite() == true)|| (getLocation()[1] == 2 && this.getPlayer().isSidewhite() == false))) {
-
             return true;
         }
-
         return false;
     }
 }

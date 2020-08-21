@@ -64,16 +64,25 @@ public class Human extends Player {
                     continue;
                 }
             }
-            String letter = start.substring(0, 1);
-            String number = start.substring(1);
-            String endletter = end.substring(0, 1);
-            String endnumber = end.substring(1);
 
-            //Convert the inputs to [x, y] coordinates
-            int number1 = Integer.parseInt(number);
-            int letternumber = convertToCoordinates(letter);
-            int endnumber2 = Integer.parseInt(endnumber);
-            int endletternumber = convertToCoordinates(endletter);
+            int number1, letternumber, endnumber2, endletternumber;
+            try {
+                String letter = start.substring(0, 1);
+                String number = start.substring(1);
+                String endletter = end.substring(0, 1);
+                String endnumber = end.substring(1);
+
+                //Convert the inputs to [x, y] coordinates
+                number1 = Integer.parseInt(number);
+                letternumber = convertToCoordinates(letter);
+                endnumber2 = Integer.parseInt(endnumber);
+                endletternumber = convertToCoordinates(endletter);
+
+            } catch (StringIndexOutOfBoundsException | NumberFormatException ex) {
+                System.out.println("Invalid Input. Please input again");
+                continue;
+            }
+
             ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
             if (chosenPiece == null) {
                 System.out.println("There is no piece at the chosen square. Please input again.");
