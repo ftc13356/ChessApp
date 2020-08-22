@@ -1,3 +1,6 @@
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,6 +8,7 @@ public abstract class Player {
     public boolean sideWhite;
     public Board board1;
     public boolean isHuman;
+    static boolean Debug;
 
     public ArrayList<ChessPiece> pieceList = new ArrayList<>();
 
@@ -96,5 +100,41 @@ public abstract class Player {
 
     public void add (ChessPiece piece){
         pieceList.add(piece);
+    }
+
+    public void drawBoard(Pane gamePane){
+
+        // draws chess pieces for both sides
+        for (ChessPiece piece : pieceList) {
+            String whichSide = "";
+
+            int[] pieceCoordinate = piece.getLocation();
+
+            if (!piece.getPlayer().sideWhite) {
+                whichSide = piece.blackPath;
+            } else {
+                whichSide = piece.whitePath;
+            }
+            ImageView pieceView = new ImageView("file:" + whichSide);
+//            if (Debug) {
+//                System.out.println("\tSide: " + whichSide);
+//            }
+            int horizontalSquareNum = pieceCoordinate[0];
+            int verticalSquareNum = 9 - pieceCoordinate[1];
+            int squareSideLength = 70;
+            int topLeftX = -20;
+            int topLeftY = -30;
+
+            pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
+            pieceView.setY(verticalSquareNum * squareSideLength + topLeftY);
+            if (Debug) {
+                System.out.println(whichSide + piece.getClass() + "; X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1] + "\t (" + pieceView.getX() + ", " + pieceView.getY() + ")");
+            }
+            gamePane.getChildren().add(pieceView);
+//
+//            if (Debug) {
+//                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
+//            }
+        }
     }
 }
