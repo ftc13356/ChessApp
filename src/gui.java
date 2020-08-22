@@ -37,65 +37,13 @@ public class gui extends Application {
     private static BorderPane mainPane;
     private static Pane gamePane;
 
-    private static boolean Debug = false;
+    private static boolean Debug = true;
 
     @Override
     public void start(Stage stage) throws Exception {
 
         mainPane = new BorderPane();
         gamePane = new Pane();
-
-        // draws chess board with alternating colored squares
-//        for (int row = 0; row < NUMOFSQUARESPERSIDE; row++) {
-//
-//            for (int col = 0; col < NUMOFSQUARESPERSIDE; col++) {
-//
-//                Rectangle chessSpace = new Rectangle(TOPLEFTX + SIDEOFSQUARE * col, TOPLEFTY + SIDEOFSQUARE * row, SIDEOFSQUARE, SIDEOFSQUARE);
-//
-//                if ((row + col) % 2 != 0) {
-//                    // darker brown
-//                    chessSpace.setFill(Color.rgb(109, 83, 56));
-//                } else {
-//                    // beige
-//                    chessSpace.setFill(Color.BEIGE);
-//                }
-//                gamePane.getChildren().addAll(chessSpace);
-//
-//            }
-//        }
-//        int x = 3;
-//        Line border1 = new Line(TOPLEFTX, TOPLEFTY, TOPLEFTX, 600);
-//        Line border2 = new Line(TOPLEFTX, TOPLEFTY, 600, TOPLEFTY);
-//        Line border3 = new Line(600, TOPLEFTY, 600, 600);
-//        Line border4 = new Line(TOPLEFTX, 600, 600, 600);
-//        border1.setStrokeWidth(x);
-//        border2.setStrokeWidth(x);
-//        border3.setStrokeWidth(x);
-//        border4.setStrokeWidth(x);
-//
-//        // draws numbering/lettering
-//        // lettering
-//        Text letteringTop = new Text(67, 30, "a         b        c        d        e         f        g       h");
-//        Text letteringBottom = new Text(67, 630, "a         b        c        d        e         f        g       h");
-//        // numbering
-//        for (int i = 9; i >= 1; i--) {
-//
-//            Text numbering = new Text(15, 640 - 73 * i, i + 0 + "");
-//            numbering.setFont(Font.font(20));
-//            gamePane.getChildren().add(numbering);
-//        }
-//
-//        for (int i = 9; i >= 1; i--) {
-//
-//            Text numbering = new Text(615, 640 - 73 * i, i + 0 + "");
-//            numbering.setFont(Font.font(20));
-//            gamePane.getChildren().add(numbering);
-//        }
-//
-//        letteringTop.setFont(Font.font(25));
-//        letteringBottom.setFont(Font.font(25));
-//
-//        gamePane.getChildren().addAll(border1, border2, border3, border4, letteringTop, letteringBottom);
 
         redraw();
 
@@ -155,7 +103,19 @@ public class gui extends Application {
             numbering.setFont(Font.font(20));
             gamePane.getChildren().add(numbering);
         }
-
+//        for (int i = 9; i >= 1; i--) {
+//
+//            Text numbering = new Text(15, 640 - 73 * i, i + 0 + "");
+//            numbering.setFont(Font.font(20));
+//            gamePane.getChildren().add(numbering);
+//        }
+//
+//        for (int i = 9; i >= 1; i--) {
+//
+//            Text numbering = new Text(615, 640 - 73 * i, i + 0 + "");
+//            numbering.setFont(Font.font(20));
+//            gamePane.getChildren().add(numbering);
+//        }
 
         letteringTop.setFont(Font.font(25));
         letteringBottom.setFont(Font.font(25));
@@ -210,20 +170,20 @@ public class gui extends Application {
         ArrayList<ChessPiece> pieceList2 = p2.pieceList;
 
         // draws chess pieces for both sides
-
-        // WHITE
-        for (ChessPiece piece : pieceList1) {
+        for (ChessPiece piece : pieceList2) {
             String whichSide = "";
 
             int[] pieceCoordinate = piece.getLocation();
 
-            if (piece.getPlayer().sideWhite) {
+            if (!piece.getPlayer().sideWhite) {
+                whichSide = piece.blackPath;
+            } else {
                 whichSide = piece.whitePath;
             }
             ImageView pieceView = new ImageView("file:" + whichSide);
-            if (Debug) {
-                System.out.println("\tSide: " + whichSide);
-            }
+//            if (Debug) {
+//                System.out.println("\tSide: " + whichSide);
+//            }
             int horizontalSquareNum = pieceCoordinate[0];
             int verticalSquareNum = pieceCoordinate[1];
             int squareSideLength = 70;
@@ -233,34 +193,34 @@ public class gui extends Application {
             pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
             pieceView.setY(verticalSquareNum * squareSideLength + topLeftY);
             if (Debug) {
-                System.out.println("X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1]);
+                System.out.println(whichSide + piece.getClass() + "; X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1] + "\t (" + pieceView.getX() + ", " + pieceView.getY() + ")");
             }
             gamePane.getChildren().add(pieceView);
-
-            if (Debug) {
-                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
-            }
+//
+//            if (Debug) {
+//                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
+//            }
         }
 
-        for (ChessPiece piece : pieceList2) {
+        for (ChessPiece piece : pieceList1) {
             String whichSide = "";
 
             int[] pieceCoordinate = piece.getLocation();
 
-            if (!piece.getPlayer().sideWhite) {
+            if (piece.getPlayer().sideWhite) {
+                whichSide = piece.whitePath;
+            } else {
                 whichSide = piece.blackPath;
             }
             ImageView pieceView = new ImageView("file:" + whichSide);
-            if (Debug) {
-                System.out.println("\tSide: " + whichSide);
-            }
-
-
+//            if (Debug) {
+//                System.out.println("\tSide: " + whichSide);
+//            }
             int horizontalSquareNum = pieceCoordinate[0];
             int verticalSquareNum = pieceCoordinate[1];
             int squareSideLength = 70;
             int topLeftX = -20;
-            int topLeftY = -35;
+            int topLeftY = -40;
 
             if (pieceCoordinate[1] == 7) {
                 pieceView.setX(horizontalSquareNum * squareSideLength + topLeftX);
@@ -270,14 +230,14 @@ public class gui extends Application {
                 pieceView.setY((verticalSquareNum - 1) * squareSideLength + -topLeftY);
             }
             if (Debug) {
-                System.out.println("X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1]);
+                System.out.println(whichSide + piece.getClass() + "; X: " + pieceCoordinate[0] + " Y: " + pieceCoordinate[1] + "\t (" + pieceView.getX() + ", " + pieceView.getY() + ")");
             }
 
             gamePane.getChildren().add(pieceView);
 
-            if (Debug) {
-                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
-            }
+//            if (Debug) {
+//                System.out.println("Coordinates: (" + pieceCoordinate[0] + "," + pieceCoordinate[1] + ")");
+//            }
         }
     }
 }
