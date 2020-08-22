@@ -106,7 +106,7 @@ public class gui extends Application {
         stage.show();
     }
 
-    public static void redraw(){
+    public static void redraw() {
 
         gamePane.getChildren().clear();
 
@@ -142,19 +142,20 @@ public class gui extends Application {
         Text letteringTop = new Text(67, 30, "a         b        c        d        e         f        g       h");
         Text letteringBottom = new Text(67, 630, "a         b        c        d        e         f        g       h");
         // numbering
-        for (int i = 9; i >= 1; i--) {
+        for (int i = 0; i <= NUMOFSQUARESPERSIDE; i++) {
 
-            Text numbering = new Text(15, 640 - 73 * i, i + 0 + "");
+            Text numbering = new Text(15, 73 * i, i + 0 + "");
             numbering.setFont(Font.font(20));
             gamePane.getChildren().add(numbering);
         }
 
-        for (int i = 9; i >= 1; i--) {
+        for (int i = 0; i <= NUMOFSQUARESPERSIDE; i++) {
 
-            Text numbering = new Text(615, 640 - 73 * i, i + 0 + "");
+            Text numbering = new Text(615, 73 * i, i + 0 + "");
             numbering.setFont(Font.font(20));
             gamePane.getChildren().add(numbering);
         }
+
 
         letteringTop.setFont(Font.font(25));
         letteringBottom.setFont(Font.font(25));
@@ -217,7 +218,7 @@ public class gui extends Application {
             int[] pieceCoordinate = piece.getLocation();
 
             if (piece.getPlayer().sideWhite) {
-                whichSide = piece.blackPath;
+                whichSide = piece.whitePath;
             }
             ImageView pieceView = new ImageView("file:" + whichSide);
             if (Debug) {
@@ -247,12 +248,14 @@ public class gui extends Application {
             int[] pieceCoordinate = piece.getLocation();
 
             if (!piece.getPlayer().sideWhite) {
-                whichSide = piece.whitePath;
+                whichSide = piece.blackPath;
             }
             ImageView pieceView = new ImageView("file:" + whichSide);
             if (Debug) {
                 System.out.println("\tSide: " + whichSide);
             }
+
+
             int horizontalSquareNum = pieceCoordinate[0];
             int verticalSquareNum = pieceCoordinate[1];
             int squareSideLength = 70;
