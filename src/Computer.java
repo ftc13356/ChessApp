@@ -14,12 +14,13 @@ public class Computer extends Player{
             if (chosenPiece.getLegalMoves().size()>0) {
                 int chosenMove = rand.nextInt(chosenPiece.getLegalMoves().size());
                 String coordinates = chosenPiece.getLegalMoves().get(chosenMove).toString();
-                String xstring = coordinates.substring(0, 1);
-                String ystring = coordinates.substring(1);
+                String xstring = coordinates.substring(1, 2);
+                String ystring = coordinates.substring(2,3);
                 int x = Integer.parseInt(xstring);
                 int y = Integer.parseInt(ystring);
-                chosenPiece.move(x,y);
-                break;
+                if(chosenPiece.move(x,y)){
+                    break;
+                }
             }
         }
     }

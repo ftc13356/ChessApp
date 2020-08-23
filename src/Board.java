@@ -25,9 +25,13 @@ class Board {
         p2 = new Human(false, this);
     }
 
-    public Board(boolean p1SideWhite, boolean p2SideWhite) {
+    public Board(boolean p1SideWhite, boolean p2SideWhite, boolean isHuman) {
         p1 = new Computer(p1SideWhite, this);
-        p2 = new Computer(p2SideWhite, this);
+        if(isHuman==true){
+            p2 = new Human(p2SideWhite, this);
+        } else{
+            p2 = new Computer(p2SideWhite, this);
+        }
     }
 
     // testing only!!!
