@@ -4,8 +4,10 @@ import javafx.application.Platform;
 import java.util.ArrayList;
 
 class Board {
+
     private Player p1;
     private Player p2;
+    private boolean stalemate = false;
 
     private final static boolean usefxgui = true;
 
@@ -58,25 +60,45 @@ class Board {
     }
 
     public void start() {
+        printBoard();
+        if (usefxgui) {
+            Platform.runLater(() -> gui.drawBoard(this));
+        }
+
         int turn = 0;
         while (true) {
+
+            if (turn % 2 == 0) {
+                System.out.println("Move " + ((turn / 2) + 1));
+                System.out.println("It is the " + (p1.sideWhite ? "white" : "black") + " side's turn");
+                p1.movePiece();
+            } else {
+                System.out.println("It is the " + (p2.sideWhite ? "white" : "black") + " side's turn");
+                p2.movePiece();
+            }
+
             printBoard();
             if (usefxgui) {
                 Platform.runLater(() -> gui.drawBoard(this));
             }
 
             if (checkmate(p1)) {
-                System.out.println("White side wins");
+                System.out.println((p1.sideWhite ? "Black" : "White") + " side wins");
                 break;
             } else if (checkmate(p2)) {
-                System.out.println("Black side wins");
+                System.out.println((p2.sideWhite ? "Black" : "White") + " side wins");
                 break;
             }
 
-            if (turn % 2 == 0) {
-                p1.movePiece();
-            } else {
-                p2.movePiece();
+            if (p1.pieceList.size() == 1 && p1.pieceList.get(0) instanceof King
+                    && p2.pieceList.size() == 1 && p2.pieceList.get(0) instanceof King) {
+                System.out.println("Draw (2 Kings Left)");
+                break;
+            }
+
+            if (stalemate || stalemate(p1) || stalemate(p2)) {
+                System.out.println("Stalemate");
+                break;
             }
 
             turn++;
@@ -133,7 +155,8 @@ class Board {
         return null;
     }
 
-    public boolean checkMove(int x, int y, Player player,ChessPiece piece) {//false means is in danger, true means safe
+    public boolean checkMove(int x, int y, Player player,ChessPiece piece) {
+        // false means is in danger, true means safe
         int[] start_pos=piece.getLocation();
         ChessPiece start_piece=null;
         if(isLocationOccupied(x,y)!=null&&isLocationOccupied(x,y).getPlayer().isSidewhite()!=piece.getPlayer().isSidewhite()){
@@ -155,7 +178,8 @@ class Board {
                     if(start_piece!=null){
                         player.pieceList.add(start_piece);
 
-                    }return false;
+                    }
+                    return false;
                 }
             }
         }
@@ -179,6 +203,22 @@ class Board {
             return true;
         }
         return false;
+    }
+
+    public boolean stalemate(Player player) {
+        //if not in check, check all pieces, if all legal moves move return false, stalemate
+        if (!checkMove(player.getKing().getLocation()[0],player.getKing().getLocation()[1],player,player.getKing())) {
+            return false;
+        }
+        for (ChessPiece piece : player.pieceList) {
+            for (Location loc : piece.getLegalMoves()) {
+                if (piece.testMove(loc.getLocation()[0],loc.getLocation()[1])) {
+                    return false;
+                }
+            }
+        }
+        stalemate = true;
+        return true;
     }
 
     public void remove(ChessPiece piece){

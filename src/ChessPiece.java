@@ -39,7 +39,7 @@ public abstract class ChessPiece {
         //Go through each legal move
         for (int i = 0; i < moves.size(); i++) {
             //Check if the move is the legal move.
-            if (moves.get(i).getLocation()[0] == x && moves.get(i).getLocation()[1] == y&&getBoard().checkMove(x,y,getPlayer(),this)) {
+            if (moves.get(i).getLocation()[0] == x && moves.get(i).getLocation()[1] == y && getBoard().checkMove(x,y,getPlayer(),this)) {
 
                 //This is the move.. now check.. if the target location is occupied and there is opponents at target location
                 if (getBoard().isLocationOccupied(x, y) != null && getBoard().isLocationOccupied(x, y).getPlayer().isSidewhite() != this.getPlayer().isSidewhite()) {
@@ -56,6 +56,16 @@ public abstract class ChessPiece {
                     this.setLocation(x, y);
                 }
 
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean testMove(int x, int y) {
+        ArrayList<Location> moves = this.getLegalMoves();
+        for (int i = 0; i < moves.size(); i++) {
+            if (moves.get(i).getLocation()[0] == x && moves.get(i).getLocation()[1] == y && getBoard().checkMove(x,y,getPlayer(),this)) {
                 return true;
             }
         }

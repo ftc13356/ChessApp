@@ -35,13 +35,6 @@ public class Human extends Player {
 
     public void movePiece() {
         while (true) {
-            if (sideWhite==true){
-                System.out.println("It is the white side's turn");
-            }
-            else {
-                System.out.println("It is the black side's turn");
-            }
-
             // Create a prompt and get an input from the human player
             JTextField startField = new JTextField(5);
             JTextField endField = new JTextField(5);
@@ -55,7 +48,8 @@ public class Human extends Player {
             myPanel.add(endField);
             while (true) {
                 int result = JOptionPane.showConfirmDialog(null, myPanel,
-                        "Please Enter Your Move (ex. a3)", JOptionPane.OK_CANCEL_OPTION);
+                        (sideWhite ? "White" : "Black") + ", Please Enter Your Move (ex. a3)",
+                        JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
                     start = startField.getText();
                     end = endField.getText();
@@ -86,6 +80,7 @@ public class Human extends Player {
             ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
             if (chosenPiece == null) {
                 System.out.println("There is no piece at the chosen square. Please input again.");
+                continue;
             }
             Location chosenMove = new Location(endletternumber, endnumber2);
             if (((chosenPiece != null && chosenPiece.getPlayer().isSidewhite()) == this.isSidewhite()) && chosenPiece.move(endletternumber, endnumber2)) {
