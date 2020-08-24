@@ -86,7 +86,7 @@ public abstract class Player {
     }
 
     public void remove(ChessPiece piece){
-        System.out.println(piece + " has been captured");
+//        System.out.println(piece + " has been captured");
         pieceList.remove(piece);
     }
     public ChessPiece getKing(){

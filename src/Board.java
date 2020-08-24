@@ -14,7 +14,7 @@ class Board {
     public static void main(String[] args){
         if (usefxgui) {
             new Thread(() -> Application.launch(gui.class)).start();
-            try { Thread.sleep(1000); }
+            try { Thread.sleep(1500); }
             catch (InterruptedException e) { e.printStackTrace(); }
         }
 

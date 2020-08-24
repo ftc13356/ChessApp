@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Computer extends Player{
 
+    private final int computerMoveDelay = 500;
     private Random rand = new Random();
 
     public Computer(boolean sidewhite, Board board) {
@@ -10,6 +11,7 @@ public class Computer extends Player{
 
     @Override
     public void movePiece() {
+        try { Thread.sleep(computerMoveDelay); } catch (InterruptedException e) { e.printStackTrace(); }
         while (true) {
             int pieceIndex = rand.nextInt(pieceList.size());
             ChessPiece chosenPiece = pieceList.get(pieceIndex);
