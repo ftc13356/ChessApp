@@ -195,7 +195,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testWhitePawnCapture() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -210,10 +209,12 @@ public class PawnTest extends BaseTest {
         p2P.add(capturablepawn);
 
         Pawn blockpawn = new Pawn(2, 2, board1, player2);
-        p2P.add(blockpawn);
+        p2P.add(blockpawn); board1.printBoard();
 
         Location l1 = new Location(2,3);
-        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
+        Location l2 = new Location(1,3);
+        Location l3 = new Location(1,4);
+        ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1,l2,l3));
         ArrayList<Location> pawnLegalMoves = pawn1.getLegalMoves();
 
 
@@ -221,7 +222,6 @@ public class PawnTest extends BaseTest {
     }
 
     @Test
-    @Ignore
     public void testBlackPawnCapture() {
         ArrayList<ChessPiece> p1P = new ArrayList<>();
         ArrayList<ChessPiece> p2P = new ArrayList<>();
@@ -236,7 +236,7 @@ public class PawnTest extends BaseTest {
         p1P.add(capturablepawn);
 
         Pawn blockpawn = new Pawn(1, 6, board1, player1);
-        p1P.add(blockpawn);
+        p1P.add(blockpawn); board1.printBoard();
 
         Location l1 = new Location(2,6);
         ArrayList<Location> expectedLegalMoves = new ArrayList<Location>(Arrays.asList(l1));
