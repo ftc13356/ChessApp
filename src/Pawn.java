@@ -66,7 +66,7 @@ public boolean firstMovePawn () {
 
         else {
             int[] x_y = this.getLocation();
-            int[] x_directions = {0};
+            int[] x_directions = {0,1};
             int[] y_directions = {1, -1};
             boolean side = getPlayer().isSidewhite();
                 int new_x = x_directions[0] + x_y[0]; // new starting location + the x
@@ -78,6 +78,9 @@ public boolean firstMovePawn () {
                     location.setLocation(new_x, new_y); // sets new location
                     moves.add(location);
                 }
+
+
+
             }
             else {
                 int new_x_black = x_directions[0] + x_y[0]; // new starting location + the x
@@ -88,6 +91,32 @@ public boolean firstMovePawn () {
                     location.setLocation(new_x_black, new_y_black);
                     moves.add(location);
                 }
+            }
+        }
+        int[] x_y = this.getLocation();
+        int y;
+        if (getPlayer().isSidewhite()==true){
+            y=1;
+        }
+        else{
+            y=-1;
+        }
+            if (getBoard().isLocationOccupied(getLocation()[0] + 1, getLocation()[1] + y) != null &&getPlayer().isSidewhite()==!getBoard().isLocationOccupied(getLocation()[0] + 1, getLocation()[1] + y).getPlayer().sideWhite) {
+            int new_x_capture =  x_y[0]+1; // new starting location + the x
+            int new_y_capture = x_y[1]+y; // new starting location + the y
+            if (!getBoard().isOutOfBoard(new_x_capture, new_y_capture)) {
+                Location location = new Location();
+                location.setLocation(new_x_capture, new_y_capture); // sets new location
+                moves.add(location);
+            }
+        }
+        if (getBoard().isLocationOccupied(getLocation()[0] -1, getLocation()[1] +y) != null&&getPlayer().isSidewhite()==!getBoard().isLocationOccupied(getLocation()[0] + 1, getLocation()[1] + y).getPlayer().sideWhite){
+            int new_x_capture =  x_y[0]-1; // new starting location + the x
+            int new_y_capture =  x_y[1]+y; // new starting location + the y
+            if ( !getBoard().isOutOfBoard(new_x_capture, new_y_capture)) {
+                Location location = new Location();
+                location.setLocation(new_x_capture, new_y_capture); // sets new location
+                moves.add(location);
             }
         }
 
