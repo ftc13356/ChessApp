@@ -18,7 +18,7 @@ class Board {
             catch (InterruptedException e) { e.printStackTrace(); }
         }
 
-        Board board = new Board();
+        Board board = new Board(true,true,false,true);
         board.start();
     }
 

@@ -56,6 +56,10 @@ public abstract class ChessPiece {
                     this.setLocation(x, y);
                 }
 
+                if (this instanceof King || (this instanceof Rook && getLocation()[0] == 8)) {
+                    getPlayer().canCastle = false;
+                }
+
                 return true;
             }
         }

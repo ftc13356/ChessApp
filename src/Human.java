@@ -59,35 +59,57 @@ public class Human extends Player {
                 }
             }
 
-            int number1, letternumber, endnumber2, endletternumber;
-            try {
-                String letter = start.substring(0, 1);
-                String number = start.substring(1);
-                String endletter = end.substring(0, 1);
-                String endnumber = end.substring(1);
 
-                //Convert the inputs to [x, y] coordinates
-                number1 = Integer.parseInt(number);
-                letternumber = convertToCoordinates(letter);
-                endnumber2 = Integer.parseInt(endnumber);
-                endletternumber = convertToCoordinates(endletter);
+            if (!start.equals("castle")) {
+                int number1, letternumber, endnumber2, endletternumber;
+                try {
+                    String letter = start.substring(0, 1);
+                    String number = start.substring(1);
+                    String endletter = end.substring(0, 1);
+                    String endnumber = end.substring(1);
 
-            } catch (StringIndexOutOfBoundsException | NumberFormatException ex) {
-                System.out.println("Invalid Input. Please input again");
-                continue;
-            }
+                    //Convert the inputs to [x, y] coordinates
+                    number1 = Integer.parseInt(number);
+                    letternumber = convertToCoordinates(letter);
+                    endnumber2 = Integer.parseInt(endnumber);
+                    endletternumber = convertToCoordinates(endletter);
 
-            ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
-            if (chosenPiece == null) {
-                System.out.println("There is no piece at the chosen square. Please input again.");
-                continue;
-            }
-            Location chosenMove = new Location(endletternumber, endnumber2);
-            if (((chosenPiece != null && chosenPiece.getPlayer().isSidewhite()) == this.isSidewhite()) && chosenPiece.move(endletternumber, endnumber2)) {
-                chosenPiece.move(endletternumber, endnumber2);
-                break;
+                } catch (StringIndexOutOfBoundsException | NumberFormatException ex) {
+                    System.out.println("Invalid Input. Please input again");
+                    continue;
+                }
+
+                ChessPiece chosenPiece = board1.isLocationOccupied(letternumber, number1);
+                if (chosenPiece == null) {
+                    System.out.println("There is no piece at the chosen square. Please input again.");
+                    continue;
+                }
+                Location chosenMove = new Location(endletternumber, endnumber2);
+                if (((chosenPiece != null && chosenPiece.getPlayer().isSidewhite()) == this.isSidewhite()) && chosenPiece.move(endletternumber, endnumber2)) {
+                    chosenPiece.move(endletternumber, endnumber2);
+                    break;
+                } else {
+                    System.out.println("The move is not legal. Please input again.");
+                }
+
             } else {
-                System.out.println("The move is not legal. Please input again.");
+                Rook castleRook = null;
+                for (ChessPiece piece : pieceList) {
+                    if (piece instanceof Rook && piece.getLocation()[0] == 8) {
+                        castleRook = (Rook) piece;
+                    }
+                }
+                int y = sideWhite ? 1 : 8;
+                if (getKing() != null && castleRook != null && canCastle // check pieces
+                        && board1.isLocationOccupied(6,y) == null && board1.isLocationOccupied(7,y) == null // check spaces occupied
+                        && board1.checkMove(getKing().getLocation()[0],getKing().getLocation()[1],this,getKing()) // check if in check
+                        && board1.checkMove(7,y,this,getKing())) { // check final position for danger
+                    getKing().setLocation(7,y);
+                    castleRook.setLocation(6,y);
+                    break;
+                } else {
+                    System.out.println("Castle is not legal");
+                }
             }
         }
     }

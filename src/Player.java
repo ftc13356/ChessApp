@@ -2,13 +2,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Player {
     public boolean sideWhite;
     public Board board1;
     public boolean isHuman;
     static boolean Debug;
+
+    boolean canCastle = true;
 
     public ArrayList<ChessPiece> pieceList = new ArrayList<>();
 
