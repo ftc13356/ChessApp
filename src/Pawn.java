@@ -110,7 +110,7 @@ public boolean firstMovePawn () {
                 moves.add(location);
             }
         }
-        if (getBoard().isLocationOccupied(getLocation()[0] -1, getLocation()[1] +y) != null&&getPlayer().isSidewhite()==!getBoard().isLocationOccupied(getLocation()[0] + 1, getLocation()[1] + y).getPlayer().sideWhite){
+        if (getBoard().isLocationOccupied(getLocation()[0] -1, getLocation()[1] +y) != null&&getPlayer().isSidewhite()==!getBoard().isLocationOccupied(getLocation()[0] - 1, getLocation()[1] + y).getPlayer().sideWhite){
             int new_x_capture =  x_y[0]-1; // new starting location + the x
             int new_y_capture =  x_y[1]+y; // new starting location + the y
             if ( !getBoard().isOutOfBoard(new_x_capture, new_y_capture)) {
