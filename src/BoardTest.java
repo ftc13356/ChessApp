@@ -106,7 +106,7 @@ public class BoardTest {
         Pawn pawn1 = new Pawn(1, 7, board1, player1);
         p1P.add(pawn1);
 
-        Knight knight1 = new Knight(2, 7, board1, player2);
+        Knight knight1 = new Knight(2, 8, board1, player2);
         p2P.add(knight1); board1.printBoard();
 
         boolean moveSuccessful = pawn1.move(2, 8);
